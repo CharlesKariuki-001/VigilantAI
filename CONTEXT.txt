@@ -1,0 +1,8 @@
+--- VIGILANT AI CONTEXT ---
+I am building Vigilant AI: an AI-powered fraud detection system for M-Pesa and African mobile money.
+Current Phase: Layer 1 - Rule Engine (Week 1)
+Tech Stack: Python, regex, Streamlit
+Goal: Build a rule-based detector that flags suspicious SMS messages with clear explanations.
+Dataset: Collecting real Kenyan scam messages.
+Focus: Accuracy, explainability, and local context (Swahili + English).
+--- END CONTEXT ---
