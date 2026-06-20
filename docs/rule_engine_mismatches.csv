@@ -1,0 +1,10 @@
+error_type,message_text,true_label,fraud_category,triggered_rules
+FALSE_NEGATIVE (missed a real scam),"KCB M-Pesa: Mkopo wako wa Ksh35,000 umeidhinishwa lakini unahitaji kulipa Ksh800 insurance fee kwanza. Tuma kwa 0711889922 sasa.",fraud,fake_loan,
+FALSE_NEGATIVE (missed a real scam),"Pole sana nilituma pesa kwa namba yako badala ya wa kwangu, tafadhali Tuma kwa hii namba 0701223344 nirudishie Ksh3,500.",fraud,fake_wrong_number_send,
+FALSE_NEGATIVE (missed a real scam),"Tuma kwa hii namba 0711223399 Ksh1,500 kulipia bidhaa yako ya Jumia ambayo iko njiani kufikishwa kwako leo jioni.",fraud,fake_delivery_payment,
+FALSE_NEGATIVE (missed a real scam),"Habari, Fuliza yako imefikia ukomo wa Ksh100,000 lakini lazima ulipe Ksh2,500 deposit insurance kwa namba 0745778899 kabla ya kupokea.",fraud,fake_loan,
+FALSE_NEGATIVE (missed a real scam),"Tuma kwenye namba hii 0654332211 TZS20,000 kulipia ada ya usajili wa zawadi yako ya Vodacom M-Pesa Bahati Nasibu.",fraud,fake_prize_winner,
+FALSE_NEGATIVE (missed a real scam),M-Pesa Tuma kwa hii namba 0711882233 Ksh800 kulipia bidhaa ya kuponi ya simu mpya uliyoshinda kupitia ujumbe huu.,fraud,fake_prize_winner,
+FALSE_NEGATIVE (missed a real scam),"Hi this is Fuliza support, your limit has been raised to Ksh80,000 but you must clear a Ksh1,500 service charge to 0701556699 first to activate.",fraud,fake_loan,
+FALSE_NEGATIVE (missed a real scam),Tuma kwa hii namba 0734001122 Ksh600 kulipia ada ya kuhamisha pesa zako za Fuliza ambazo zimezuiliwa na mfumo.,fraud,fake_reversal,
+FALSE_NEGATIVE (missed a real scam),"M-Pesa Agent alert: Ulipokea pesa kimakosa Ksh8,000 kutoka kwa agent, tafadhali rudisha kwa namba 0789112233 mara moja kuepuka kufungiwa akaunti.",fraud,fake_reversal,

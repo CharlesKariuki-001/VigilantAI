@@ -5,4 +5,4 @@ Tech Stack: Python, regex, Streamlit
 Goal: Build a rule-based detector that flags suspicious SMS messages with clear explanations.
 Dataset: Collecting real Kenyan scam messages.
 Focus: Accuracy, explainability, and local context (Swahili + English).
---- END CONTEXT ---
+--- END CONTEXT ---`

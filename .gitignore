@@ -1,0 +1,55 @@
+# Virtual Environment
+python/
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Streamlit specific
+.streamlit/secrets.toml
+__pycache__/
+
+# Data & Large files (optional - decide based on your preference)
+# data/scam_dataset.csv
+# data/synthetic/*
+# *.pkl
+# *.joblib
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build / Distribution
+build/
+dist/
+*.egg-info/
+
+# Model files (when you add ML models later)
+*.pkl
+*.joblib
+vigilant_ai_*.pkl
+
+# Temporary files
+temp/
+tmp/
