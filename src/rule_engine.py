@@ -122,9 +122,14 @@ class RuleEngine:
                 "weight": 8,
                 "pattern": re.compile(
                     r"(fuliza|m-?shwari|m-?pawa|kcb\s?m-?pesa|mkopo|loan|credit)"
-                    r".{0,60}(processing\s?fee|activation\s?fee|insurance\s?fee|deposit\s?insurance|"
-                    r"ada\s?ya|bima|registration\s?fee|service\s?charge|kulipa\s?kwanza|"
-                    r"tuma\s?(ksh|kshs|tzs)?\s?\d)",
+                    r".{0,150}(processing\s?fee|activation\s?fee|insurance\s?fee|deposit\s?insurance|"
+                    r"\bada\s?ya\b|\bbima\b|registration\s?fee|service\s?charge|kulipa\s?kwanza|"
+                    r"clear(ed)?\s?a.{0,15}(charge|fee)|"
+                    r"tuma\s?(ksh|kshs|tzs)?\s?\d)"
+                    r"|(unahitaji\s?kulipa|lazima(\s?\w+){0,2}\s?(u)?lipe|must\s?(pay|clear)|you\s?must\s?clear)"
+                    r".{0,200}(fuliza|m-?shwari|m-?pawa|loan|mkopo|fee|charge|insurance|bima)"
+                    r"|(fuliza|m-?shwari|m-?pawa|loan|mkopo)"
+                    r".{0,200}(unahitaji\s?kulipa|lazima(\s?\w+){0,2}\s?(u)?lipe|must\s?(pay|clear)|you\s?must\s?clear)",
                     re.IGNORECASE,
                 ),
                 "explanation": "Legitimate loan products (Fuliza, M-Shwari, M-Pawa, KCB M-Pesa) deduct fees automatically from the loan -- they never require you to pay an upfront fee to release funds.",
@@ -137,7 +142,7 @@ class RuleEngine:
                     r"(job|kazi|vacancy|hiring|shortlisted|recruitment|hr|data\s?entry|"
                     r"dubai|qatar|saudi|abroad)"
                     r".{0,80}(processing\s?fee|registration\s?fee|training\s?fee|visa\s?fee|"
-                    r"ada\s?ya|tuma\s?(ksh|kshs|tzs)|paybill|usafiri)",
+                    r"\bada\s?ya\b|tuma\s?(ksh|kshs|tzs)|paybill|usafiri)",
                     re.IGNORECASE,
                 ),
                 "explanation": "A real employer never asks a candidate to pay a fee (visa, registration, training, travel) before being hired.",
@@ -148,7 +153,7 @@ class RuleEngine:
                 "weight": 8,
                 "pattern": re.compile(
                     r"(scholarship|ufadhili|grant|ngo|bursary|masomo)"
-                    r".{0,60}(registration\s?fee|ada\s?ya|processing\s?fee|tuma\s?(ksh|kshs|tzs))",
+                    r".{0,60}(registration\s?fee|\bada\s?ya\b|processing\s?fee|tuma\s?(ksh|kshs|tzs))",
                     re.IGNORECASE,
                 ),
                 "explanation": "Genuine scholarships and NGO grants do not require an upfront 'registration fee' sent via M-PESA.",
@@ -158,11 +163,13 @@ class RuleEngine:
                 "category": "fake_wrong_number_send",
                 "weight": 7,
                 "pattern": re.compile(
-                    r"(nimetuma|nilituma|sent|niliituma|tuma).{0,40}(kwa\s?makosa|by\s?mistake|"
-                    r"kimakosa|wrong\s?number|namba\s?isiyo\s?sahihi)"
-                    r".{0,60}(rudisha|rejesha|return|send\s?back|nirudishie|namba\s?hii|"
-                    r"tuma\s?kwa\s?namba)"
-                    r"|reversal\s?request.{0,80}(piga|call|tuma)",
+                    r"(nimetuma|nilituma|sent|niliituma|tuma|ulipokea|umepokea|received)"
+                    r".{0,60}(kwa\s?makosa|by\s?mistake|kimakosa|wrong\s?number|"
+                    r"namba\s?isiyo\s?sahihi|badala\s?ya)"
+                    r".{0,80}(rudisha|rejesha|return|send\s?back|nirudishie|namba\s?hii|"
+                    r"tuma\s?kwa\s?namba|tuma)"
+                    r"|reversal\s?request.{0,80}(piga|call|tuma)"
+                    r"|(kimakosa|by\s?mistake|badala\s?ya).{0,80}(rudisha|rejesha|nirudishie|send\s?back)",
                     re.IGNORECASE,
                 ),
                 "explanation": "A genuine wrong transaction is reversed automatically by Safaricom/Vodacom support -- it is never resolved by you sending money to a 'reversal' number a stranger gives you.",
@@ -173,12 +180,27 @@ class RuleEngine:
                 "weight": 7,
                 "pattern": re.compile(
                     r"(umeshinda|hongera|won|winner|prize|jackpot|zawadi|bonasi|bonus|"
-                    r"congratulations|selected|umechaguliwa)"
-                    r".{0,80}(ksh|kshs|tzs|shillings|elfu|million|\d{2,3},?\d{3})"
-                    r".{0,80}?(tuma|send|fee|ada|claim|kupokea|processing)?",
+                    r"congratulations|selected|umechaguliwa|uliyoshinda|bahati\s?nasibu)"
+                    r".{0,120}(ksh|kshs|tzs|shillings|elfu|million|\d{2,3},?\d{3})"
+                    r".{0,80}?(tuma|send|fee|ada|claim|kupokea|processing|kulipia)?"
+                    r"|(tuma|send).{0,40}(ksh|kshs|tzs)?.{0,30}(kulipia|\bada\s?ya\b).{0,40}"
+                    r"(zawadi|bahati\s?nasibu|umeshinda|uliyoshinda|promo)",
                     re.IGNORECASE,
                 ),
                 "explanation": "You cannot win a cash prize, car, or gift by first sending a 'processing' or 'verification' fee -- legitimate promotions never work this way.",
+            },
+            {
+                "name": "Send Money to Bare Number (No Official Receipt)",
+                "category": "send_to_number_request",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(tuma|send)\s?(kwa)?\s?(kwenye)?\s?(hii)?\s?namba"
+                    r".{0,60}(ksh|kshs|tzs|\d{3,6})"
+                    r".{0,80}(kulipia|\bada\s?ya\b|fee|deposit|usajili|processing|registration|"
+                    r"insurance|activation|kuhamisha|transfer)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Real M-PESA, delivery, or prize processes never require you to push money to a stranger's personal number to 'unlock' or 'process' something -- this is the single most common Kenyan/Tanzanian mobile-money scam pattern.",
             },
             {
                 "name": "Account Suspension / Lock Threat",
@@ -210,8 +232,10 @@ class RuleEngine:
                 "category": "fake_delivery_payment",
                 "weight": 6,
                 "pattern": re.compile(
-                    r"(parcel|delivery|jumia|kilimall|courier|bidhaa).{0,50}"
-                    r"(pay|lipa|tuma|confirm|fees|ada)",
+                    r"(parcel|delivery|jumia|kilimall|courier|bidhaa|kufikishwa)"
+                    r".{0,60}(pay|lipa|tuma|confirm|fees|ada|kulipia)"
+                    r"|(pay|lipa|tuma|kulipia|fees|ada)"
+                    r".{0,60}(parcel|delivery|jumia|kilimall|courier|bidhaa|kufikishwa)",
                     re.IGNORECASE,
                 ),
                 "explanation": "Legitimate delivery services bill through their own app/checkout, not via a random number sent in an SMS.",
@@ -280,8 +304,9 @@ class RuleEngine:
 
         # Money-request / PIN-request signal used to override legit-protection.
         self._override_pattern = re.compile(
-            r"\b(tuma|send|peleka|lipa|pay)\b.{0,30}\b(ksh|kshs|tzs|pin|fee|ada)\b"
-            r"|\bpin\b.{0,20}\b(tuma|send|share)\b",
+            r"\b(tuma|send|peleka|lipa|lipe|kulipa|kulipia)\b.{0,30}\b(ksh|kshs|tzs|pin|fee|ada|insurance|bima)\b"
+            r"|\bpin\b.{0,20}\b(tuma|send|share)\b"
+            r"|\b(lazima|unahitaji|must)\b.{0,20}\b(lipa|lipe|pay|clear)\b",
             re.IGNORECASE,
         )
 
@@ -300,7 +325,7 @@ class RuleEngine:
         # an official product name, with NO request-for-money language.
         self._legit_signature_soft = re.compile(
             r"(m-?shwari|fuliza|m-?pawa|m-?koba|lipa\s?mdogo\s?mdogo|pochi\s?la\s?biashara)"
-            r".{0,200}(balance|salio|deposit|imewekwa|successful|imefanikiwa)",
+            r".{0,200}(balance|salio|deposit\s?of|imewekwa|successful|imefanikiwa)",
             re.IGNORECASE | re.DOTALL,
         )
 
@@ -421,7 +446,8 @@ if __name__ == "__main__":
     ]
 
     print("=" * 78)
-    print("VIGILANT AI - RULE ENGINE v2 (Weighted, Deep Build - 22 rule groups)")
+    print("VIGILANT AI - RULE ENGINE v2.1 (Weighted, Deep Build - 19 rule groups,")
+    print("                                40+ pattern variants, EN/SW/Sheng, KE+TZ)")
     print("=" * 78)
 
     for case in test_cases:
