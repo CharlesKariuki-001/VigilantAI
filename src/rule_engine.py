@@ -300,6 +300,32 @@ class RuleEngine:
                 "pattern": re.compile(r"(this is|hii ni)\s?(m-?pesa|safaricom|vodacom|bank)", re.IGNORECASE),
                 "explanation": "Genuine M-PESA/bank alerts come from the official short sender ID, never a message claiming 'this is M-PESA' from a personal number.",
             },
+                        # === NEW RULES FOR SOPHISTICATED FAKES (Month 2 Week 2) ===
+            {
+                "name": "Suspicious Transaction Code",
+                "pattern": re.compile(r"[A-Z0-9]{8,12}", re.IGNORECASE),
+                "explanation": "Real M-Pesa codes follow strict patterns. Unusual formats or lengths raise suspicion."
+            },
+            {
+                "name": "Fake Reversal / Refund Demand",
+                "pattern": re.compile(r"(refund|reverse|rudisha|return|rejesha|immediately|to avoid).*?(this number|namba hii|legal action|kuepuka)", re.IGNORECASE),
+                "explanation": "Real M-Pesa does not ask you to refund or reverse via another number with threats."
+            },
+            {
+                "name": "Date Format Anomaly",
+                "pattern": re.compile(r"\b\d{1,2}/\d{1,2}/\d{2}\b", re.IGNORECASE),  # Catches 21/06/26 instead of 21/6/2026
+                "explanation": "Real M-Pesa uses full year format (e.g. 21/6/2026). Short year formats are common in fakes."
+            },
+            {
+                "name": "Suspicious Spacing / Formatting",
+                "pattern": re.compile(r"Confirmed\.You|Ksh\.|balance is Ksh\.|New M-PESA", re.IGNORECASE),
+                "explanation": "Real M-Pesa messages have consistent professional spacing and formatting."
+            },
+            {
+                "name": "Urgent Refund / Legal Threat",
+                "pattern": re.compile(r"(refund immediately|to avoid legal|kuepuka kesi|legal action|forward this message)", re.IGNORECASE),
+                "explanation": "Legitimate banks and M-Pesa never threaten legal action via SMS for reversals."
+            },
         ]
 
         # Money-request / PIN-request signal used to override legit-protection.
