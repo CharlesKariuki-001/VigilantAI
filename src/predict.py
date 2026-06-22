@@ -21,9 +21,29 @@ Fixes applied vs the original draft:
 """
 
 import os
+import sys
 import joblib
 import shap
 import numpy as np
+
+# ------------------------------------------------------------------
+# Module-path fix for unpickling.
+#
+# The trained model (.pkl files) was created by running training code
+# directly inside src/ (e.g. `python feature_engineering.py`), so the
+# pickled FeatureBuilder's class is recorded under the BARE module name
+# `feature_engineering`, not `src.feature_engineering`. If we only import
+# it the normal package way below, joblib.load() will fail with
+# "ModuleNotFoundError: No module named 'feature_engineering'" the moment
+# it tries to reconstruct the object, even though the file itself is fine.
+#
+# Adding this directory to sys.path makes the BARE names `feature_engineering`
+# and `rule_engine` importable too, alongside the normal `src.X` package
+# imports -- so unpickling succeeds no matter which path the model was
+# originally trained/saved under.
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+if _THIS_DIR not in sys.path:
+    sys.path.insert(0, _THIS_DIR)
 
 from src.feature_engineering import FeatureBuilder
 from src.rule_engine import RuleEngine
@@ -84,7 +104,19 @@ def _clean_feature_name(name: str) -> str:
     strip it here, at display time, without touching the underlying
     feature name the model actually trained on.
     """
-    return name.replace("word::", "").replace("char::", "").replace("tfidf::", "")
+    return name.replace("word::", "").replace("char::", "").replace("rule::", "").replace("tfidf::", "")
+
+
+def _is_displayable_feature(name: str) -> bool:
+    """
+    Character-level n-gram features (char::xx, char::00, char::sa ) are
+    real and meaningful to the model, but show up as cryptic 2-5 letter
+    fragments to a human reading the SHAP panel ('00', '26', 'sa '). We
+    keep them in the model (they genuinely help catch Sheng/typo
+    obfuscation) but exclude them from what we *display*, in favor of
+    word-level, structural, and rule-engine features, which read clearly.
+    """
+    return not name.startswith("char::")
 
 
 def predict_with_explanation(message: str, sender: str = None):
@@ -107,9 +139,15 @@ def predict_with_explanation(message: str, sender: str = None):
 
     feature_names = feature_builder.get_feature_names()
     shap_importance = list(zip(feature_names, row_shap_values))
-    shap_importance.sort(key=lambda pair: abs(pair[1]), reverse=True)
 
-    top_features = shap_importance[:8]  # Top 8 reasons
+    # Prefer word/structural/rule features for display (skip cryptic
+    # char-ngram fragments); fall back to the unfiltered list if somehow
+    # too few displayable features remain.
+    displayable = [pair for pair in shap_importance if _is_displayable_feature(pair[0])]
+    pool = displayable if len(displayable) >= 8 else shap_importance
+    pool.sort(key=lambda pair: abs(pair[1]), reverse=True)
+
+    top_features = pool[:8]  # Top 8 reasons
 
     return {
         "status": prediction,
