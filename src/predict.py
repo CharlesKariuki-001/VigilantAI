@@ -3,21 +3,6 @@ Vigilant AI — Month 3
 src/predict.py
 
 Combines Rule Engine + ML Model + SHAP Explainability for real-time prediction.
-
-Fixes applied vs the original draft:
-1. Import paths corrected to `src.feature_engineering` / `src.rule_engine` --
-   app.py imports this module as `from src.predict import ...`, which makes
-   `src` a package, so sibling modules must be imported the same way or
-   Python raises ModuleNotFoundError at app startup.
-2. Added a `confidence` field (HIGH/MEDIUM/LOW) derived from the fraud
-   probability, since app.py displays this directly.
-3. Defensive handling of `shap_values()` output shape. Depending on the
-   installed shap/xgboost version, TreeExplainer.shap_values() can return
-   either a single 2D array (n_samples x n_features) for binary models, or
-   a list of two such arrays ([shap_for_class_0, shap_for_class_1]). The
-   code below detects which shape it got and always extracts the
-   per-feature SHAP values for the single message being scored, for the
-   positive ("fraud") class.
 """
 
 import os
@@ -32,15 +17,9 @@ import numpy as np
 # The trained model (.pkl files) was created by running training code
 # directly inside src/ (e.g. `python feature_engineering.py`), so the
 # pickled FeatureBuilder's class is recorded under the BARE module name
-# `feature_engineering`, not `src.feature_engineering`. If we only import
-# it the normal package way below, joblib.load() will fail with
-# "ModuleNotFoundError: No module named 'feature_engineering'" the moment
-# it tries to reconstruct the object, even though the file itself is fine.
-#
-# Adding this directory to sys.path makes the BARE names `feature_engineering`
-# and `rule_engine` importable too, alongside the normal `src.X` package
-# imports -- so unpickling succeeds no matter which path the model was
-# originally trained/saved under.
+# `feature_engineering`, not `src.feature_engineering`. Adding this
+# directory to sys.path makes both bare and package-qualified names work,
+# so unpickling succeeds regardless of how the model was originally saved.
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 if _THIS_DIR not in sys.path:
     sys.path.insert(0, _THIS_DIR)
@@ -58,8 +37,7 @@ feature_builder = joblib.load(os.path.join(MODELS_DIR, "feature_builder.pkl"))
 
 rule_engine = RuleEngine()
 
-# TreeExplainer is also created once -- rebuilding it per-request is
-# unnecessary overhead, it only depends on the (fixed) trained model.
+# TreeExplainer is created once — rebuilding it per-request is unnecessary overhead.
 _explainer = shap.TreeExplainer(model)
 
 
@@ -79,57 +57,112 @@ def _extract_single_row_shap(shap_values, row_index: int = 0):
     Returns a 1D array of per-feature SHAP values for the positive
     ("fraud") class, for the single row at `row_index`.
     """
-    # Case 1: list of per-class arrays, e.g. [array(n_samples, n_features), array(n_samples, n_features)]
+    # Case 1: list of per-class arrays → [array(n_samples, n_features), ...]
     if isinstance(shap_values, list):
-        # Use the last class in the list as the "positive"/fraud class.
         positive_class_values = shap_values[-1]
         return np.asarray(positive_class_values)[row_index]
 
     shap_array = np.asarray(shap_values)
 
-    # Case 2: 3D array (n_samples, n_features, n_classes) -- newer shap versions
+    # Case 2: 3D array (n_samples, n_features, n_classes) — newer shap versions
     if shap_array.ndim == 3:
         return shap_array[row_index, :, -1]
 
-    # Case 3: standard 2D array (n_samples, n_features) -- binary model, single output
+    # Case 3: standard 2D array (n_samples, n_features) — binary model, single output
     return shap_array[row_index]
 
 
-def _clean_feature_name(name: str) -> str:
+def _clean_feature_name(name: str) -> str | None:
     """
-    Feature names coming out of FeatureBuilder are often prefixed with
-    their feature-type for internal disambiguation, e.g. 'word::pin' or
-    'char::ksh'. That prefix is useful for debugging the model but
-    meaningless to an end user reading the SHAP panel in the app -- so we
-    strip it here, at display time, without touching the underlying
-    feature name the model actually trained on.
+    Convert raw internal feature names into human-readable labels.
+
+    Strips type prefixes (word::, char::, rule::, tfidf::) and maps known
+    structural feature names to plain English descriptions.
+
+    Returns None for names that are still noisy/cryptic after cleaning,
+    so callers can skip them entirely.
     """
-    return name.replace("word::", "").replace("char::", "").replace("rule::", "").replace("tfidf::", "")
+    # char:: n-grams: useful to the model, cryptic to humans — always skip
+    if name.startswith("char::"):
+        return None
+
+    # Strip remaining known prefixes
+    name = (
+        name
+        .replace("word::", "")
+        .replace("rule::", "")
+        .replace("tfidf::", "")
+    )
+
+    # Map structural/numeric feature names to readable labels
+    _READABLE = {
+        "digit_ratio":   "Many numbers",
+        "punct_density": "Heavy punctuation",
+        "msg_length":    "Long message",
+        "exclaim_count": "Exclamation marks",
+        "url_count":     "Contains URL",
+        "caps_ratio":    "Lots of capitals",
+        "word_count":    "Word count",
+    }
+    if name in _READABLE:
+        return _READABLE[name]
+
+    # has_* → "Contains X" in title case
+    if name.startswith("has_"):
+        return "Contains " + name[4:].replace("_", " ").title()
+
+    # Drop anything that is noisy/cryptic:
+    #   • too short (single chars, empty)
+    #   • purely numeric ("26", "100")
+    #   • starts with a digit — catches bare fragments ("00") AND tfidf
+    #     bigrams built from char n-grams ("00 am", "00 based", "00 dial")
+    #     since the first token in those bigrams is always the digit fragment
+    #   • contains only digits and spaces (e.g. "00 26")
+    stripped = name.strip()
+    first_token = stripped.split()[0] if stripped.split() else stripped
+    if len(stripped) < 3:
+        return None
+    if first_token[0].isdigit():
+        return None
+    if all(c.isdigit() or c.isspace() for c in stripped):
+        return None
+
+    return name
 
 
 def _is_displayable_feature(name: str) -> bool:
     """
-    Character-level n-gram features (char::xx, char::00, char::sa ) are
-    real and meaningful to the model, but show up as cryptic 2-5 letter
-    fragments to a human reading the SHAP panel ('00', '26', 'sa '). We
-    keep them in the model (they genuinely help catch Sheng/typo
-    obfuscation) but exclude them from what we *display*, in favor of
-    word-level, structural, and rule-engine features, which read clearly.
+    Character-level n-gram features (char::xx) help catch Sheng/typo
+    obfuscation in the model but appear as cryptic 2-5 letter fragments
+    to humans. Exclude them from the SHAP display pool.
     """
     return not name.startswith("char::")
 
 
+def _is_readable_cleaned_name(clean_name: str | None) -> bool:
+    """
+    Accepts the output of _clean_feature_name and returns False for
+    anything that should be hidden from the user (None, blank, too short).
+    """
+    if clean_name is None:
+        return False
+    stripped = clean_name.strip()
+    return len(stripped) >= 3
+
+
 def predict_with_explanation(message: str, sender: str = None):
     """
-    Returns both the combined prediction and a SHAP explanation for a
+    Returns the combined fraud prediction and a SHAP explanation for a
     single SMS message.
     """
-    # Rule Engine first (fast, explainable filter -- always runs regardless
-    # of what the ML model says, so its triggered rules are always shown).
-    rule_result = rule_engine.analyze(message, sender)
+    cleaned = (message or "").strip()
+
+    # Rule Engine first — fast, explainable filter; always runs so its
+    # triggered rules are always shown regardless of ML result.
+    rule_result = rule_engine.analyze(cleaned, sender)
 
     # ML Prediction
-    X = feature_builder.transform([message])
+    X = feature_builder.transform([cleaned])
     proba = float(model.predict_proba(X)[0][1])  # Probability of fraud
     prediction = "FRAUD" if proba >= 0.5 else "SAFE"
 
@@ -140,14 +173,25 @@ def predict_with_explanation(message: str, sender: str = None):
     feature_names = feature_builder.get_feature_names()
     shap_importance = list(zip(feature_names, row_shap_values))
 
-    # Prefer word/structural/rule features for display (skip cryptic
-    # char-ngram fragments); fall back to the unfiltered list if somehow
-    # too few displayable features remain.
+    # Prefer word/structural/rule features (skip cryptic char-ngram fragments);
+    # fall back to unfiltered list if too few displayable features remain.
     displayable = [pair for pair in shap_importance if _is_displayable_feature(pair[0])]
     pool = displayable if len(displayable) >= 8 else shap_importance
     pool.sort(key=lambda pair: abs(pair[1]), reverse=True)
 
-    top_features = pool[:8]  # Top 8 reasons
+    # Build top-8 list, applying human-readable name cleaning and a final
+    # guard filter to drop any remaining cryptic short/numeric names.
+    top_features = []
+    for name, value in pool:
+        if len(top_features) >= 8:
+            break
+        clean_name = _clean_feature_name(name)
+        if not _is_readable_cleaned_name(clean_name):
+            continue
+        top_features.append({
+            "feature": clean_name,
+            "impact": round(float(value), 4),
+        })
 
     return {
         "status": prediction,
@@ -155,9 +199,29 @@ def predict_with_explanation(message: str, sender: str = None):
         "confidence": _confidence_from_probability(proba),
         "rule_engine_score": rule_result["score"],
         "combined_recommendation": rule_result["recommendation"],
-        "top_shap_features": [
-            {"feature": _clean_feature_name(name), "impact": round(float(value), 4)}
-            for name, value in top_features
-        ],
+        "top_shap_features": top_features,
         "triggered_rules": rule_result.get("triggered_rules", []),
     }
+
+
+# ------------------------------------------------------------------
+# Quick smoke-test
+# ------------------------------------------------------------------
+if __name__ == "__main__":
+    print("Testing SHAP explainability...\n")
+    test_messages = [
+        "Umeshinda KSH 50,000! Tuma PIN yako uthibitishe.",
+        "TB17CVOCY9 Confirmed. You have received Ksh2,500 from JOHN DOE.",
+        "Nimetuma pesa kwa makosa, tafadhali rudisha kwa hii namba.",
+    ]
+    for msg in test_messages:
+        res = predict_with_explanation(msg)
+        print(f"Message: {msg[:60]}...")
+        print(f"  Status: {res['status']} ({res['fraud_probability']}%) — Confidence: {res['confidence']}")
+        print("  Top SHAP reasons:")
+        for f in res["top_shap_features"][:5]:
+            direction = "↑ fraud" if f["impact"] > 0 else "↓ safe"
+            print(f"    • {f['feature']} ({direction}, impact: {f['impact']:.3f})")
+        if res["triggered_rules"]:
+            print(f"  Triggered rules: {', '.join(res['triggered_rules'])}")
+        print("-" * 70)
