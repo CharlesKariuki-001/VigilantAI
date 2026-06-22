@@ -16,8 +16,12 @@ _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 if _THIS_DIR not in sys.path:
     sys.path.insert(0, _THIS_DIR)
 
-from src.feature_engineering import FeatureBuilder
-from src.rule_engine import RuleEngine
+try:
+    from src.feature_engineering import FeatureBuilder
+    from src.rule_engine import RuleEngine
+except ModuleNotFoundError:
+    from feature_engineering import FeatureBuilder
+    from rule_engine import RuleEngine
 
 MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models")
 
@@ -55,7 +59,6 @@ _READABLE = {
     "word_count":    "Word count",
 }
 
-# Tokens that are training artifacts or model internals — never show these
 _BLOCKLIST_PREFIXES = ("acc ", "acc_", "00", "26")
 _BLOCKLIST_EXACT    = {"acc", "na", "ya", "wa", "za", "la", "ka"}
 
@@ -64,13 +67,11 @@ def _is_training_artifact(name: str) -> bool:
     """
     Detect tokens that are training data artifacts rather than real signal.
     Catches:
-      - "acc datajob", "acc fuliza2026", "acc ntsa2026"  → acc-prefixed account names
-      - Tokens where a word contains both letters AND digits (e.g. "fuliza2026", "ntsa2026")
+      - "acc datajob", "acc fuliza2026", "acc ntsa2026"
+      - Alphanumeric compounds like "fuliza2026", "ntsa2026"
     """
     if any(name.startswith(p) for p in _BLOCKLIST_PREFIXES):
         return True
-    # Any individual token that mixes letters and digits is a training artifact
-    # (real Swahili/English words don't look like "fuliza2026")
     for token in name.split():
         if re.search(r'[a-zA-Z]', token) and re.search(r'\d', token):
             return True
@@ -79,11 +80,9 @@ def _is_training_artifact(name: str) -> bool:
 
 def _clean_feature_name(name: str):
     """Return a human-readable label, or None if the feature is noise."""
-    # Drop char n-gram features immediately
     if name.startswith("char::"):
         return None
 
-    # Strip all known prefixes
     for prefix in ("word::", "char::", "rule::", "tfidf::"):
         name = name.replace(prefix, "")
     name = name.strip()
@@ -91,28 +90,22 @@ def _clean_feature_name(name: str):
     if not name:
         return None
 
-    # Drop digit-led tokens ("00", "26", "00 am", "26 based")
     first_token = name.split()[0]
     if first_token[0].isdigit():
         return None
 
-    # Drop short noise
     if len(name) <= 2:
         return None
 
-    # Drop known meaningless stop-word tokens
     if name in _BLOCKLIST_EXACT:
         return None
 
-    # Drop training artifacts (acc-prefixed, alphanumeric compounds)
     if _is_training_artifact(name):
         return None
 
-    # Map structural features to readable English
     if name in _READABLE:
         return _READABLE[name]
 
-    # has_* → "Contains X"
     if name.startswith("has_"):
         return "Contains " + name[4:].replace("_", " ").title()
 
@@ -144,6 +137,9 @@ def predict_with_explanation(message: str, sender: str = None):
     for name, value in impacts:
         if len(top_features) >= 8:
             break
+        # Skip near-zero features — no explanation value to users
+        if abs(value) < 0.01:
+            continue
         clean = _clean_feature_name(name)
         if not _keep(clean):
             continue
