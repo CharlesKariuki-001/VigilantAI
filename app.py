@@ -2,6 +2,14 @@ import streamlit as st
 from src.rule_engine import RuleEngine
 from src.storage import save_community_report, save_feedback, count_pending_reports, count_feedback_entries
 
+# ML + SHAP layer is optional -- the app must keep working on rules alone
+# if the model hasn't been trained yet or src/predict.py doesn't exist.
+try:
+    from src.predict import predict_with_explanation
+    ML_AVAILABLE = True
+except Exception:
+    ML_AVAILABLE = False
+
 # ====================== PAGE CONFIG ======================
 st.set_page_config(
     page_title="Vigilant AI",
@@ -39,8 +47,12 @@ st.markdown(
 
 # ====================== HEADER ======================
 st.title("🛡️ Vigilant AI")
-st.markdown("### AI-Powered M-Pesa & Mobile Money Scam Detector")
-st.caption("**Built in Kenya, for East Africa • Protecting everyday users from mobile money fraud**")
+if ML_AVAILABLE:
+    st.markdown("### AI-Powered M-Pesa Scam Detector")
+    st.caption("**Rule Engine + Machine Learning + SHAP Explainability**")
+else:
+    st.markdown("### AI-Powered M-Pesa & Mobile Money Scam Detector")
+    st.caption("**Built in Kenya, for East Africa • Protecting everyday users from mobile money fraud**")
 
 st.info("Paste any suspicious SMS (English, Swahili, or Sheng) below to get instant analysis.")
 
@@ -66,10 +78,37 @@ with col2:
     st.write("")
     scan_button = st.button("🔍 Analyze Message", type="primary", use_container_width=True)
 
+
+def _run_analysis(msg: str, snd: str) -> dict:
+    """
+    Single entry point for getting a verdict. Uses the ML + SHAP pipeline
+    when available, and transparently falls back to the rule engine alone
+    otherwise -- the rest of the UI doesn't need to know which one ran.
+    """
+    if ML_AVAILABLE:
+        ml_result = predict_with_explanation(msg, snd)
+        # Normalize field names so the rest of the app can use one shape
+        return {
+            "status": ml_result["status"],
+            "score": ml_result.get("fraud_probability", 0),
+            "confidence": ml_result.get("confidence", "N/A"),
+            "recommendation": ml_result.get("combined_recommendation", ml_result.get("recommendation", "")),
+            "triggered_rules": ml_result.get("triggered_rules", []),
+            "top_shap_features": ml_result.get("top_shap_features", []),
+            "engine_mode": "ml",
+        }
+    else:
+        rule_result = st.session_state.engine.analyze(msg, snd)
+        rule_result["engine_mode"] = "rules"
+        rule_result.setdefault("top_shap_features", [])
+        return rule_result
+
+
 # ====================== ANALYSIS ======================
 if scan_button and message.strip():
-    with st.spinner("Scanning for scam patterns..."):
-        result = st.session_state.engine.analyze(message, sender)
+    spinner_text = "Analyzing with Rule Engine + ML Model..." if ML_AVAILABLE else "Scanning for scam patterns..."
+    with st.spinner(spinner_text):
+        result = _run_analysis(message, sender)
 
     st.session_state.last_result = result
     st.session_state.last_message = message.strip()
@@ -90,8 +129,9 @@ if st.session_state.last_result:
 
     score_col, status_col = st.columns([1, 2])
     with score_col:
+        score_label = "Fraud Probability" if result.get("engine_mode") == "ml" else "Fraud Score"
         st.metric(
-            "Fraud Score",
+            score_label,
             f"{result['score']}%",
             delta="Dangerous" if result["status"] == "FRAUD" else "Looks safe",
             delta_color="inverse" if result["status"] == "FRAUD" else "normal",
@@ -104,9 +144,17 @@ if st.session_state.last_result:
 
     st.info(f"**What to do:** {result['recommendation']}")
 
-    # Triggered rules, most severe first, with collapsible explanations
+    # SHAP explanation (only present when the ML model ran)
+    if result.get("top_shap_features"):
+        st.subheader("🔬 Why the Model Thinks This (SHAP)")
+        for item in result["top_shap_features"]:
+            impact_up = item.get("impact", 0) > 0
+            impact_label = "🔺 Pushes toward FRAUD" if impact_up else "🔻 Pushes toward SAFE"
+            st.write(f"**{item['feature']}** → {impact_label} (strength: {abs(item.get('impact', 0)):.3f})")
+
+    # Rule engine triggers, most severe first, with collapsible explanations
     if result.get("triggered_rules"):
-        st.subheader("🔍 Why This Message Was Flagged")
+        st.subheader("📋 Rule Engine Triggers")
         for rule in sorted(result["triggered_rules"], key=lambda r: -r.get("weight", 0)):
             w = rule.get("weight", 0)
             severity = (
@@ -119,7 +167,7 @@ if st.session_state.last_result:
                 st.write(rule["explanation"])
                 if rule.get("category"):
                     st.caption(f"Category: `{rule['category']}` · Severity weight: {w}/10")
-    elif result["status"] == "SAFE":
+    elif result["status"] == "SAFE" and not result.get("top_shap_features"):
         st.success(
             "No known scam patterns were detected in this message. "
             "Still, always verify unexpected transactions independently via *334# or the official M-PESA app."
@@ -189,14 +237,32 @@ with st.expander("📢 Report a new scam message we missed"):
             st.warning("Please paste the scam message before submitting.")
 
 # ====================== SIDEBAR ======================
-st.sidebar.success("✅ Vigilant AI — Live · Month 2, Week 2")
+if ML_AVAILABLE:
+    st.sidebar.success("✅ ML + SHAP Active · Month 3")
+else:
+    st.sidebar.success("✅ Vigilant AI — Live · Rule Engine Mode")
 
 m1, m2 = st.sidebar.columns(2)
 m1.metric("Pending Reports", count_pending_reports())
 m2.metric("Feedback Logged", count_feedback_entries())
 
-st.sidebar.info(
-    """
+if ML_AVAILABLE:
+    st.sidebar.info(
+        """
+**How it works:**
+- Rule engine (20+ weighted rule groups, 40+ pattern variants) runs first
+  for fast, explainable detection of known scam structures
+- XGBoost classifier layered on top, trained on labeled Kenyan and
+  Tanzanian mobile money messages
+- SHAP explainability shows exactly which words/features pushed the
+  model toward FRAUD or SAFE
+- Strong support for Swahili, English, and Sheng across both
+  Kenyan and Tanzanian mobile money formats
+"""
+    )
+else:
+    st.sidebar.info(
+        """
 **How it works:**
 - 20+ weighted rule groups covering 40+ scam pattern variants
 - Strong support for Swahili, English, and Sheng
@@ -208,7 +274,7 @@ st.sidebar.info(
   M-PESA confirmations are never falsely flagged
 - Real-time, explainable, community-powered detection
 """
-)
+    )
 
 with st.sidebar.expander("📊 Latest model evaluation"):
     st.markdown(
@@ -227,11 +293,12 @@ with st.sidebar.expander("📊 Latest model evaluation"):
 
 st.sidebar.markdown("### 🚀 Next Phases")
 st.sidebar.caption(
-    """
-- Phase 2: Machine Learning classifier + SHAP explainability
-- Phase 3: AI investigation agents
-- Phase 4: FastAPI backend & public API
-"""
+    "- Phase 3: AI investigation agents\n"
+    "- Phase 4: FastAPI backend & public API"
+    if ML_AVAILABLE else
+    "- Phase 2: Machine Learning classifier + SHAP explainability\n"
+    "- Phase 3: AI investigation agents\n"
+    "- Phase 4: FastAPI backend & public API"
 )
 
 st.sidebar.markdown("### Try These Sample Messages")
