@@ -75,6 +75,18 @@ def _extract_single_row_shap(shap_values, row_index: int = 0):
     return shap_array[row_index]
 
 
+def _clean_feature_name(name: str) -> str:
+    """
+    Feature names coming out of FeatureBuilder are often prefixed with
+    their feature-type for internal disambiguation, e.g. 'word::pin' or
+    'char::ksh'. That prefix is useful for debugging the model but
+    meaningless to an end user reading the SHAP panel in the app -- so we
+    strip it here, at display time, without touching the underlying
+    feature name the model actually trained on.
+    """
+    return name.replace("word::", "").replace("char::", "").replace("tfidf::", "")
+
+
 def predict_with_explanation(message: str, sender: str = None):
     """
     Returns both the combined prediction and a SHAP explanation for a
@@ -106,7 +118,7 @@ def predict_with_explanation(message: str, sender: str = None):
         "rule_engine_score": rule_result["score"],
         "combined_recommendation": rule_result["recommendation"],
         "top_shap_features": [
-            {"feature": name, "impact": round(float(value), 4)}
+            {"feature": _clean_feature_name(name), "impact": round(float(value), 4)}
             for name, value in top_features
         ],
         "triggered_rules": rule_result.get("triggered_rules", []),

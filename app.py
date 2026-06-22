@@ -1,14 +1,20 @@
 import streamlit as st
+import traceback
 from src.rule_engine import RuleEngine
 from src.storage import save_community_report, save_feedback, count_pending_reports, count_feedback_entries
 
 # ML + SHAP layer is optional -- the app must keep working on rules alone
 # if the model hasn't been trained yet or src/predict.py doesn't exist.
+# IMPORTANT: we capture *why* it failed instead of silently swallowing the
+# error, so it's visible in the sidebar instead of just falling back with
+# no explanation.
+ML_IMPORT_ERROR = None
 try:
     from src.predict import predict_with_explanation
     ML_AVAILABLE = True
 except Exception:
     ML_AVAILABLE = False
+    ML_IMPORT_ERROR = traceback.format_exc()
 
 # ====================== PAGE CONFIG ======================
 st.set_page_config(
@@ -241,6 +247,13 @@ if ML_AVAILABLE:
     st.sidebar.success("✅ ML + SHAP Active · Month 3")
 else:
     st.sidebar.success("✅ Vigilant AI — Live · Rule Engine Mode")
+    if ML_IMPORT_ERROR:
+        with st.sidebar.expander("⚠️ Why isn't ML mode active? (debug)"):
+            st.caption(
+                "The app tried to load `src/predict.py` and failed, so it's "
+                "running on the rule engine alone. This is the exact error:"
+            )
+            st.code(ML_IMPORT_ERROR, language="text")
 
 m1, m2 = st.sidebar.columns(2)
 m1.metric("Pending Reports", count_pending_reports())
