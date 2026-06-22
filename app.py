@@ -3,17 +3,13 @@ import traceback
 from src.rule_engine import RuleEngine
 from src.storage import save_community_report, save_feedback, count_pending_reports, count_feedback_entries
 
-# ML + SHAP layer is optional -- the app must keep working on rules alone
-# if the model hasn't been trained yet or src/predict.py doesn't exist.
-# IMPORTANT: we capture *why* it failed instead of silently swallowing the
-# error, so it's visible in the sidebar instead of just falling back with
-# no explanation.
+# ====================== ML + SHAP IMPORT WITH GRACEFUL FALLBACK ======================
+ML_AVAILABLE = False
 ML_IMPORT_ERROR = None
 try:
     from src.predict import predict_with_explanation
     ML_AVAILABLE = True
-except Exception:
-    ML_AVAILABLE = False
+except Exception as e:
     ML_IMPORT_ERROR = traceback.format_exc()
 
 # ====================== PAGE CONFIG ======================
@@ -28,7 +24,7 @@ st.set_page_config(
 if "engine" not in st.session_state:
     st.session_state.engine = RuleEngine()
 if "history" not in st.session_state:
-    st.session_state.history = []  # list of dicts: message, sender, result
+    st.session_state.history = []
 if "last_result" not in st.session_state:
     st.session_state.last_result = None
 if "last_message" not in st.session_state:
@@ -55,9 +51,9 @@ st.markdown(
 st.title("🛡️ Vigilant AI")
 if ML_AVAILABLE:
     st.markdown("### AI-Powered M-Pesa Scam Detector")
-    st.caption("**Rule Engine + Machine Learning + SHAP Explainability**")
+    st.caption("**Rule Engine + XGBoost + SHAP Explainability**")
 else:
-    st.markdown("### AI-Powered M-Pesa & Mobile Money Scam Detector")
+    st.markdown("### AI-Powered M-Pesa Scam Detector")
     st.caption("**Built in Kenya, for East Africa • Protecting everyday users from mobile money fraud**")
 
 st.info("Paste any suspicious SMS (English, Swahili, or Sheng) below to get instant analysis.")
@@ -69,7 +65,7 @@ message = st.text_area(
     "📩 Paste SMS Message Here",
     height=180,
     placeholder="Umeshinda KSH 50,000! Tuma PIN yako uthibitishe...",
-    help="Supports English, Swahili, and mixed Sheng messages, plus Kenyan and Tanzanian mobile money formats.",
+    help="Supports English, Swahili, and mixed Sheng messages.",
 )
 
 col1, col2 = st.columns([3, 1])
@@ -77,44 +73,21 @@ with col1:
     sender = st.text_input(
         "Sender (optional)",
         placeholder="0712345678 or M-PESA",
-        help="Real M-PESA/Tigo Pesa/Vodacom messages come from a short code like 'M-PESA' or 'Safaricom' — never a personal phone number.",
+        help="Real M-PESA usually comes from 'M-PESA' or 'Safaricom'",
     )
 with col2:
     st.write("")
     st.write("")
     scan_button = st.button("🔍 Analyze Message", type="primary", use_container_width=True)
 
-
-def _run_analysis(msg: str, snd: str) -> dict:
-    """
-    Single entry point for getting a verdict. Uses the ML + SHAP pipeline
-    when available, and transparently falls back to the rule engine alone
-    otherwise -- the rest of the UI doesn't need to know which one ran.
-    """
-    if ML_AVAILABLE:
-        ml_result = predict_with_explanation(msg, snd)
-        # Normalize field names so the rest of the app can use one shape
-        return {
-            "status": ml_result["status"],
-            "score": ml_result.get("fraud_probability", 0),
-            "confidence": ml_result.get("confidence", "N/A"),
-            "recommendation": ml_result.get("combined_recommendation", ml_result.get("recommendation", "")),
-            "triggered_rules": ml_result.get("triggered_rules", []),
-            "top_shap_features": ml_result.get("top_shap_features", []),
-            "engine_mode": "ml",
-        }
-    else:
-        rule_result = st.session_state.engine.analyze(msg, snd)
-        rule_result["engine_mode"] = "rules"
-        rule_result.setdefault("top_shap_features", [])
-        return rule_result
-
-
 # ====================== ANALYSIS ======================
 if scan_button and message.strip():
-    spinner_text = "Analyzing with Rule Engine + ML Model..." if ML_AVAILABLE else "Scanning for scam patterns..."
+    spinner_text = "Analyzing with Rule Engine + ML + SHAP..." if ML_AVAILABLE else "Scanning for scam patterns..."
     with st.spinner(spinner_text):
-        result = _run_analysis(message, sender)
+        if ML_AVAILABLE:
+            result = predict_with_explanation(message, sender)
+        else:
+            result = st.session_state.engine.analyze(message, sender)
 
     st.session_state.last_result = result
     st.session_state.last_message = message.strip()
@@ -123,8 +96,9 @@ if scan_button and message.strip():
     st.session_state.show_correction = False
 
     st.session_state.history.insert(
-        0, {"message": message.strip(), "sender": sender, "result": result}
+        0, {"message": message.strip()[:100] + ("..." if len(message) > 100 else ""), "sender": sender, "result": result}
     )
+
 elif scan_button:
     st.warning("Please paste a message to analyze.")
 
@@ -135,51 +109,41 @@ if st.session_state.last_result:
 
     score_col, status_col = st.columns([1, 2])
     with score_col:
-        score_label = "Fraud Probability" if result.get("engine_mode") == "ml" else "Fraud Score"
+        score_label = "ML Fraud Probability" if ML_AVAILABLE else "Fraud Score"
         st.metric(
             score_label,
-            f"{result['score']}%",
+            f"{result.get('fraud_probability', result.get('score', 0))}%",
             delta="Dangerous" if result["status"] == "FRAUD" else "Looks safe",
             delta_color="inverse" if result["status"] == "FRAUD" else "normal",
         )
     with status_col:
         if result["status"] == "FRAUD":
-            st.error(f"🚨 **HIGH RISK — POSSIBLE SCAM**  ·  Confidence: {result.get('confidence', 'N/A')}")
+            st.error(f"🚨 **HIGH RISK — POSSIBLE SCAM**  ·  Confidence: {result.get('confidence', 'HIGH')}")
         else:
-            st.success(f"✅ **Looks Safe**  ·  Confidence: {result.get('confidence', 'N/A')}")
+            st.success(f"✅ **Looks Safe**  ·  Confidence: {result.get('confidence', 'HIGH')}")
 
-    st.info(f"**What to do:** {result['recommendation']}")
+    st.info(f"**What to do:** {result.get('recommendation', result.get('combined_recommendation', 'Be careful with unexpected transactions.'))}")
 
-    # SHAP explanation (only present when the ML model ran)
-    if result.get("top_shap_features"):
+    # ====================== SHAP EXPLAINABILITY ======================
+    if ML_AVAILABLE and result.get("top_shap_features"):
         st.subheader("🔬 Why the Model Thinks This (SHAP)")
         for item in result["top_shap_features"]:
-            impact_up = item.get("impact", 0) > 0
-            impact_label = "🔺 Pushes toward FRAUD" if impact_up else "🔻 Pushes toward SAFE"
-            st.write(f"**{item['feature']}** → {impact_label} (strength: {abs(item.get('impact', 0)):.3f})")
+            impact = item.get("impact", 0)
+            direction = "🔺 Pushes toward FRAUD" if impact > 0 else "🔻 Pushes toward SAFE"
+            st.write(f"**{item['feature']}** → {direction} (strength: {abs(impact):.3f})")
 
-    # Rule engine triggers, most severe first, with collapsible explanations
+    # Rule Engine Triggers
     if result.get("triggered_rules"):
         st.subheader("📋 Rule Engine Triggers")
         for rule in sorted(result["triggered_rules"], key=lambda r: -r.get("weight", 0)):
             w = rule.get("weight", 0)
-            severity = (
-                "🔴 Critical" if w >= 9 else
-                "🟠 High" if w >= 7 else
-                "🟡 Medium" if w >= 4 else
-                "⚪ Low"
-            )
+            severity = "🔴 Critical" if w >= 9 else "🟠 High" if w >= 7 else "🟡 Medium" if w >= 4 else "⚪ Low"
             with st.expander(f"{severity} — {rule['name']}"):
                 st.write(rule["explanation"])
                 if rule.get("category"):
                     st.caption(f"Category: `{rule['category']}` · Severity weight: {w}/10")
-    elif result["status"] == "SAFE" and not result.get("top_shap_features"):
-        st.success(
-            "No known scam patterns were detected in this message. "
-            "Still, always verify unexpected transactions independently via *334# or the official M-PESA app."
-        )
 
-    # ---------------- FEEDBACK LOOP ----------------
+    # Feedback
     st.markdown("#### Was this verdict correct?")
     if st.session_state.feedback_submitted:
         st.success("✅ Thanks — your feedback has been recorded.")
@@ -202,7 +166,7 @@ if st.session_state.last_result:
 
         if st.session_state.show_correction:
             correct = st.radio("What should it have been?", ["FRAUD", "SAFE"], horizontal=True)
-            notes = st.text_input("Notes (optional) — e.g. which phrase was misread")
+            notes = st.text_input("Notes (optional)")
             if st.button("Submit Correction"):
                 save_feedback(
                     st.session_state.last_message,
@@ -216,31 +180,18 @@ if st.session_state.last_result:
                 st.session_state.feedback_submitted = True
                 st.rerun()
 
-# ====================== RECENT HISTORY ======================
-if st.session_state.history:
-    st.markdown("---")
-    with st.expander(f"🕒 Recent scans ({len(st.session_state.history)})"):
-        for item in st.session_state.history[:10]:
-            r = item["result"]
-            badge = "🚨 FRAUD" if r["status"] == "FRAUD" else "✅ SAFE"
-            preview = item["message"][:80] + ("..." if len(item["message"]) > 80 else "")
-            st.markdown(f"**{badge}** ({r['score']}%) — _{preview}_")
-        if st.button("Clear history"):
-            st.session_state.history = []
-            st.rerun()
-
-# ====================== REPORT A NEW SCAM ======================
+# ====================== REPORT A SCAM ======================
 st.markdown("---")
 with st.expander("📢 Report a new scam message we missed"):
-    st.caption("Help us improve Vigilant AI by sharing scam messages you've received. These feed directly into future model training.")
+    st.caption("Help us improve Vigilant AI by sharing scam messages you've received.")
     report_msg = st.text_area("Scam message", height=100, key="report_msg")
     report_sender = st.text_input("Sender (optional)", key="report_sender")
     if st.button("Submit Report"):
         if report_msg.strip():
             save_community_report(report_msg, report_sender)
-            st.success("Thank you! Your report has been submitted for review.")
+            st.success("Thank you! Your report has been submitted.")
         else:
-            st.warning("Please paste the scam message before submitting.")
+            st.warning("Please paste the message.")
 
 # ====================== SIDEBAR ======================
 if ML_AVAILABLE:
@@ -248,91 +199,28 @@ if ML_AVAILABLE:
 else:
     st.sidebar.success("✅ Vigilant AI — Live · Rule Engine Mode")
     if ML_IMPORT_ERROR:
-        with st.sidebar.expander("⚠️ Why isn't ML mode active? (debug)"):
-            st.caption(
-                "The app tried to load `src/predict.py` and failed, so it's "
-                "running on the rule engine alone. This is the exact error:"
-            )
-            st.code(ML_IMPORT_ERROR, language="text")
+        with st.sidebar.expander("⚠️ ML Mode Debug"):
+            st.code(ML_IMPORT_ERROR[-800:], language="text")  # Show last part of error
 
-m1, m2 = st.sidebar.columns(2)
-m1.metric("Pending Reports", count_pending_reports())
-m2.metric("Feedback Logged", count_feedback_entries())
-
-if ML_AVAILABLE:
-    st.sidebar.info(
-        """
-**How it works:**
-- Rule engine (20+ weighted rule groups, 40+ pattern variants) runs first
-  for fast, explainable detection of known scam structures
-- XGBoost classifier layered on top, trained on labeled Kenyan and
-  Tanzanian mobile money messages
-- SHAP explainability shows exactly which words/features pushed the
-  model toward FRAUD or SAFE
-- Strong support for Swahili, English, and Sheng across both
-  Kenyan and Tanzanian mobile money formats
-"""
-    )
-else:
-    st.sidebar.info(
-        """
-**How it works:**
-- 20+ weighted rule groups covering 40+ scam pattern variants
-- Strong support for Swahili, English, and Sheng
-- Covers Kenyan (M-Shwari, Fuliza, Safaricom) and Tanzanian
-  (Tigo Pesa, Halotel Pesa, Vodacom, M-Pawa) mobile money formats
-- Detects sophisticated forged receipts (duplicated confirmations,
-  malformed codes, fake refund/legal threats) in addition to classic scams
-- Structural protection for genuine transaction receipts, so real
-  M-PESA confirmations are never falsely flagged
-- Real-time, explainable, community-powered detection
-"""
-    )
-
-with st.sidebar.expander("📊 Latest model evaluation"):
-    st.markdown(
-        """
-        | Metric | Score |
-        |---|---|
-        | Precision | 100% |
-        | Recall | 100%* |
-        | False Positive Rate | 0% |
-
-        _\\*Measured on the internal labeled evaluation set;
-        real-world recall is tracked as more community-reported
-        messages and feedback come in._
-        """
-    )
-
-st.sidebar.markdown("### 🚀 Next Phases")
-st.sidebar.caption(
-    "- Phase 3: AI investigation agents\n"
-    "- Phase 4: FastAPI backend & public API"
-    if ML_AVAILABLE else
-    "- Phase 2: Machine Learning classifier + SHAP explainability\n"
-    "- Phase 3: AI investigation agents\n"
-    "- Phase 4: FastAPI backend & public API"
-)
+st.sidebar.metric("Pending Reports", count_pending_reports())
+st.sidebar.metric("Feedback Logged", count_feedback_entries())
 
 st.sidebar.markdown("### Try These Sample Messages")
-sample_messages = [
+for sample in [
     "Umeshinda KSH 50,000! Tuma PIN yako uthibitishe.",
-    "Akaunti yako itafungwa leo kama hutathibitisha PIN.",
-    "Umechaguliwa kufanya kazi Dubai mshahara wa $2000. Tuma Ksh3,500 ada ya visa kwa Paybill 567890.",
     "Nimetuma pesa kwa makosa, tafadhali rudisha kwa hii namba.",
-    "TB17CVOCY9 Confirmed. You have received Ksh2,500.00 from JOHN DOE 0712345678 on 18/6/26 at 3:42 PM. New M-PESA balance is Ksh4,500.00.",
-]
-for sample in sample_messages:
-    st.sidebar.code(sample, language=None)
+    "TB17CVOCY9 Confirmed. You have received Ksh2,500 from JOHN DOE."
+]:
+    st.sidebar.code(sample)
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("**Built by Charles Kariuki**")
-st.sidebar.caption("Vigilant AI · Building in public · Mount Kenya University")
+st.sidebar.caption("Mount Kenya University • Building in Public")
 
-# ====================== FOOTER ======================
+# Footer
 st.markdown("---")
 st.markdown(
     "<p style='text-align: center; color: grey; font-size: 0.85em;'>"
-    "Vigilant AI — Fighting M-Pesa & mobile money fraud in East Africa, one message at a time.</p>",
+    "Vigilant AI — Fighting M-Pesa fraud in Kenya, one message at a time.</p>",
     unsafe_allow_html=True,
 )
