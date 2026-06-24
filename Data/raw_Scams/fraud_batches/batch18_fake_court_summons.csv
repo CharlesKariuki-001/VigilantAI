@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Habari, Mahakama ya Kenya imetoa wito wako kuhudhuria kesi tarehe 25/6/26. Tuma Ksh3,000 ada ya kisheria kwa namba 0712334455 kuepuka kukamatwa.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is a final court notice. You are required to appear in court tomorrow or pay a Ksh4,500 fine to 0745998822 to settle the case.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda kuna kesi ya zamani inayokuhusu kwenye mahakama, lipa Ksh2,800 fine kwa namba 0701887744 leo kuepuka kukamatwa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, hii ni Mahakama ya Kibera, umeshtakiwa kwa kesi ya udanganyifu wa mali. Tuma Ksh5,200 ada kwa namba 0789556699 leo.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"You have a pending arrest warrant due to an unpaid court fine of Ksh6,000. Settle it now via 0712445599 to avoid being detained.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"mse hii ni Mahakama ya Milimani, kuna kesi ya zamani dhidi yako, lipa Ksh3,400 fine kwa namba 0734667722 leo bila kuchelewa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Karani wa Mahakama, una kesi ya kashfa iliyofunguliwa dhidi yako. Tuma Ksh4,100 ada kwa namba 0701223399 leo.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the High Court Registry, you have failed to appear for your hearing and now owe a Ksh7,500 penalty. Pay to 0745889922.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda kuna kesi ya kukosea kulipa deni iliyofunguliwa mahakamani, lipa Ksh2,650 fine kwa namba 0712998877 leo",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, Mahakama ya Mombasa imekutangaza mshtakiwa katika kesi ya ulaghai. Tuma Ksh5,900 ada ya kisheria kwa namba 0789221144.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is a legal notice from the Magistrate Court, your case will proceed unless you settle the Ksh3,300 fee via 0701556633 today.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"niaje msee, kuna summon ya mahakama dhidi yako, lipa Ksh4,750 ada kwa namba 0745112277 leo kuepuka kukamatwa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Wakili wa Serikali, kesi yako ya kodi imefika hatua ya mwisho. Tuma Ksh6,400 ada kwa namba 0712889933 leo.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"You have an outstanding court fine of Ksh8,200 from a traffic case. Pay it today via 0734556688 to avoid an arrest warrant.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda kesi yako ya zamani imeibuka tena mahakamani, lipa Ksh3,950 fine kwa namba 0701776655 leo kabla kukamatwa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, Mahakama ya Nakuru imekutangaza mshtakiwa kwenye kesi ya kupiga watu kwa simu. Tuma Ksh4,500 ada kwa 0745667711.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the Court Clerk's Office, your case has a pending balance of Ksh5,700 that must be cleared by tomorrow. Pay to 0789112255.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"mzee kuna kesi ya udanganyifu iliyofunguliwa kwako mahakamani, lipa Ksh3,150 ada kwa namba 0712334477 leo bila kuchelewa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Hakimu wa Mahakama ya Kisumu, una kesi ya zamani isiyolipwa. Tuma Ksh6,800 ada ya kisheria kwa namba 0701998822.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"You are named in a fraud case filed at the Kibera Law Courts. Settle the Ksh4,950 administrative fee to 0745221199 to avoid arrest.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda hii ni Mahakama ya Thika, una kesi ya kuzuia deni iliyofunguliwa, lipa Ksh3,650 fine kwa namba 0734998866 leo.",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Karani wa Mahakama Kuu, kesi yako imefika hatua ya hukumu. Tuma Ksh7,300 ada kwa namba 0712667744 leo.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the Eldoret Magistrate Court, you have a default judgment against you of Ksh5,400. Pay it now via 0789556677 today.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"niaje buda, kuna kesi ya kashfa kwenye mahakama dhidi yako, lipa Ksh4,250 fine kwa namba 0701445588 leo kabla kukamatwa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, Mahakama ya Nairobi imekutangaza mshtakiwa kwenye kesi ya ulaghai wa mali. Tuma Ksh6,100 ada kwa namba 0745889911.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the Court Registry, an arrest warrant is being processed due to your unpaid fine of Ksh9,200. Settle via 0712998855 now.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda kesi yako ya zamani ya deni imefunguliwa mahakamani tena, lipa Ksh3,500 fine kwa namba 0734556699 leo bila kuchelewa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Wakili wa Mahakama ya Familia, kesi yako ya malezi imefika hatua ya mwisho. Tuma Ksh5,650 ada kwa 0701887766.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"You are required to settle a Ksh4,800 court fee for a pending civil case before the deadline tomorrow. Pay to 0745112288 now.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"mse kuna summons ya mahakama ya Machakos dhidi yako, lipa Ksh3,750 ada kwa namba 0712445566 leo kuepuka kukamatwa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Hakimu wa Mahakama ya Nyeri, una kesi ya kodi isiyolipwa. Tuma Ksh6,950 ada ya kisheria kwa namba 0789221166.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the Small Claims Court, your case has an outstanding balance of Ksh4,150 due by Friday. Pay it now via 0701556644.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda kesi yako ya zamani ya familia imefunguliwa tena, lipa Ksh3,300 fine kwa namba 0745667799 leo bila kuchelewa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, Mahakama ya Kakamega imekutangaza mshtakiwa kwenye kesi ya udanganyifu wa kibiashara. Tuma Ksh5,500 ada kwa 0712889944.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the Commercial Court, your business case requires immediate settlement of Ksh8,700 to avoid liquidation orders. Pay 0701998833.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"niaje msee, kuna kesi ya zamani iliyofunguliwa kwako, lipa Ksh4,400 ada kwa namba 0734221188 leo kabla kukamatwa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Karani wa Mahakama ya Garissa, una kesi ya ardhi isiyolipwa. Tuma Ksh6,600 ada kwa namba 0745998822 leo.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"You have a pending appearance order from the Children's Court regarding a custody case. Settle the Ksh5,050 fee to 0712556677.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda kesi ya zamani ya makosa ya kazi imefunguliwa dhidi yako mahakamani, lipa Ksh3,900 fine kwa namba 0701445599 leo.",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Wakili wa Mahakama ya Embu, una kesi ya kuvunja mkataba isiyolipwa. Tuma Ksh7,150 ada kwa namba 0789112277.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the Anti-Fraud Court, you've been named in a case requiring immediate settlement of Ksh9,800. Pay it now to 0745889933.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"niaje buda, kuna kesi ya kukosea malipo ya kodi mahakamani, lipa Ksh4,650 fine kwa namba 0712998811 leo bila kuchelewa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, Mahakama ya Meru imekutangaza mshtakiwa kwenye kesi ya kashfa ya kibiashara. Tuma Ksh5,800 ada kwa namba 0701776644.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"This is the Family Court Registry, your custody case has a pending balance of Ksh4,300 due immediately. Pay via 0734667733 now.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"buda kesi yako ya zamani ya kukosea biashara imefunguliwa mahakamani, lipa Ksh3,250 fine kwa namba 0745221177 leo.",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23
+"Habari, mimi ni Hakimu wa Mahakama ya Kitale, una kesi ya udanganyifu wa ardhi. Tuma Ksh6,250 ada kwa namba 0712334466 leo.",fraud,sw,fake_court_summons,batch18_ai,2026-06-23
+"You have an arrest order pending due to a Ksh7,950 unsettled court fee. Pay it immediately via 0701998811 to avoid detention.",fraud,en,fake_court_summons,batch18_ai,2026-06-23
+"mse kuna kesi ya zamani ya kukosea kulipa kodi ya gari, lipa Ksh3,550 fine kwa namba 0789556633 leo bila kuchelewa",fraud,sheng,fake_court_summons,batch18_ai,2026-06-23

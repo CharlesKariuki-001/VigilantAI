@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Habari mteja, akaunti yako ya M-Pesa itafungwa kesho asubuhi kwa sababu ya taarifa zisizo kamili. Bonyeza *334# kusasisha sasa.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your M-Pesa account will be suspended within 24 hours due to incomplete registration. Update your details now via bit.ly/mpesa-update26.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda account yako itafungwa leo usiku, piga *334# au update details yako kabla ufunge access kabisa",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"FINAL NOTICE: Your M-Pesa line will be deactivated permanently in 2 hours. Visit bit.ly/mpesa-secure-link to keep it active.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari ya mwisho: Akaunti yako itazimwa leo saa sita usiku kwa sababu ya KYC isiyo kamili. Sasisha sasa kwa link hii: m-pesa-kyc.com",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"mse Safaricom imeona registration yako haijakamilika, account itafungwa kesho, piga hii link bit.ly/saf-verify sasa",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Habari, namba yako itazimwa kwa sababu ya kutokukamilisha usajili wa SIM. Tembelea ofisi ya Safaricom au bonyeza link kuthibitisha leo.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your account access will be blocked in 1 hour unless you confirm your details. Click here to verify: m-pesa-confirm-now.com",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda kuna update ya system inayohitajika kwa namba yako, kama haijakamilika saa moja account itazimwa kabisa",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari kutoka Safaricom: Huduma zako za M-Pesa zitasimamishwa leo kwa sababu ya taarifa za kitambulisho zisizo sahihi. Sasisha sasa.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"WARNING: Your SIM registration is incomplete and will be deactivated by midnight. Update now at safaricom-sim-update.com to avoid disconnection.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"niaje msee, kuna upgrade ya M-Pesa system inahitaji uconfirm details zako, kama hapana account yako itafungwa leo",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Habari mteja, akaunti yako itasimamishwa muda wowote kwa sababu ya taarifa za zamani. Tuma jina na ID number kwa 0712889944 kusasisha.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your mobile money services will be suspended due to a regulatory compliance issue. Confirm your ID details at ca-verify-mobile.com today.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda namba yako iko kwenye list ya kufungwa kesho, piga link hii bit.ly/account-save kabla iende mbali sana",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari: Mfumo wa Communications Authority umeona namba yako haijakamilisha usajili. Itafungwa leo saa tisa mchana bila kuthibitisha.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your line will be barred from all mobile money services unless you re-register your ID within the next 3 hours via the link sent.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"mse hii ni final warning, account yako itazimwa leo jioni, piga *334# au update kwa link bit.ly/mpesa-renew",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Habari, kuna tatizo na usajili wako wa kitambulisho cha taifa kwenye akaunti ya M-Pesa. Sasisha leo au huduma zako zitasimamishwa.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"NOTICE: Government directive requires all mobile money accounts to be re-verified by end of day or face automatic suspension.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda kuna deadline ya leo kufanya verification ya account, kama umechelewa watakublock kabisa mpaka uthibitishe",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari kutoka M-Shwari: Akaunti yako itasimamishwa kwa sababu ya kutofikisha kiwango cha chini cha matumizi. Wasiliana nasi sasa.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your account has been flagged for closure due to outdated KYC information. Click the secure link sent to you to avoid losing access.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"niaje buda, kuna error kwenye registration ya namba yako, lazima usort leo kabla mtandao ifunge kabisa",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Habari mteja, kuna taarifa kuwa namba yako itafungiwa huduma za M-Pesa leo kwa sababu ya makosa ya kiufundi. Piga 0745998811 kusort.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your registered email and ID do not match our records. Failure to update within 6 hours will result in account suspension.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda system ya Safaricom imeona namba yako haijaregister vizuri, fungua link hii sasa kabla account yako ifungwe kabisa kesho",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari ya haraka: Akaunti yako itasimamishwa kwa muda kwa ajili ya ukaguzi wa usalama. Tembelea tovuti hii kuthibitisha leo: m-pesa-audit.com",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your line is scheduled for deactivation tonight due to unverified personal details. Update them immediately using the link provided.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"mzee kuna last chance ya kuregister details zako leo, kama hapana wewe out ya M-Pesa kabisa starting tomorrow",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Habari, Communications Authority ya Kenya imetoa agizo la kuthibitisha namba zote ndani ya siku mbili au zitafungwa moja kwa moja.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"FINAL WARNING: Failure to verify your account today will result in permanent loss of access to all M-Pesa services starting tomorrow.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda kuna update muhimu kwa account yako leo, kama hujaupdate by tonight watakulock nje ya system kabisa",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari: Akaunti yako imeonekana ina taarifa za zamani za kitambulisho. Sasisha sasa kuepuka kufungiwa huduma za kifedha.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your wallet will lose mobile money privileges in 4 hours unless ID verification is completed through the secure portal link below.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"niaje msee, kuna registration deadline leo saa sita, kama umechelewa account yako itafungwa hadi ufanye verification mpya",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Habari mteja, mfumo umegundua namba yako bado haijahakikishwa kikamilifu. Tembelea duka la Safaricom au bonyeza link kusasisha leo.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your number is at risk of being blacklisted from mobile money services due to incomplete registration. Act now to avoid suspension.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda hii ni warning ya mwisho, account itafungwa saa tatu usiku kama hujaconfirm details zako kupitia link",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari kutoka Vodacom: Huduma za M-Pesa zitasimamishwa kwa namba yako kwa sababu ya ukaguzi wa kawaida. Wasiliana nasi haraka.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your line has been selected for mandatory re-verification. Failure to comply within 24 hours leads to immediate service suspension.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"mse kuna system maintenance inayohitaji uconfirm details zako leo, vinginevyo account itafungwa moja kwa moja kesho asubuhi",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Habari, namba yako iko kwenye orodha ya kufungiwa huduma kwa sababu ya makosa ya usajili. Sasisha sasa kuepuka kuzimwa kabisa.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"NOTICE: Your account profile is incomplete. Mobile money access will be revoked in 5 hours unless you complete verification now.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"buda Safaricom imetoa deadline ya leo jioni kufanya verification, kama hujafanya account yako itafungwa hadi uthibitishe upya",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23
+"Tahadhari ya mwisho kutoka M-Pesa: Huduma zako zitafungwa leo usiku kwa sababu ya taarifa zisizo sahihi. Sasisha kwa haraka sana.",fraud,sw,account_suspension_threat,batch4_ai,2026-06-23
+"Your account is under review and will be locked permanently unless ID verification is submitted within the next 2 hours.",fraud,en,account_suspension_threat,batch4_ai,2026-06-23
+"niaje buda, kuna error report kwa namba yako kwenye system, lazima usort leo kabla wakulock nje ya M-Pesa kabisa",fraud,sheng,account_suspension_threat,batch4_ai,2026-06-23

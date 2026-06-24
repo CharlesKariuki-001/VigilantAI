@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Habari mteja, kwa mujibu wa sheria mpya za CBK, lazima usasishe taarifa zako za KYC ndani ya masaa 24 au huduma zako zitasimamishwa. Tembelea link hii.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Central Bank directive: All mobile money accounts must update KYC details within 48 hours or face suspension. Visit cbk-kyc-portal.com now.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda kuna directive mpya ya CBK kuhusu KYC, update details zako leo kwa link hii kabla account ifungwe",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari kutoka Communications Authority: Wateja wote wanahitajika kuthibitisha taarifa za KYC. Tuma jina, ID, na PIN kwa 0712334455.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"As per new CA regulations, your line requires updated KYC information. Send your full name, ID number, and PIN to 0745998822 today.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"mse kuna sheria mpya ya KYC, lazima utume details zako kwa namba 0701887744 kabla mtandao ifunge account yako",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Habari mteja, M-Pesa imepokea agizo la serikali kuhusu KYC. Tuma ID number na PIN yako kwa 0789556699 ndani ya saa 24.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Mandatory KYC Update: Your mobile money account will be frozen unless you confirm your details at safaricom-kyc-confirm.com today.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda hii ni serious, CBK imeagiza KYC update kwa wote, tuma ID na PIN kwa 0712445599 leo bila kuchelewa",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari: Kwa mujibu wa kanuni mpya za fedha, akaunti yako inahitaji uthibitisho wa KYC. Tuma maelezo kwa namba 0734667722.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Notice: Failure to complete your KYC verification by tonight will result in your mobile wallet being permanently disabled.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"niaje msee, kuna KYC verification inayohitajika leo, tuma jina lako, ID, na PIN kwa namba 0701223399 sasa hivi",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Habari, Mamlaka ya Mawasiliano imetangaza wateja wote lazima wathibitishe taarifa za KYC. Tuma ID number kwa 0745889922 leo.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Your account requires immediate KYC compliance update as per the latest financial regulations. Reply with your ID and PIN to 0712998877.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda kuna update ya lazima ya KYC kwa account yako, fungua link hii sasa kabla iclose access yako kabisa",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari kutoka M-Shwari: Sheria mpya inahitaji uthibitisho wa KYC kwa wateja wote. Tuma taarifa kwa namba 0789221144 leo.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Important: Your mobile money services will be suspended due to incomplete KYC records. Update now at mpesa-kyc-verify.com today.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"mzee CBK imeagiza wote kufanya KYC update leo, tuma ID na jina lako kwa namba 0701556633 kabla deadline ipite",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Habari mteja, kuna mahitaji mapya ya kisheria ya KYC kwa akaunti zote za M-Pesa. Sasisha sasa kwa link hii kabla saa sita.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"As mandated by the regulator, your account needs KYC re-verification today. Send your national ID details to 0745112277 now.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda hii ni from CA, KYC verification ni lazima leo, tuma details zako kwa namba 0712889933 mapema",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari: Akaunti yako itasimamishwa kwa sababu ya KYC isiyo kamili. Tuma jina, namba ya kitambulisho, na PIN kwa 0734556688.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Your KYC profile has expired according to new banking regulations. Renew it now by sending your ID and PIN to 0701776655.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"niaje buda, kuna deadline ya KYC leo saa tisa, kama hujaupdate account yako itafungwa moja kwa moja kesho",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Habari mteja, Benki Kuu ya Kenya imetoa agizo la kuthibitisha KYC kwa wote. Tuma maelezo yako binafsi kwa namba 0745667711.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Final KYC Notice: Your wallet will be deactivated tonight unless you verify your identity at mpesa-kyc-final.com immediately.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda kuna update ya KYC inahitajika sasa, fungua link hii kabla mtandao ikufungie account yako kabisa leo",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari kutoka Safaricom: Kwa mujibu wa kanuni za KRA, akaunti yako inahitaji uthibitisho wa KYC leo. Tuma ID kwa 0789112255.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Your line is non-compliant with current KYC standards. Send your full details and PIN to 0712334477 to avoid service interruption.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"mse kuna directive mpya ya KYC, tuma jina lako kamili na ID number kwa namba 0701998822 kabla saa sita usiku",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Habari, mamlaka ya udhibiti imetangaza wateja wote lazima wamalize KYC leo. Tuma maelezo yako kwa namba 0745221199 sasa.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Compliance Alert: KYC verification is overdue on your account. Update immediately at the secure portal to avoid suspension tonight.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda hii ni serious sana, KYC update ni lazima leo, piga link hii sasa kabla account yako ifungwe kabisa",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari: Akaunti yako haijakamilisha KYC ya mwaka huu. Tuma jina, ID, na PIN kwa namba 0734998866 ndani ya masaa machache.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Your account has been flagged for incomplete KYC documentation. Submit your ID details to 0712667744 to restore full access.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"niaje msee, kuna new policy ya KYC verification leo, tuma details zako kwa namba 0789556677 ndio account isifungwe",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Habari mteja, Serikali kupitia CA imetangaza wateja wote lazima wathibitishe KYC. Tuma ID number kwa namba 0701445588 leo.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Your number requires urgent KYC validation per the new telecom act. Send your ID and registered name to 0745889911 today.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda CBK imeagiza KYC verification kwa watu wote wenye M-Pesa, tuma details kwa namba 0712998855 leo bila kuchelewa",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari kutoka KRA: Akaunti yako ya simu inahitaji kuthibitishwa kwa KYC mpya. Tuma jina na ID kwa namba 0734556699 sasa.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Notice: New financial regulations require your account to complete KYC by midnight or risk permanent account closure.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"mzee kuna deadline ya KYC leo usiku, tuma jina lako na ID number kwa namba 0701887766 kabla isiwe late sana",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Habari, kwa mujibu wa kanuni za fedha za mwaka huu, lazima usasishe KYC yako. Tuma maelezo yako kwa namba 0745112288 leo.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Your KYC submission is incomplete and your account risks being frozen by the regulator. Update at mpesa-kyc-regulator.com now.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"buda hii ni mandatory KYC leo, kama hujamalizia by tonight watakufungia account yako moja kwa moja",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23
+"Tahadhari mteja: Akaunti yako iko kwenye hatari ya kufungiwa kwa sababu ya KYC isiyokamilika. Tuma ID kwa namba 0712445566.",fraud,sw,fake_kyc_update,batch11_ai,2026-06-23
+"Your mobile wallet has been temporarily restricted pending KYC completion. Send your ID and PIN to 0789221166 to lift the restriction.",fraud,en,fake_kyc_update,batch11_ai,2026-06-23
+"niaje buda, KYC verification ni lazima kwa wote leo, tuma details zako kwa namba 0701556644 mapema kabla deadline ipite",fraud,sheng,fake_kyc_update,batch11_ai,2026-06-23

@@ -1,0 +1,50 @@
+message_text,label,language,fraud_category,source,date_collected
+"Umetuma pesa kwa namba isiyo sahihi. Piga 0745112233 sasa ili turekebishe kabla mfumo ufunge muamala.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Reversal alert: Ksh3,200 sent to wrong recipient. Call 0712889911 within 10 minutes to reverse before system locks the transaction.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"Habari, umetuma Ksh1,800 kwa namba mbaya jana. Tuma jibu 'OK' kwa 0789556677 ili tuanze mchakato wa kurudisha pesa.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"M-PESA Alert: A wrong transaction of Ksh4,500 was detected on your line. Reply with your PIN to 0701223344 to authorize automatic reversal.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"Naomba turekebishe, ulituma Ksh2,000 kwa namba ya zamani. Piga simu 0733998811 mara moja kabla system iclose.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"buda umetuma chapaa kwa number mbaya, piga hii line 0712445566 tukurekebishie kabla system ifunge",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Tahadhari: Muamala wako wa Ksh6,750 ulitumwa kwa kosa. Tuma PIN yako kwa 0745998822 kuthibitisha urejeshaji wa pesa.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Your last transaction of Ksh3,900 went to an unintended number due to network error. Call this line 0700112255 now for manual reversal.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"mse umetuma pesa kwa msee mbaya, piga 0789221199 wakurudishie kabla account yako ifrozen",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Imeonekana ulituma Ksh5,300 kwa namba isiyo sahihi tarehe ya leo. Tuma jina lako kamili na PIN kwa 0712667788 kukamilisha reversal.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"REVERSAL NOTICE: System detected a misdirected payment of Ksh2,450 from your account. Send your M-Pesa PIN to 0701998877 to complete the refund process.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"Pole, kuna shida na muamala wako wa Ksh1,250, ulitumwa kwa namba mbaya. Piga hii namba 0734556699 ili kurekebisha haraka.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"sasa buda transaction yako ilienda number mbaya, call 0745778822 warudishe doh yako kabla iende mahali pengine",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Habari mteja, M-Pesa system imegundua muamala potovu wa Ksh8,000. Tuma maelezo yako kwa 0712334477 kuanzisha urejeshaji.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Notice: Ksh1,600 was sent to a wrong number under your account this morning. Reply with your PIN to 0701556633 to reverse the transaction immediately.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"Naona ulituma pesa kwa makosa kwa namba ya client mwingine. Tuma Ksh100 confirmation fee kwa 0789112244 ili turudishe Ksh4,200 yako.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"buana transaction yako ya Ksh2,900 ilikosea number, piga 0712998866 kabla system ifunge na upoteze doh",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Tahadhari kutoka M-Pesa: Pesa yako Ksh3,300 ilitumwa kwa namba isiyo sahihi. Piga *334# au call 0745112277 kuthibitisha urejeshaji wa haraka.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Your transaction reference TXN8847 was sent to the wrong recipient. Call 0701887744 within 15 minutes or the funds cannot be recovered.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"mreal umetuma kaproperty kwa number mbaya jana usiku, piga hii 0734221199 wakusort kabla cash ipotee kabisa",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Habari, kuna error kwenye muamala wako wa Ksh7,100, ulitumwa kwa namba isiyo sahihi. Tuma PIN yako kwa 0712556688 kuthibitisha umiliki kabla turekebishe.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Reversal pending: Ksh990 sent in error to another customer. Send confirmation code received via SMS to 0789998822 to release your refund.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"Pole sana, kuna mtu alituma Ksh1,450 kwa namba yako kwa makosa, tafadhali rudisha kwa 0701445599 mapema iwezekanavyo.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"bro umetuma chapaa number mbaya tena, call 0745667711 ndio wakusaidie kabla doh ipotee kwa mtu mwingine",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"M-PESA: Muamala wa Ksh5,800 haukufika mahali sahihi. Tuma maelezo yako binafsi kwa 0712889933 ili kuanzisha urejeshaji wa haraka.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Alert: A duplicate transaction of Ksh2,200 was sent from your line in error. Reply YES and your PIN to 0701332244 to cancel and refund.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"Niaje, transaction yako ilikosea kwa number mbaya jana, piga hii namba 0734998877 wakurudishie hiyo Ksh3,600 mapema.",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Tahadhari ya haraka: Pesa Ksh6,400 zilitumwa kwa namba mbaya kutoka akaunti yako. Piga 0745223399 kuzungumza na agent wa kurudisha pesa.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Your money transfer of Ksh1,750 was misrouted due to a system glitch. Call this support line 0701776655 to claim your reversal today.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"buda system imeshow umetuma kwa number ingine, piga 0712445588 wakusort hiyo reversal kabla iende mtu mwingine kabisa",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Habari mteja, ulituma Ksh4,950 kwa namba isiyo yako tarehe jana. Tuma kodi ya uthibitisho kwa 0789667744 kupata pesa yako tena.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Reversal request failed. A wrong payment of Ksh3,100 needs your PIN sent to 0701998811 to be processed manually by our agent.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"mzee transaction yako ilikosea kwa namba, piga 0745889922 mapema kabla doh ipotelee kabisa mahali pengine",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Habari, umetuma kwa makosa Ksh2,650 kwa namba isiyo yako. Bonyeza *334# au tuma jina lako kamili kwa 0712667799 kurekebisha.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Urgent reversal: Your Ksh5,500 transaction went to the wrong till number. Send your transaction PIN to 0701445522 to release the funds back.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"poa sana lakini umetuma kashilingi kwa number mbaya, hii namba 0734556622 ndio itakurudishia kabla iende mbali",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"M-Shwari Alert: Muamala wako wa Ksh8,900 haukufika mahali pa malengo. Tuma maelezo binafsi kwa 0745778833 kukamilisha urejeshaji.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Notice: A failed reversal of Ksh1,300 requires you to confirm your account PIN via SMS to 0701223366 before midnight.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"bro hiyo doh yako ilienda kwa namba mbaya jana usiku, piga 0712998844 sasa kabla account ifrozen kabisa",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Habari, system imeona muamala wa Ksh4,100 ulitumwa kwa namba isiyo sahihi. Piga 0789556688 kuongea na agent wa M-Pesa kuhusu refund.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Your payment of Ksh2,750 bounced to the wrong line due to a routing error. Reply with your PIN code to 0701887722 to get it back today.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"buda kuna mtu ametuma chapaa kwa wewe kimakosa Ksh1,900, rudisha mapema kwa 0745112266 kabla mambo ichange",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Tahadhari kutoka Safaricom: Ksh3,450 zilitumwa kosa kwa namba nyingine. Tuma jina lako na nambari ya kitambulisho kwa 0712334488 kuanzisha refund.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Reversal incomplete: We need your confirmation PIN sent to 0701556699 to finalize the return of your Ksh6,200 misdirected payment.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"niaje msee, transaction yako ya Ksh2,300 iliingia number mbaya, piga 0734667799 wakurudishie haraka before account ifungwe",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Habari, kuna muamala potovu wa Ksh5,600 kwenye akaunti yako. Tuma jina kamili na namba ya kitambulisho kwa 0745998811 kuthibitisha umiliki kabla turudishe.",fraud,sw,fake_reversal,batch1_ai,2026-06-22
+"Final notice: Your wrongly sent Ksh3,800 will be forfeited unless you send your M-Pesa PIN to 0701776688 within the next 20 minutes.",fraud,en,fake_reversal,batch1_ai,2026-06-22
+"bro hiyo pesa yako ilikosea number, piga hii 0712445599 ndio wakurekebishie kabla iende kwa mtu mwingine kabisa",fraud,sheng,fake_reversal,batch1_ai,2026-06-22
+"Tahadhari M-Pesa: Pesa Ksh4,700 zilitumwa kosa kwa namba isiyo sahihi jana. Piga 0789221177 kupata msaada wa kurudisha pesa yako leo.",fraud,sw,fake_reversal,batch1_ai,2026-06-22

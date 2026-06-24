@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Habari, mzigo wako kutoka Jumia umefika kituo cha usambazaji. Tuma Ksh650 ada ya delivery kwa namba 0712334455 kupokea leo.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your Jumia package is held at the warehouse pending a Ksh800 delivery fee. Send to 0745998822 to release it for delivery today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda parcel yako iko stuck kwa courier, tuma Ksh500 delivery fee kwa 0701887744 ndio waikupelekee leo",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, kifurushi chako kutoka Kilimall kiko tayari lakini kinahitaji Ksh700 ya usafirishaji. Tuma kwa 0789556699 leo.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"DHL courier notice: Your international parcel requires a Ksh1,200 customs clearance fee. Send to 0712445599 to release it for delivery.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"mse hii ni courier, mzigo wako uko depot, tuma Ksh450 kwa 0734667722 ndio tukupelekee leo bila kuchelewa",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari, Glovo delivery yako imechelewa kwa sababu ya malipo ya pending Ksh350. Tuma kwa namba 0701223399 kukamilisha order.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your G4S package is stuck at the depot due to an unpaid handling fee of Ksh550. Send it to 0745889922 to receive your item today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda mzigo wako wa Kilimall uko ready lakini lazima ulipie Ksh600 transport fee kwa namba 0712998877 leo",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, parcel yako kutoka China imefika lakini inahitaji Ksh1,500 ada ya forodha. Tuma kwa namba hii 0789221144.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your Wells Fargo Courier package needs a Ksh900 release fee before delivery. Send the payment to 0701556633 to get your item today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"niaje msee, hii ni delivery yako kutoka Jumia, tuma Ksh400 kwa namba 0745112277 ndio mzigo ufike kwako leo",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari, mzigo wako wa simu mpya umefika kituo cha Sendy. Tuma Ksh550 ada ya kufikisha kwa namba hii 0712889933 leo.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your courier service has your parcel ready but requires a Ksh750 last-mile delivery fee sent to 0734556688 before dispatch.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda kuna parcel yako iko kwa warehouse, tuma Ksh500 ada kwa 0701776655 ndio wapeleke kwako leo bila stress",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, bidhaa yako kutoka Alibaba imefika Nairobi lakini inahitaji ushuru wa Ksh1,800. Tuma kwa namba 0745667711 leo.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your Fargo delivery agent is waiting for a Ksh650 confirmation fee before bringing your package. Send to 0789112255 now.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"mse hii ni Sendy courier, package yako iko hapa office, tuma Ksh500 kwa namba 0712334477 ndio tuipeleke kwako leo",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari, mzigo wako wa Kilimall umechelewa kwa sababu ya bill ya pending Ksh380. Tuma kwa namba hii 0701998822 kukamilisha.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your shipment is held at customs requiring a Ksh1,350 release fee. Pay now to 0745221199 to avoid further delays in delivery.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda parcel yako iko ready kupelekwa, lakini lazima ulipe Ksh420 transport fee kwa 0734998866 leo leo",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, order yako kutoka Jumia inahitaji uthibitisho wa malipo ya Ksh700 kabla kupelekwa. Tuma kwa namba 0712667744.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your DHL Express package requires an additional Ksh1,100 handling charge before final delivery. Send to 0789556677 today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"mzee hii ni courier wa Glovo, order yako iko stuck, tuma Ksh350 kwa namba 0701445588 ndio ifike kwako leo",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari, kifurushi chako kutoka nje ya nchi kimefika lakini ushuru wa Ksh2,000 unahitajika. Tuma kwa namba hii 0745889911.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your courier package is pending dispatch due to an unpaid Ksh480 service fee. Send it to 0712998855 to receive your item today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda mzigo wako kutoka Kilimall uko ready, tuma Ksh550 ada kwa namba 0734556699 leo ndio ufike kwako",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, order yako ya bidhaa ya kielektroniki imefika depot. Tuma Ksh900 ada ya kuthibitisha kwa namba 0701887766 leo.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your Sendy rider is waiting outside, send the Ksh250 delivery confirmation fee to 0745112288 before they can drop your package.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"niaje buda, hii ni mzigo wako wa Jumia, lipia Ksh400 confirmation kwa namba 0712445566 ndio ipelekwe leo hii",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari, kuna ushuru wa forodha wa Ksh1,650 unaohitajika kwa mzigo wako kutoka China. Tuma kwa namba hii 0789221166 leo.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your G4S package needs a Ksh720 storage release fee before it can be delivered. Send to 0701556644 today to avoid delays.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda parcel yako iko held kwa depot, tuma Ksh500 kwa namba 0745667799 ndio tukupelekee mzigo wako leo",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, mzigo wako wa nguo umefika kituo cha Sendy lakini bado kuna Ksh600 ya kulipa. Tuma kwa namba 0712889944.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your shipment from overseas is awaiting a Ksh1,400 import duty payment. Send it to 0701998833 to release it for delivery.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"mse hii ni Fargo courier, package yako iko hapa, tuma Ksh380 kwa namba 0734221188 ndio tuipeleke kwako",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari, order yako kutoka Kilimall imefika lakini inahitaji uthibitisho wa Ksh550 kabla kupelekwa nyumbani kwako leo.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your courier delivery has been delayed due to unpaid Ksh650 transport fee. Send to 0745998822 to receive your package today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda mzigo wako kutoka Jumia iko depot, lipia Ksh480 fee kwa 0712556677 ndio waikupelekee leo bila stress",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, kifurushi chako kimefika Mombasa port lakini kinahitaji ushuru wa Ksh2,200. Tuma kwa namba hii 0701445599.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your DHL parcel is at the local hub awaiting a Ksh850 release fee before final delivery. Send to 0789112277 today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"niaje msee, hii ni Glovo order, tuma Ksh320 confirmation fee kwa namba 0745889933 ndio ipelekwe kwako sasa hivi",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari, kuna delivery fee ya pending Ksh700 kwenye order yako ya Jumia. Tuma kwa namba hii 0712998811 leo kukamilisha.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your package from the international warehouse requires a Ksh1,950 clearance payment before dispatch. Send to 0701776644 today.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"buda parcel yako ya simu uko stuck depot, tuma Ksh550 kwa namba 0734667733 ndio tukupelekee leo bila kuchelewa",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23
+"Habari mteja, mzigo wako kutoka Kilimall umefika lakini bado kuna Ksh420 ya kulipa kabla kupelekwa. Tuma kwa 0745221177.",fraud,sw,fake_delivery_payment,batch9_ai,2026-06-23
+"Your Sendy delivery rider needs a Ksh280 confirmation payment before they can release your package. Send to 0712334466 now.",fraud,en,fake_delivery_payment,batch9_ai,2026-06-23
+"mzee hii ni courier ya nje, mzigo wako unahitaji Ksh1,750 ushuru, tuma kwa namba 0701998811 leo ndio ufike kwako",fraud,sheng,fake_delivery_payment,batch9_ai,2026-06-23

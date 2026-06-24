@@ -1,0 +1,50 @@
+message_text,label,language,fraud_category,source,date_collected
+"Pole nilituma pesa kwa namba yako kimakosa, tafadhali nirudishie Ksh2,500 kwa namba hii 0712334455 haraka iwezekanavyo.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"Sorry I sent Ksh3,800 to your number by mistake instead of my brother's, please send it back to 0745998822 today.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda nilituma doh kwa wewe kwa makosa, tuma Ksh1,500 kwa hii namba 0701887744 mungu akubariki sana",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Niliomba msamaha, nilituma Ksh4,200 kwa namba yako badala ya ya rafiki yangu. Tafadhali rudisha kwa 0789556699 leo.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"I mistakenly sent Ksh2,900 to this line, please send it back to 0712445599 as I urgently need it for hospital bill.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"mse nimetuma chapaa kwa number yako kwa kosa, tuma Ksh1,000 kwa 0734667722 nisaidie sana leo bro",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole sana kwa hii makosa, nilituma Ksh5,500 kwa namba yako badala ya dada yangu. Tuma kwa 0701223399 sasa.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"Apologies, I sent Ksh1,750 to the wrong contact saved as yours. Kindly return it to 0745889922 at your earliest convenience.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda nimetuma kashilingi kwa wewe instead ya mama yangu, tafadhali rudisha Ksh2,200 kwa 0712998877 leo leo",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Habari, nilituma Ksh3,300 kwa namba hii kimakosa nikitaka kutuma kwa mtoto wangu. Tafadhali nirudishie kwa 0789221144.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"So sorry, I just sent Ksh6,000 to your line instead of the supplier's number. Please send it back urgently to 0701556633.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"niaje msee, nilituma pesa kwa wewe kwa error, tuma Ksh1,300 kwa 0745112277 nisaidie kabla mambo ichange",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole mzee, nilituma Ksh4,800 kimakosa kwa namba yako. Tafadhali nirudishie kupitia namba hii 0712889933 leo hii.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"I sent Ksh2,400 to this number thinking it was my landlord's, please refund it to 0734556688 since I need it urgently.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda hii pesa nilituma kwa wewe kwa makosa, sio yako, rudisha kwa 0701776655 mungu akubariki",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Habari, nilituma Ksh1,950 kwa namba isiyo sahihi badala ya kaka yangu. Tafadhali tuma kwa namba hii 0745667711 leo.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"Apologies for the inconvenience, I sent Ksh3,600 to your line by accident. Please return the funds to 0789112255 today.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"mzee nimetuma doh kwa namba mbaya, hiyo ni ya wewe sio mteja wangu, rudisha kwa 0712334477 haraka sana",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole sana, nilituma Ksh2,750 kwa namba hii kimakosa wakati nilitaka kutuma kwa mwenye duka. Rudisha kwa 0701998822.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"I accidentally transferred Ksh5,200 to this number, please send it back to 0745221199 as soon as you can, thank you.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda nimekosea number, hiyo doh nilitaka kutuma kwa fundi sio wewe, tuma kwa 0734998866 leo bro",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Habari, nilituma Ksh3,150 kwa makosa kwa namba yako badala ya ya mke wangu. Tafadhali rudisha kwa namba hii 0712667744.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"Sorry to bother you, I sent Ksh1,400 to your number by mistake. Kindly send it back to 0789556677 whenever possible.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"mse hii pesa nilituma kwa wewe haikuwa ya wewe, tafadhali rudisha Ksh2,650 kwa 0701445588 mungu akubariki sana",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole, nilituma Ksh4,400 kwa namba yako kimakosa, nilitaka kutuma kwa dereva wa boda. Tuma kwa namba hii 0745889911 leo.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"I just sent Ksh3,000 to the wrong contact saved on my phone, please return it to 0712998855 as it was meant for rent.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda nilituma chapaa kwa namba yako instead ya mjomba wangu, rudisha Ksh1,850 kwa 0734556699 leo leo asante sana",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Habari, nimetuma Ksh5,000 kwa namba isiyo sahihi nikitaka kutuma kwa mwalimu wa watoto. Rudisha kwa 0701887766 sasa.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"Apologies, I sent Ksh2,250 to this line by mistake instead of my colleague's. Please send it back to 0745112288 today.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"mzee nimekosea kutuma kwa wewe, hiyo Ksh1,600 ni ya mteja wangu, tafadhali rudisha kwa 0712445566 mapema",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole sana, nilituma Ksh3,900 kimakosa kwa namba yako badala ya kwa dada yangu. Rudisha kwa namba hii 0789221166 leo.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"I sent Ksh2,100 to your line accidentally while trying to pay my plumber. Please refund it to 0701556644 today, thanks.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda hii pesa Ksh4,700 nilituma kwa wewe kwa makosa, sio kwako, tafadhali rudisha kwa 0745667799 leo",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Habari, nilituma Ksh1,300 kwa namba yako kimakosa badala ya mama wa watoto. Tafadhali rudisha kwa 0712889944 leo.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"So sorry for the confusion, I sent Ksh3,450 to your number instead of my tenant's. Please return it to 0701998833.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"mse nimekosea kutuma kwa wewe Ksh2,800, hiyo ni ya mzazi wangu, tuma kwa 0734221188 leo bro asante",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole, nilituma Ksh5,600 kwa namba hii kwa kosa wakati nilitaka kutuma kwa wakala wa Mpesa. Rudisha kwa 0745998822.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"I accidentally sent Ksh1,950 to your line. Kindly return it to 0712556677 since it was meant for school fees, thank you.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda nilituma doh kwa wewe kimakosa instead ya supplier wangu, rudisha Ksh3,250 kwa 0701445599 leo leo",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Habari, nilituma Ksh2,500 kwa namba yako kwa makosa nikitaka kutuma kwa kondakta wa matatu. Rudisha kwa 0789112277.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"Apologies, I sent Ksh4,100 to this number instead of my employer's. Please send it back to 0745889933 as soon as you can.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"mzee nimetuma chapaa kwa wewe kwa error, hiyo Ksh1,700 ni ya mtu mwingine, rudisha kwa 0712998811 sasa hivi",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole sana, nilituma Ksh3,750 kimakosa kwa namba yako badala ya kwa rafiki wa kazi. Tafadhali rudisha kwa 0701776644.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"I sent Ksh2,950 to your number accidentally while paying for fuel delivery. Please return it to 0734667733 today, thank you.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"buda nimekosea kutuma kwa wewe Ksh5,300, hiyo ilikuwa ya dada yangu, rudisha kwa 0745221177 leo asante sana",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Habari, nilituma Ksh1,450 kwa namba isiyo sahihi badala ya kwa mama mboga. Tafadhali rudisha kwa namba hii 0712334466.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23
+"Sorry for the mistake, I sent Ksh3,600 to your line instead of my contractor's. Kindly send it back to 0701998811 today.",fraud,en,fake_wrong_number_send,batch6_ai,2026-06-23
+"mse hii pesa Ksh2,200 nilituma kwa wewe kwa makosa, sio yako, tafadhali rudisha kwa 0789556633 leo leo",fraud,sheng,fake_wrong_number_send,batch6_ai,2026-06-23
+"Pole, nilituma Ksh4,900 kwa namba yako kimakosa nikitaka kutuma kwa mfanyakazi wangu. Rudisha kwa namba hii 0745112299 leo.",fraud,sw,fake_wrong_number_send,batch6_ai,2026-06-23

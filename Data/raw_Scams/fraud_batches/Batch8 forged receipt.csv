@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"TBX9K4RT2 Confirmed. Ksh5,000.00 sent to JANE WANJIKU 0712334455 on 22/6/26 at 4:10 PM. New M-PESA balance is Ksh890.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"QMN7P2KXR Imethibitishwa. Ksh8,500.00 imetumwa kwa PETER OMONDI 0745998822 tarehe 22/6/26 saa 14:30. Salio jipya Ksh1,200.00.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"buda nimetuma already pesa kwa wewe, hii ni receipt: SGH4K9XPR Confirmed Ksh3,500 sent on 22/6/26, pesa ni real send goods sasa",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"RKL2P9QWX Confirmed. Ksh12,000.00 sent to MARY ACHIENG 0701887744 on 22/6/26 at 11:20 AM. New M-PESA balance is Ksh430.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"Habari mkuu, nimetuma pesa already, screenshot: NQT8M3LXP Confirmed Ksh4,200.00 sent on 22/6/26, tafadhali peleka bidhaa.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"OPX5R7ZWT Confirmed. Ksh6,750.00 sent to SAMUEL KIPRONO 0734667722 on 22/6/26 at 9:05 AM. New M-PESA balance is Ksh215.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"mse hii ni proof ya payment yangu: FUL2K9YTQ Confirmed Ksh2,800 sent kwa wewe leo saa hii, tuma item sasa bro",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"DHJ4M8NPR Imethibitishwa. Ksh9,300.00 imetumwa kwa GRACE NJERI 0789556699 tarehe 22/6/26 saa 16:45. Salio jipya Ksh670.00.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"WLT9P2KXQ Confirmed. Ksh3,400.00 sent to BRIAN OTIENO 0712445599 on 22/6/26 at 1:15 PM. New M-PESA balance is Ksh125.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"buda nimetuma already, hii ndio confirmation: JBN6T1ZQT Confirmed Ksh5,600 sent on 22/6/26, tuma bidhaa sasa hivi mkuu",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"YGT3K9MWQ Confirmed. Ksh7,100.00 sent to ESTHER WAMBUI 0701556633 on 22/6/26 at 10:50 AM. New M-PESA balance is Ksh340.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"Habari, hii ni risiti ya malipo: VKQ8R4NTQ Confirmed Ksh4,950.00 sent tarehe 22/6/26 saa 12:20, tafadhali kamilisha order yangu.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"ZWQ7M2PXQ Confirmed. Ksh2,250.00 sent to AGNES MUTHONI 0745112277 on 22/6/26 at 8:40 AM. New M-PESA balance is Ksh95.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"mzee nimetuma already, screenshot: AGT5K3PWR Confirmed Ksh6,300 sent leo saa hii, peleka mzigo sasa nimelipa",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"NHT9P6XQQ Imethibitishwa. Ksh10,500.00 imetumwa kwa DENNIS MWANGI 0712889933 tarehe 22/6/26 saa 15:10. Salio jipya Ksh580.00.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"PLM4Q9TXQ Confirmed. Ksh1,800.00 sent to FAITH MWANGI 0734556688 on 22/6/26 at 2:35 PM. New M-PESA balance is Ksh65.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"buda hii ni proof, RXTQ4P9MQ Confirmed Ksh3,900 sent tarehe ya leo, kamilisha delivery yangu sasa bro asante",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"7KXTQ9MPQ Imethibitishwa. Ksh5,400.00 imetumwa kwa BENJAMIN KIPLAGAT 0701776655 tarehe 22/6/26 saa 9:50. Salio jipya Ksh245.00.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"NPXT6K3MQ Confirmed. Ksh8,900.00 sent to CAROLINE NJOKI 0745667711 on 22/6/26 at 11:45 AM. New M-PESA balance is Ksh315.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"Habari mkuu, nimetuma pesa kwa transaction hii: PXTM4Q9KQ Confirmed Ksh2,650 sent leo asubuhi, tafadhali toa bidhaa.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"KQXT9M3PQ Confirmed. Ksh4,750.00 sent to HUSSEIN JUMA 0789112255 on 22/6/26 at 3:25 PM. New M-PESA balance is Ksh420.00.",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"mse nimelipa already, hii ni confirmation yangu: DHKQ9XPMQ Confirmed Ksh3,300 sent leo, tuma item sasa hivi tafadhali",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"PXTM4Q9KR Imethibitishwa. Ksh6,900.00 imetumwa kwa ASHA MWALIMU 0712334466 tarehe 22/6/26 saa 13:10. Salio jipya Ksh510.00.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh7,500.00 sent to RAMADHANI ISSA 0701998811 on 22/6/26 at 10:15 AM. New M-PESA balance is Ksh290.00. Ref: 9TKQ4XPMQ",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"buda hii receipt yangu: 6PQR9MXTQ Confirmed Ksh4,100 sent saa hii, peleka mzigo wangu hapo town sasa hivi",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Habari, hii ni risiti ya muamala wangu: 3XPQ9MTKQ Confirmed Ksh5,950.00 sent tarehe 22/6/26, kamilisha order leo.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh2,400.00 sent to NEEMA KASSIM 0734221199 on 22/6/26 at 4:50 PM. New M-PESA balance is Ksh175.00. Ref: 8MQT4XPRQ",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"mzee nimetuma already pesa, screenshot: GHT2K9XMQ Confirmed Ksh6,650 sent leo, tafadhali toa item yangu sasa",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Imethibitishwa. Ksh9,100.00 imetumwa kwa JOSEPH KARANJA 0745998822 tarehe 22/6/26 saa 12:40. Salio jipya Ksh385.00. Ref: LMNQ8K3PR",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh3,750.00 sent to STELLA NYAMBURA 0712998877 on 22/6/26 at 9:20 AM. New M-PESA balance is Ksh220.00. Ref: XQTM5K9PR",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"buda already nimelipa, hii ndio proof: WPLT7K3MQ Confirmed Ksh5,250 sent tarehe ya leo, peleka bidhaa sasa hivi",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Habari, hii ni risiti: VNXT6K3PQ Confirmed Ksh4,400.00 sent tarehe 22/6/26 saa 14:15, tafadhali kamilisha delivery yangu.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh10,200.00 sent to FRANCIS MUTUA 0701556699 on 22/6/26 at 11:05 AM. New M-PESA balance is Ksh455.00. Ref: HJKQ8M3XR",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"mse nimetuma already, screenshot proof: RTYU8K2PMQ Confirmed Ksh3,150 sent leo asubuhi, tafadhali toa mzigo sasa",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Imethibitishwa. Ksh6,500.00 imetumwa kwa LUCY NJAMBI 0745112299 tarehe 22/6/26 saa 15:50. Salio jipya Ksh340.00. Ref: BNMT5K9XQ",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh2,900.00 sent to PATRICK ODHIAMBO 0712445588 on 22/6/26 at 8:25 AM. New M-PESA balance is Ksh195.00. Ref: ZXCV7K3MQ",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"buda nimelipa already pesa yote, hii receipt: QWER9K2XPQ Confirmed Ksh7,800 sent leo, peleka item sasa hivi bro",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Habari, hii ni proof ya malipo yangu: ASDF8K3MNQ Confirmed Ksh4,600.00 sent tarehe 22/6/26 saa 13:30, kamilisha order.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh5,850.00 sent to MOSES KAMAU 0789221177 on 22/6/26 at 10:40 AM. New M-PESA balance is Ksh260.00. Ref: TYUI6K9XMQ",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"mzee already nimetuma chapaa, hii ndio confirmation: GHJK5K2PMQ Confirmed Ksh3,650 sent leo, toa mzigo wangu sasa hivi",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Imethibitishwa. Ksh8,300.00 imetumwa kwa SARAH ATIENO 0712667744 tarehe 22/6/26 saa 16:05. Salio jipya Ksh475.00. Ref: VBNM7K3XPQ",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh1,950.00 sent to KEVIN WAFULA 0701887722 on 22/6/26 at 9:55 AM. New M-PESA balance is Ksh135.00. Ref: CXZA9K2MPQ",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"buda hii ni proof real, FGHJ8K3PMQ Confirmed Ksh6,150 sent leo saa hii, tafadhali peleka item sasa hivi mkuu",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Habari mkuu, hii ni risiti ya malipo yangu kamili: KLMN6K9XPQ Confirmed Ksh4,950.00 sent tarehe 22/6/26, kamilisha delivery.",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh7,200.00 sent to ELIZABETH WANGARI 0745889944 on 22/6/26 at 12:30 PM. New M-PESA balance is Ksh390.00. Ref: POIU5K3XMQ",fraud,en,forged_receipt,batch8_ai,2026-06-23
+"mse nimelipa already kabisa, hii receipt yangu: LKJH7K2PMQ Confirmed Ksh3,400 sent leo, peleka bidhaa sasa hivi tafadhali",fraud,sheng,forged_receipt,batch8_ai,2026-06-23
+"Imethibitishwa. Ksh9,750.00 imetumwa kwa DAVID KIPCHIRCHIR 0712998822 tarehe 22/6/26 saa 14:55. Salio jipya Ksh520.00. Ref: MNBV8K3XPQ",fraud,sw,forged_receipt,batch8_ai,2026-06-23
+"Confirmed. Ksh2,650.00 sent to MERCY WAIRIMU 0701556677 on 22/6/26 at 11:35 AM. New M-PESA balance is Ksh180.00. Ref: QAZW9K2MPQ",fraud,en,forged_receipt,batch8_ai,2026-06-23

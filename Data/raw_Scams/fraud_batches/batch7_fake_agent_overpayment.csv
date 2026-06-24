@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Habari, mimi ni wakala wa M-Pesa, nimekutumia Ksh8,000 kwa makosa badala ya Ksh800. Tafadhali rudisha Ksh7,200 kwa namba hii 0712334455.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Hello, this is your M-Pesa agent, I sent you Ksh10,000 instead of Ksh1,000 by mistake. Please return Ksh9,000 to 0745998822 now.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda mimi ni agent, nimekutumia pesa zaidi kwa kosa, rudisha Ksh5,500 kwa namba 0701887744 leo bro",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, kama agent wa M-Pesa nimegundua nimekutumia Ksh12,000 zaidi ya ulivyohitaji. Tafadhali rudisha Ksh11,000 kwa 0789556699.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"This is the M-Pesa shop, we sent you Ksh6,500 extra by system error. Kindly send back Ksh6,000 to 0712445599 immediately.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mse hii ni agent wa duka, system imetuma pesa zaidi kwa wewe, tuma Ksh3,800 ya ziada kwa 0734667722 leo",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari, nimekutumia Ksh4,200 zaidi kimakosa wakati ulitaka kutoa pesa kidogo tu. Tafadhali rudisha kwa namba hii 0701223399.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Dear customer, our system deposited Ksh7,800 extra into your account by error. Please return the excess amount to 0745889922 today.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda nimetuma Ksh9,000 kwa wewe kwa makosa instead ya Ksh900, rudisha hiyo extra kwa 0712998877 sasa",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, kuna error kwenye muamala wako, ulipata Ksh15,000 zaidi ya ulivyotaka kutoa. Tafadhali rudisha kwa 0789221144.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"M-Pesa agent here, I accidentally sent you double the amount you requested. Please send back Ksh4,500 to 0701556633 right away.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mzee wakala alituma Ksh6,200 zaidi kwa account yako, tuma hiyo extra kwa namba 0745112277 leo bila kuchelewa",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari, kama wakala wako wa M-Pesa, nimegundua nimekutumia pesa zaidi ya iliyokubaliwa Ksh3,300. Rudisha kwa namba hii 0712889933.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Hello, the agent system credited Ksh11,500 into your wallet by mistake. Kindly send the extra Ksh10,500 to 0734556688 today.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda hii ni mistake ya agent, alikutumia chapaa zaidi, rudisha Ksh2,700 kwa 0701776655 mungu akubariki",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, kuna system error kwenye agent wako, ulipokea Ksh8,900 zaidi ya kiwango sahihi. Rudisha kwa 0745667711 sasa.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"This is your agent, an excess amount of Ksh5,750 was sent to your line in error. Please return it to 0789112255 immediately.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mse wakala wa shop alituma extra Ksh4,000 kwa account yako kimakosa, tuma kwa hii namba 0712334477 leo",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari, kuna pesa zaidi zilizotumwa kwa makosa kwenye akaunti yako Ksh13,400. Tafadhali rudisha kwa namba hii 0701998822 leo.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Dear client, our agent deposited Ksh9,300 over the requested amount. Send back the difference of Ksh8,300 to 0745221199 today.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda nimetuma Ksh7,100 zaidi kwa wewe kwa makosa wakati ulitaka Ksh700 tu, rudisha kwa 0734998866 leo",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, mfumo wa wakala ulituma kiasi kibaya kwenye akaunti yako Ksh10,800. Tafadhali rudisha kwa namba hii 0712667744.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Hello, you received Ksh6,600 more than you withdrew due to a glitch. Please send back the extra amount to 0789556677 now.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mzee kuna agent alituma pesa zaidi kwa kosa Ksh3,950, tuma hiyo extra kwa namba 0701445588 leo asante",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari, kama wakala wa M-Shwari, nilituma Ksh14,200 zaidi kwa makosa. Tafadhali rudisha kwa namba hii 0745889911 sasa.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"This is the duka agent, your withdrawal request was processed wrong and you got Ksh5,400 extra. Send it back to 0712998855.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda system imetuma double pesa kwa wewe, tuma Ksh4,650 ya extra kwa namba 0734556699 leo leo bro",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, kuna kosa kwenye muamala wa agent, ulipokea Ksh16,000 zaidi ya kiwango sahihi. Rudisha kwa namba hii 0701887766.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Dear customer, the agent terminal sent an extra Ksh7,250 to your account by error. Please return it to 0745112288 today.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mse wakala alikutumia pesa zaidi kimakosa, tuma Ksh3,500 ya extra kwa 0712445566 mungu akubariki sana",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari, kuna error ya system kwenye duka langu, ulipata Ksh9,800 zaidi ya kiwango. Tafadhali rudisha kwa namba hii 0789221166.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Hello, our system credited your account with Ksh12,300 extra due to a glitch in the agent terminal. Send it back to 0701556644.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda kuna mistake ya kutuma pesa zaidi kwa wewe, hiyo Ksh6,900 ni ziada, tuma kwa namba 0745667799 leo",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, agent terminal yangu imekutumia Ksh11,200 zaidi ya kiwango sahihi. Tafadhali rudisha kwa namba hii 0712889944.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Dear client, an extra Ksh8,400 was sent to your account by system error. Kindly return the amount to 0701998833 immediately.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mzee nimetuma chapaa zaidi kwa wewe instead ya kiwango sahihi, rudisha Ksh5,150 kwa namba 0734221188 leo",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari, kuna agent error kwenye akaunti yako, ulipokea Ksh17,500 zaidi ya kiwango sahihi. Rudisha kwa namba hii 0745998822.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Hello, the system deposited Ksh10,100 extra into your wallet by mistake. Please send it back to 0712556677 as soon as possible.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda wakala alituma double pesa kwa makosa, tuma Ksh4,300 ya ziada kwa 0701445599 leo bila kuchelewa",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, mfumo wa wakala ulionyesha makosa kwenye muamala wako, ulipata Ksh13,700 zaidi. Tafadhali rudisha kwa 0789112277.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Dear customer, you received Ksh6,850 more than requested due to a terminal glitch. Kindly return the excess to 0745889933 today.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mse hii ni mistake ya agent, alikutumia Ksh3,250 zaidi kwa kosa, rudisha kwa namba 0712998811 leo leo",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari, kuna kosa la kiufundi kwenye duka langu, ulipata Ksh14,900 zaidi ya kiwango sahihi. Tafadhali rudisha kwa 0701776644.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Hello, our agent system sent Ksh9,600 extra to your number by mistake. Please send the excess back to 0734667733 now.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"buda nimetuma pesa zaidi kwa wewe kwa makosa Ksh5,800, tuma hiyo extra kwa namba 0745221177 leo asante",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23
+"Habari mteja, kuna error kwenye agent terminal, ulipokea Ksh10,450 zaidi ya kiwango sahihi. Rudisha kwa namba hii 0712334466.",fraud,sw,fake_agent_overpayment,batch7_ai,2026-06-23
+"Dear client, an excess of Ksh7,950 was deposited into your account by error. Kindly send it back to 0701998811 immediately.",fraud,en,fake_agent_overpayment,batch7_ai,2026-06-23
+"mzee wakala alikutumia extra Ksh4,550 kwa kosa, tuma hiyo pesa kwa namba 0789556633 leo bro asante sana",fraud,sheng,fake_agent_overpayment,batch7_ai,2026-06-23

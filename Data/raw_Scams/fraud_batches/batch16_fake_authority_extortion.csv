@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Hujambo, Polisi Trafiki, gari lako limepigwa picha ukivuka taa nyekundu Westlands. Tuma Ksh3,500 fine kwa namba 0712334455 leo.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is Traffic Police, your vehicle was caught overspeeding on camera. Pay the Ksh4,000 fine to 0745998822 to avoid court summons.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda NTSA imeona faini ya zamani ya Ksh2,800 kwenye gari lako, lipa kwa namba 0701887744 leo kabla wakufungie logbook",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, Askari Polisi, nimekamata mtoto wako akiwa na bangi. Tuma Ksh5,500 kwa namba 0789556699 ndio nimuachie bila kesi.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is KRA Compliance Unit, your business has unpaid tax penalties of Ksh6,200. Pay now to 0712445599 to avoid asset seizure.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"mse hii ni traffic officer, gari yako imepigwa picha ikiwa overloaded, tuma Ksh3,000 fine kwa namba 0734667722 leo",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari kutoka Kituo cha Polisi, ndugu yako amekamatwa akiwa na bidhaa za magendo. Tuma Ksh4,800 kwa 0701223399.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"NTSA Notice: Your vehicle logbook will be suspended due to unpaid fines totaling Ksh5,400. Settle now via 0745889922 today.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda hii ni KRA officer, biashara yako ina deni la kodi Ksh7,200, lipa kwa namba 0712998877 leo kabla wakufungie shop",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari wa Usalama, gari lako limeonekana na vipuri vilivyoibwa. Tuma Ksh6,000 kwa namba 0789221144 sasa.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Traffic Department, your matatu was recorded carrying excess passengers. Pay the Ksh3,750 penalty to 0701556633.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"niaje msee, NTSA imeona gari yako haina insurance valid, lipa Ksh2,950 fine kwa namba 0745112277 leo kabla kufungiwa",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari Polisi wa Mazingira, biashara yako imekiuka sheria za taka. Tuma Ksh4,300 fine kwa namba 0712889933.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is Immigration Department, your passport application has an outstanding fee of Ksh5,900. Pay to 0734556688 to avoid delay.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda hii ni Polisi wa Usalama wa Barabara, gari lako lilipigwa picha ukifanya overtaking hatari. Tuma Ksh3,300 kwa 0701776655.",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Mkaguzi wa NEMA, kiwanda chako kimekiuka sheria za mazingira. Lipa faini ya Ksh8,500 kwa namba 0745667711.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the County Government Inspectorate, your business permit has expired. Pay the renewal fine of Ksh4,600 to 0789112255.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"mzee NTSA imeona gari yako haina speed governor, lipa Ksh2,700 fine kwa namba 0712334477 leo kabla wakukamate",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari kutoka Idara ya Uhamiaji, kitambulisho chako kina tatizo. Tuma Ksh3,950 kwa namba 0701998822 leo.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Drug Enforcement Unit, your number was linked to a reported case. Pay Ksh7,000 to 0745221199 to clear your name.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda hii ni KRA, umekosea kulipa kodi ya mwaka huu, lipa Ksh6,400 fine kwa namba 0734998866 leo bila kuchelewa",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari Polisi wa Trafiki, gari lako lilipigwa picha kwenye barabara ya kasi bila bima. Tuma Ksh5,100 kwa 0712667744.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the City Council Inspectorate, your shop license has violations totaling Ksh4,900. Pay now to 0789556677 to avoid closure.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"niaje buda, hii ni Polisi wa Forodha, mzigo wako umekamatwa border, tuma Ksh8,200 kwa namba 0701445588 leo",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari kutoka Idara ya Usalama Barabarani, gari yako ilipigwa picha overlapping. Tuma Ksh3,650 kwa 0745889911.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Anti-Corruption Unit, your name is linked to an ongoing investigation. Pay Ksh9,500 to 0712998855 to clear it now.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda NTSA imeona gari yako haina inspection sticker, lipa Ksh2,450 fine kwa namba 0734556699 leo kabla kufungiwa",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Mkuu wa Polisi wa Wilaya, mtoto wako amekamatwa na kesi ndogo. Tuma Ksh5,750 kwa namba 0701887766 sasa.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Health Inspectorate, your restaurant has hygiene violations totaling Ksh6,900. Pay now to 0745112288 to avoid shutdown.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"niaje msee, hii ni Polisi wa Mazingira, biashara yako imepigwa fine ya Ksh4,100, lipa kwa namba 0712445566 leo",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari Polisi, gari lako lilipigwa picha kwenye njia ya watembea kwa miguu. Tuma Ksh3,200 kwa namba 0789221166.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Liquor Licensing Board, your bar permit shows unpaid penalties of Ksh7,400. Pay to 0701556644 to avoid closure today.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda hii ni Idara ya Forodha, vifaa vyako vimekamatwa airport, lipa Ksh10,000 kwa namba 0745667799 leo kabla kuharibiwa",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Mkaguzi wa NTSA, gari lako halina fire extinguisher kama sheria inavyohitaji. Tuma Ksh2,600 kwa 0712889944.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the County Revenue Office, your land has unpaid rates totaling Ksh8,800. Pay now to 0701998833 to avoid auction notice.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"mse hii ni Polisi wa Usalama, gari yako ilionekana ikipita stage ya boda bila kibali, tuma Ksh3,450 kwa namba 0734221188.",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari kutoka Kituo cha Polisi cha Kati, kesi yako ya zamani imefunguliwa tena. Tuma Ksh6,300 kwa 0745998822.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Wildlife Service, your land borders a protected area with violations. Pay the Ksh5,200 fine to 0712556677 today.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda hii ni NTSA tena, gari lako halina reflective stickers, lipa Ksh1,950 fine kwa namba 0701445599 leo kabla kufungiwa",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Polisi wa Idara ya Fedha, akaunti yako ya benki imehusishwa na ulaghai. Tuma Ksh7,650 kwa namba 0789112277.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Education Ministry Inspectorate, your school has unpaid registration penalties of Ksh9,100. Pay to 0745889933 now.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"niaje buda, hii ni Polisi wa Trafiki, gari lako lilipigwa picha ukiwa na simu ukiendesha, tuma Ksh3,850 kwa namba 0712998811.",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Mkuu wa Polisi wa Usalama wa Mtaa, kuna ripoti ya mtoto wako kufanya makosa. Tuma Ksh4,750 kwa 0701776644.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Building Inspectorate, your construction site has safety violations totaling Ksh6,650. Pay now to 0734667733 today.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"buda hii ni Polisi wa Usalama wa Barabara, lori lako lilibebea mzigo zaidi ya kiwango, lipa Ksh5,300 kwa namba 0745221177.",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23
+"Habari, mimi ni Askari kutoka Idara ya Usalama wa Chakula, biashara yako imekiuka viwango. Tuma Ksh4,400 kwa namba 0712334466.",fraud,sw,fake_authority_extortion,batch16_ai,2026-06-23
+"This is the Fisheries Department, your boat operation has unpaid licensing fees of Ksh3,900. Pay now to 0701998811 to continue.",fraud,en,fake_authority_extortion,batch16_ai,2026-06-23
+"mzee hii ni Polisi wa Trafiki, gari lako lilipigwa picha ukikosa seatbelt, tuma Ksh2,250 fine kwa namba 0789556633 leo.",fraud,sheng,fake_authority_extortion,batch16_ai,2026-06-23

@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Habari mteja, namba yako itahamishwa kwa SIM mpya kwa sababu ya uharibifu ulioripotiwa. Tuma PIN yako kwa 0712334455 kuzuia uhamisho.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your SIM card will be replaced due to a reported damage request. If this wasn't you, send your PIN to 0745998822 to cancel it now.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda kuna request ya kubadilisha SIM yako, kama hiyo si wewe tuma PIN kwa 0701887744 sasa ndio tucancel",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari: Tumepokea ombi la kuhamisha namba yako kwa simu mpya. Tuma PIN yako kwa 0789556699 kuzuia uhamisho usioidhinishwa.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"SIM Swap Alert: A request has been made to transfer your number to a new SIM. Cancel it by sending your PIN to 0712445599 now.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"mse kuna mtu anatry kubadilisha SIM yako somewhere, tuma PIN kwa 0734667722 ndio tublock huyo before akufanyie hujuma",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Habari, namba yako iko hatarini kuhamishwa kwa SIM nyingine bila ruhusa. Tuma PIN yako sasa kwa 0701223399 kuzuia hili.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your line is scheduled for SIM replacement in 30 minutes. If you did not request this, send your PIN to 0745889922 to stop it.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda kuna SIM swap request kwa namba yako leo, kama si wewe tuma PIN kwa 0712998877 mapema kabla mtu apate access",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari kutoka Safaricom: Mtu fulani amewasilisha ombi la kubadilisha SIM yako. Tuma PIN kwa namba 0789221144 kuzuia.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Notice: We've received a SIM swap request for your number from a different location. Send your PIN to 0701556633 to block it.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"niaje msee, namba yako iko risk ya kuhamishwa kwa SIM nyingine, tuma PIN kwa 0745112277 ndio tucancel hiyo request",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Habari mteja, ombi la kubadilisha SIM yako limepokelewa kutoka eneo lisilo la kawaida. Tuma PIN sasa kwa 0712889933.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your number is at risk of being ported to another network without your consent. Confirm your identity by sending PIN to 0734556688.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda kuna mtu anataka kuhamisha namba yako kwa SIM yake, tuma PIN sasa kwa 0701776655 ndio tumstop kabla apate control",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari: Tumeona shughuli ya kubadilisha SIM kwenye namba yako. Tuma PIN yako kwa namba 0745667711 kuzuia uhamisho.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"SIM Replacement Notice: Your card will be deactivated and replaced unless you cancel by sending your PIN to 0789112255 now.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"mzee namba yako iko process ya kuhamishwa SIM bila wewe, tuma PIN kwa namba 0712334477 kabla iende mbali sana",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Habari, kuna ombi la kubadilisha SIM kwa namba yako lililowasilishwa leo asubuhi. Tuma PIN sasa kwa 0701998822 kuzuia.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your number has been flagged for an unauthorized SIM swap request. Send your PIN to 0745221199 immediately to prevent it.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda kuna error report kwa SIM yako, lazima uconfirm na PIN kwa 0734998866 ndio system isikamilishe huo uhamisho",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari kutoka Vodacom: Namba yako iko kwenye hatari ya kuhamishwa kwa SIM mpya. Tuma PIN yako kwa 0712667744 sasa.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your SIM card status shows a pending transfer initiated from another device. Cancel by sending your PIN to 0789556677 now.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"mse hii ni alert ya SIM swap, kama hujarequest tuma PIN kwa namba 0701445588 ndio tublock huyo mtu anayetry",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Habari mteja, system imegundua jaribio la kubadilisha SIM yako kutoka eneo jingine. Tuma PIN kwa 0745889911 kuzuia.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Notice: A SIM card replacement for your number is in progress. If unauthorized, send your PIN to 0712998855 to stop it now.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda kuna mtu anatry kupata namba yako kwa SIM nyingine, tuma PIN kwa 0734556699 sasa kabla wakupate access kabisa",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari: Tumepokea taarifa ya kuomba SIM mpya kwa namba yako. Tuma PIN yako kwa namba 0701887766 kuzuia uhamisho.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your line shows an active SIM swap process initiated remotely. Send your PIN to 0745112288 to cancel the request immediately.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"niaje buda, namba yako iko risk ya kuhamishwa leo, tuma PIN kwa 0712445566 ndio tucancel kabla mtu mwingine apate control",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Habari, kuna ombi la kubadilisha SIM ya namba yako lililotumwa kutoka simu nyingine. Tuma PIN sasa kwa 0789221166 kuzuia.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your number is being processed for a SIM transfer to a different device. Block this by sending your PIN to 0701556644 now.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda system imeona SIM swap request kwa namba yako, tuma PIN kwa namba 0745667799 ndio tumstop huyo bila kuchelewa",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari kutoka Safaricom: Namba yako iko kwenye orodha ya kubadilishwa SIM leo. Tuma PIN yako kwa 0712889944 sasa.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your SIM has triggered a security flag due to an unauthorized swap attempt. Send your PIN to 0701998833 to resolve this now.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"mse kuna SIM swap inayoendelea kwa namba yako, tuma PIN kwa 0734221188 ndio system iisitishe kabla ikamilike",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Habari mteja, ombi la SIM mpya kwa namba yako limepokelewa kutoka eneo tofauti. Tuma PIN kwa namba 0745998822 sasa.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Notice: Your number is flagged for a SIM swap initiated outside your usual location. Send your PIN to 0712556677 to cancel it.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda hii ni warning ya SIM swap, kama si wewe tuma PIN kwa namba 0701445599 mapema kabla mtu apate access kamili",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari: Tumepokea jaribio la kuhamisha namba yako kwa SIM nyingine leo jioni. Tuma PIN kwa 0789112277 kuzuia.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your account shows a pending SIM replacement request from an unrecognized source. Send your PIN to 0745889933 to stop it.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"niaje msee, kuna mtu anatry kuhack namba yako kupitia SIM swap, tuma PIN kwa 0712998811 sasa ndio tumblock",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Habari, namba yako imewekwa kwenye mchakato wa kubadilishwa SIM bila idhini yako. Tuma PIN kwa namba 0701776644 sasa.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your SIM swap request is being processed. If you didn't initiate this, send your PIN to 0734667733 immediately to cancel.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"buda kuna SIM mpya inarequest namba yako, tuma PIN kwa namba 0745221177 ndio tusort hii issue kabla ichelewe",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23
+"Tahadhari kutoka M-Pesa: SIM yako iko hatarini kuhamishwa leo. Tuma PIN yako kwa namba 0712334466 sasa kuzuia upotevu.",fraud,sw,sim_swap_attempt,batch10_ai,2026-06-23
+"Your line has an active port-out request to another carrier. Cancel this unauthorized transfer by sending your PIN to 0701998811.",fraud,en,sim_swap_attempt,batch10_ai,2026-06-23
+"mzee namba yako iko kwenye hatari ya kuporotiwa leo, tuma PIN kwa 0789556633 sasa hivi kabla mtu mwingine apate access",fraud,sheng,sim_swap_attempt,batch10_ai,2026-06-23

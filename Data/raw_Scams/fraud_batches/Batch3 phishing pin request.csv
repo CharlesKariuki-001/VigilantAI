@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"M-PESA Alert: Suspicious activity detected on your account. Reply with your PIN to 0712334477 to verify your identity within 15 minutes.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari kutoka Safaricom: Akaunti yako imeonyesha matumizi ya ajabu. Tuma PIN yako kwa 0745998811 sasa kuthibitisha umiliki.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"buda M-Pesa imeona shida na account yako, tuma PIN kwa 0701887744 ndio wakuverify kabla ifrozen kabisa",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Your M-Pesa line has been flagged for unusual login from Mombasa. Confirm your identity by sending your PIN to 0789556699 now.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"Habari mteja, mfumo wetu umegundua kuingia kwa akaunti yako kutoka eneo lisilo la kawaida. Tuma PIN kwa 0712445599 kuthibitisha.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"mse kuna mtu anatry kuingia account yako, tuma PIN kwa 0734667722 haraka ndio tublock huyo mtu kabla apate doh yako",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"M-PESA Security: Your account access from an unrecognized device requires verification. Send your 4-digit PIN to 0701223399 immediately.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari: Mtu amejaribu kuingia akaunti yako mara tatu leo. Tuma PIN yako kwa 0745889922 kuthibitisha kuwa ni wewe mwenyewe.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"buda system imeona logout ya ajabu kwa namba yako, piga PIN kwa 0712998877 ndio tuverify uko sawa kabla iblockwa",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Habari, Akaunti yako ya M-Pesa itafungwa baada ya dakika 30 kwa sababu ya verification pending. Tuma PIN kwa 0789221144 kuepuka kufungwa.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"URGENT: Your account will be permanently suspended unless you send your M-Pesa PIN to 0701556633 within the next 20 minutes.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"niaje msee, namba yako imeshow risk ya ajabu kwa M-Pesa system, tuma PIN kwa 0745112277 ndio uweze continue kutumia account",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari kutoka M-Shwari: Akaunti yako inahitaji uthibitisho wa haraka. Tuma PIN yako kwa namba 0712889933 kuepuka kufungiwa huduma.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"Your SIM registration details need urgent confirmation. Send your M-Pesa PIN to 0734556688 today or risk losing access to your line.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"buda M-Pesa imeona transaction ya ajabu kwa account yako, tuma PIN kwa 0701776655 sasa kabla wakufreeze pesa zako zote",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Habari mteja, kuna jaribio la kuhack akaunti yako leo asubuhi. Tuma PIN kwa 0745667711 kuthibitisha na kulinda pesa yako.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"M-PESA Notice: We detected a fraud attempt on your wallet. Confirm your account by sending your PIN to 0789112255 to stop the fraud.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"mzee kuna msee anatry kuhack pesa zako, tuma PIN sasa kwa 0712334477 ndio tumlock nje kabla apate access",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari: Akaunti yako ya M-Pesa imeonyesha shughuli ya udanganyifu. Piga *334# au tuma PIN kwa 0701998822 kuzuia upotevu wa pesa.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"Your account has been temporarily locked due to multiple failed login attempts. Send your PIN to 0745221199 to unlock it immediately.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"buda kuna verification pending kwa namba yako, tuma PIN kwa 0734998866 ndio account isifungwe na ukose access",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Habari, mfumo umetambua kifaa kipya kikiingia kwenye akaunti yako. Tuma PIN kwa 0712667744 kuthibitisha kuwa ni wewe.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"M-Pesa Security Team: Confirm ownership of your account by replying with your secret PIN to 0789556677 within the hour.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"mse system imeona namba mbili zikitry kuingia account yako, tuma PIN kwa 0701445588 sasa ndio tublock outsider",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari kutoka Vodacom: Akaunti yako ya M-Pesa inahitajika kuthibitishwa. Tuma PIN yako kwa 0745889911 ili kuendelea kutumia huduma.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"Your M-Pesa account flagged for review due to irregular activity. Send your PIN to 0712998855 to avoid account freeze.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"buda namba yako imeonekana ikitumika sehemu mbili kwa wakati mmoja, tuma PIN kwa 0734556699 kuthibitisha ni wewe",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Habari mteja, kuna mtu mwingine anajaribu kuingia akaunti yako kutoka Kisumu. Tuma PIN kwa 0701887766 kuzuia uvamizi.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"M-PESA: A login attempt was made from a new device. If this wasn't you, send your PIN to 0745112288 to secure your account now.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"mzee kuna error kwa account yako, lazima uconfirm na PIN kwa 0712445566 kabla mfumo ufunge access yako kabisa",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari: Mfumo wetu umeona kuingia mara nyingi kwenye akaunti yako leo. Tuma PIN yako kwa 0789221166 kuthibitisha usalama wa pesa.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"Your wallet has been linked to a suspicious transaction. Confirm your identity immediately by sending your PIN to 0701556644.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"buda kuna kitu kimeonekana funny kwa account yako leo, tuma PIN sasa kwa 0745667799 ndio wasikufreeze pesa",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Habari, akaunti yako imewekwa kwenye uchunguzi wa muda kwa sababu ya muamala wa ajabu. Tuma PIN kwa 0712889944 kuthibitisha.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"M-Pesa Compliance: Your account requires re-verification today. Reply with your secret PIN to 0701998833 to avoid permanent closure.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"niaje msee, M-Pesa imeona namba yako ikiunganishwa na fraud ring, tuma PIN kwa 0734221188 ndio tuiclear jina lako",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari kutoka M-Pesa: Akaunti yako ina hatari ya kuzuiwa leo. Tuma PIN yako sasa kwa 0745998822 kuepuka kupoteza huduma.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"Your line shows two simultaneous active sessions, which violates our security policy. Send your PIN to 0712556677 to fix this now.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"buda kuna ID verification pending kwa system, tuma PIN kwa namba 0701445599 ndio uweze continue na M-Pesa bila shida",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Habari mteja, kuna mtu amejaribu kubadilisha namba yako ya simu kwenye akaunti ya M-Pesa. Tuma PIN kwa 0789112277 sasa kuzuia.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"M-PESA Alert: Your account number has been linked to a reported fraud case. Send your PIN to 0745889933 to clear your name today.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"mse system iko na red flag kwa account yako kutokana na muamala usiojulikana, tuma PIN kwa 0712998811 sasa hivi",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Tahadhari: Tumegundua kifaa kipya kikitumia akaunti yako bila ruhusa. Tuma PIN kwa namba 0701776644 kuzuia upotevu wa pesa.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"Your account has triggered our fraud monitoring system. Confirm your PIN by replying to 0734667733 within the next 10 minutes.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"buda kuna shida ya verification kwa M-Pesa yako, tuma PIN kwa 0745221177 kabla system ikulock nje ya account yako",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23
+"Habari, akaunti yako imeonekana ikitumiwa sehemu mbili kwa muda mmoja. Tuma PIN kwa 0712334466 kuthibitisha umiliki halisi.",fraud,sw,phishing_pin_request,batch3_ai,2026-06-23
+"M-Pesa System Notice: Your PIN must be re-confirmed due to a recent security update. Send it to 0701998811 to continue using your wallet.",fraud,en,phishing_pin_request,batch3_ai,2026-06-23
+"mzee namba yako imewekwa kwenye watch list kimakosa, tuma PIN kwa 0789556633 ndio tutoe jina lako kwenye list hiyo",fraud,sheng,phishing_pin_request,batch3_ai,2026-06-23

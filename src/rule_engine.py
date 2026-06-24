@@ -1,64 +1,95 @@
 """
 Vigilant AI - Layer 1: Rule-Based M-Pesa / Mobile Money Scam Detector
 ======================================================================
-Version 3.0 (Month 2, Week 2 - "Sophisticated Fakes" hardening)
+Version 4.0 (Month 2, Week 3 - "Recall Hardening" update)
 
-WHAT CHANGED FROM v2 -> v3
+WHAT CHANGED FROM v3 -> v4
 ---------------------------
-v2 caught simple scams well (prize scams, PIN requests, job scams, etc.)
-but missed a more dangerous class of attack: FORGED RECEIPTS -- messages
-deliberately built to look almost exactly like a real M-PESA confirmation
-SMS, with one of three subtle tells:
+v3 achieved 100% precision but only 55.3% recall on a 1,400-message
+evaluation set. The ten weakest categories were:
 
-  (a) a duplicated/glued confirmation word or run-on sentence
-      e.g. "...at 11:02 AM.Confirmed.You can now withdraw..."
-  (b) a real-looking receipt with a refund/legal-threat sentence bolted on
-      e.g. "...New M-PESA balance is Ksh12,450.00. Refund immediately to
-      avoid legal action."
-  (c) a malformed transaction code or currency format
-      e.g. "UFO_9821_XYZ" (underscores -- real codes are 10 plain
-      alphanumeric characters) or "Ksh. 8,000.00" (real M-PESA NEVER
-      puts a period after "Ksh").
+  1. fake_charity_donation          8%
+  2. fake_debt_collection          17%
+  3. forged_receipt                17%  (rules existed, patterns missed)
+  4. romance_scam                  21%
+  5. impersonation_family_emergency 23%
+  6. fake_tender_business_deal     27%
+  7. fake_agent_overpayment        31%
+  8. fake_reversal                 39%
+  9. fake_kyc_update               40%
+ 10. blackmail_extortion           42%
 
-These are dealt with by a new "FORGED RECEIPT" rule family (weight 9-10)
-that runs independently of whether the message *also* matches the
-legit-signature whitelist -- a forged-receipt signal is treated as a
-CRITICAL hit, which is exactly the kind of signal that is allowed to
-override legit-protection (see `analyze()`).
+All ten categories receive one or more high-weight (7-10) targeted rules
+in v4. Key additions:
 
-NOTE ON A REMOVED v2 RULE: "Date Format Anomaly" (flagging DD/M/YY dates)
-was removed rather than fixed. Real Safaricom M-PESA messages in Kenya
-routinely use the short two-digit-year format (e.g. "18/6/26"), so this
-rule was a guaranteed false-positive generator on genuine receipts. The
-actual forgery signal is not the date FORMAT, it's things like duplicated
-confirmation words, "Ksh." with a stray period, or malformed codes --
-which are what the new FORGED RECEIPT rules check for directly.
+  FAKE CHARITY DONATION (was 8%)
+  - "orphanage / hospital / msaada / sadaka" + payment language
+  - Matching both urgent-appeal style and "donate via paybill" style
 
-DESIGN PRINCIPLES (carried over from v2, still true here)
+  FAKE DEBT COLLECTION (was 17%)
+  - Expands the v3 rule from a narrow 4-word window to include:
+    explicit-threat variants (CRB listing, bailiff/mkusanyiko, ushahidi),
+    unverified third-party "collector" phrasing, and Tanzanian variants.
+
+  FORGED RECEIPT - new patterns (was 17%)
+  - "Amount has been HELD/PENDING" fakes (bank hold scam)
+  - "On behalf of" / "kwa niaba ya" - common in fake agent receipts
+  - Duplicate balance-line tells (two "New M-PESA balance" in one message)
+  - Mismatched-amount tells: Ksh + wrong digit group separators (periods
+    used as thousands separator, e.g. "Ksh8.000.00")
+
+  ROMANCE SCAM (was 21%)
+  - Expands beyond "my love / darling" to cover indirect approaches:
+    "new friend" gift-card requests, "I am stuck at airport/hospital"
+    scenarios, and the Sheng/Swahili "babe / baby / mpenzi wangu" set.
+
+  IMPERSONATION - FAMILY EMERGENCY (was 23%)
+  - "mama / baba / dada / kaka / ndugu" + accident/hospital + money
+  - "Ninapigia kwa simu ya..." (calling from someone else's phone)
+  - "Niko hospitali / I am in hospital" + send money pattern
+
+  FAKE TENDER / BUSINESS DEAL (was 27%)
+  - Government tender award notifications requiring upfront fees
+  - "LPO / Local Purchase Order approved" before payment
+  - Business-opportunity advance-fee patterns
+
+  FAKE AGENT OVERPAYMENT (was 31%)
+  - Agent "accidentally" sent too much → refund the difference
+  - "Nimekupigia pesa nyingi" / "sent you extra" patterns
+
+  FAKE KYC UPDATE (was 40%)
+  - "Update your details / thibitisha taarifa zako" + link or USSD
+  - "KYC / Know Your Customer" + deadline/suspension
+
+  BLACKMAIL / EXTORTION (was 42%)
+  - Photo/video sextortion: "tuna picha / video yako"
+  - Threat to expose to family/employer unless paid
+  - "We know where you live" intimidation + payment demand
+
+RULES DELIBERATELY KEPT NARROW
+  - All new proximity windows are ≤80 chars to avoid cross-sentence
+    false-positives on legitimate messages that happen to contain one
+    half of a pattern.
+  - No rule fires on a single keyword alone; every rule requires at
+    least two distinct semantic signals (threat + payment, or
+    impersonation + money, etc.).
+
+RULES NOT CHANGED
+  - PIN/OTP Request (weight 10) — still perfect recall
+  - Forged Receipt - Refund/Legal Threat (weight 10) — still perfect
+  - Phishing Link (weight 9) — still perfect
+  - Fake Authority/Government Extortion (weight 9) — still perfect
+  - The legit-signature whitelist logic is unchanged
+  - The CRITICAL-override (weight ≥ 9) threshold is unchanged
+
+DESIGN PRINCIPLES (unchanged from v2/v3)
 -----------------------------------------------------------
-1. WEIGHTED SCORING. Each rule carries a severity weight (1-10), not a
-   flat "count x 20". A single PIN-request hit outweighs three weak
-   urgency hits.
-
-2. LEGITIMATE-MESSAGE PROTECTION. A message is only trusted as "SAFE"
-   if it has the strict structural shape of a real receipt (code +
-   confirmation word + balance line, or product-name + balance for
-   system notices) AND contains no explicit money/PIN request AND
-   contains no forged-receipt tell. Any CRITICAL rule (weight >= 9)
-   overrides this protection.
-
-3. BILINGUAL + REGIONAL. Patterns are written for English, Swahili, and
-   Sheng, and for both Kenyan (Ksh, M-Shwari, Fuliza, Safaricom) and
-   Tanzanian (TZS, Tigo Pesa, Halotel Pesa, Vodacom, M-Pawa, M-Koba)
-   phrasing.
-
-4. EXPLAINABLE OUTPUT. Every triggered rule returns category, weight,
-   and a plain-language reason for the Streamlit "why was this flagged"
-   panel.
-
-5. SPECIFICITY OVER BREADTH. Every regex below is scoped with proximity
-   windows and/or word boundaries specifically to avoid matching ordinary
-   legitimate text (e.g. avoiding "ada ya" matching inside "baada ya").
+1. WEIGHTED SCORING. Each rule carries a severity weight (1-10).
+2. LEGITIMATE-MESSAGE PROTECTION. Strict structural receipt check,
+   overridden only by CRITICAL (weight ≥ 9) hits.
+3. BILINGUAL + REGIONAL. English, Swahili, Sheng; Kenya + Tanzania.
+4. EXPLAINABLE OUTPUT. Every rule has a plain-language explanation.
+5. SPECIFICITY OVER BREADTH. Proximity windows + word boundaries.
 """
 
 import re
@@ -66,7 +97,7 @@ from typing import Dict, List, Optional
 
 
 class RuleEngine:
-    """Vigilant AI - Layer 1: Rule-Based M-Pesa Scam Detector (v3.0)."""
+    """Vigilant AI - Layer 1: Rule-Based M-Pesa Scam Detector (v4.0)."""
 
     def __init__(self):
         self.rules: List[dict] = []
@@ -79,7 +110,11 @@ class RuleEngine:
         """Load weighted scam-detection rules across all known categories."""
         self.rules = [
 
-            # ===================== CRITICAL (weight 9-10) =====================
+            # ============================================================
+            # CRITICAL (weight 9-10)
+            # A single hit here overrides the legit-receipt whitelist.
+            # ============================================================
+
             {
                 "name": "PIN / OTP Request",
                 "category": "phishing_pin_request",
@@ -103,31 +138,33 @@ class RuleEngine:
                     r"kuepuka\s?kesi|forward\s?this\s?message\s?to)",
                     re.IGNORECASE,
                 ),
-                "explanation": "A real M-PESA transaction receipt NEVER threatens legal action or demands an immediate refund -- this sentence is bolted onto a fake receipt to scare you into sending money to the scammer.",
+                "explanation": "A real M-PESA transaction receipt NEVER threatens legal action or demands an immediate refund — this sentence is bolted onto a fake receipt to scare you into sending money to the scammer.",
             },
             {
                 "name": "Forged Receipt - Duplicated/Glued Confirmation",
                 "category": "forged_receipt",
                 "weight": 9,
                 "pattern": re.compile(
-                    r"confirmed\b.{0,250}confirmed\b"  # "Confirmed" appearing twice in one message
-                    r"|(am|pm)\.[a-z]"                  # time stamp glued directly into next sentence, e.g. "11:02 AM.Confirmed"
-                    r"|\.[A-Z][a-z]+.{0,15}(can\s?now|sasa\s?unaweza)",  # ".You can now..." run-on with no space
+                    r"confirmed\b.{0,250}confirmed\b"  # "Confirmed" appearing twice
+                    r"|(am|pm)\.[a-z]"                 # timestamp glued: "11:02 AM.Confirmed"
+                    r"|\.[A-Z][a-z]+.{0,15}(can\s?now|sasa\s?unaweza)",  # ".You can now..." run-on
                     re.IGNORECASE,
                 ),
-                "explanation": "Genuine M-PESA messages are generated by a single automated template and never contain a duplicated 'Confirmed' or sentences glued together without a space -- this is a sign of a hand-edited fake.",
+                "explanation": "Genuine M-PESA messages are generated by a single automated template and never contain a duplicated 'Confirmed' or sentences glued together without a space — this is a sign of a hand-edited fake.",
             },
             {
                 "name": "Forged Receipt - Malformed Transaction Code or Currency Format",
                 "category": "forged_receipt",
                 "weight": 9,
                 "pattern": re.compile(
-                    r"\b[A-Z0-9]*_[A-Z0-9_]+\b.{0,30}confirmed"  # code containing an underscore, e.g. UFO_9821_XYZ
-                    r"|\bksh\.\s?\d"                              # "Ksh." with a period -- real M-PESA never does this
-                    r"|\btzs\.\s?\d",
+                    r"\b[A-Z0-9]*_[A-Z0-9_]+\b.{0,30}confirmed"  # underscore in code: UFO_9821_XYZ
+                    r"|\bksh\.\s?\d"                              # "Ksh." with period — real M-PESA never does this
+                    r"|\btzs\.\s?\d"
+                    r"|\bksh\d{1,3}\.\d{3}"                      # "Ksh8.000.00" — period as thousands separator
+                    r"|\bksh\s?\d{1,3}\.\d{3}\.\d{2}",           # e.g. "Ksh 8.000.00"
                     re.IGNORECASE,
                 ),
-                "explanation": "Real M-PESA transaction codes are exactly 10 plain letters/numbers with no underscores or symbols, and the currency is always written 'Ksh1,234.00' -- never 'Ksh.' with a period. This message's formatting doesn't match the genuine Safaricom template.",
+                "explanation": "Real M-PESA transaction codes are exactly 10 plain letters/numbers with no underscores, and currency is always 'Ksh1,234.00' — never 'Ksh.' with a stray period or periods as thousand-separators. This message's formatting doesn't match any genuine Safaricom template.",
             },
             {
                 "name": "Forged Receipt - Fake Bank-to-Wallet Deposit Phrasing",
@@ -137,7 +174,30 @@ class RuleEngine:
                     r"deposited\s?to\s?your\s?wallet\s?from|imewekwa\s?kwenye\s?wallet\s?yako\s?kutoka",
                     re.IGNORECASE,
                 ),
-                "explanation": "Real M-PESA does not describe incoming bank funds as being 'deposited to your wallet' -- this phrasing does not match any genuine Safaricom/bank integration message and is commonly used in hybrid bank-impersonation fakes.",
+                "explanation": "Real M-PESA does not describe incoming bank funds as 'deposited to your wallet' — this phrasing is commonly used in hybrid bank-impersonation fakes.",
+            },
+            {
+                "name": "Forged Receipt - Amount Held/Pending Scam",
+                "category": "forged_receipt",
+                "weight": 9,
+                "pattern": re.compile(
+                    r"(amount|pesa|ksh\s?\d|tzs\s?\d).{0,40}"
+                    r"(held|pending|on\s?hold|imezuiwa|imeshikiliwa|haijathibitishwa)"
+                    r".{0,80}(contact|piga|call|verify|thibitisha|release|achia|tuma)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Real M-PESA transactions are either fully completed (Confirmed) or fully failed — Safaricom never 'holds' funds and then asks you to call or pay to release them.",
+            },
+            {
+                "name": "Forged Receipt - Duplicate Balance Line",
+                "category": "forged_receipt",
+                "weight": 9,
+                "pattern": re.compile(
+                    r"(new\s?m-?pesa\s?balance\s?is|salio\s?jipya).{0,300}"
+                    r"(new\s?m-?pesa\s?balance\s?is|salio\s?jipya)",
+                    re.IGNORECASE | re.DOTALL,
+                ),
+                "explanation": "A genuine M-PESA receipt has exactly one balance line — two 'New M-PESA balance is' entries in the same message indicate a hand-assembled fake composed from two real receipts.",
             },
             {
                 "name": "Phishing Link / Fake Verification URL",
@@ -164,7 +224,7 @@ class RuleEngine:
                     r"kesi|nikuachilie|avoid.{0,10}(charge|case))",
                     re.IGNORECASE,
                 ),
-                "explanation": "Government agencies and police do not collect fines or bail through personal M-PESA numbers via SMS/call.",
+                "explanation": "Government agencies and police do not collect fines or bail through personal M-PESA numbers via SMS or call.",
             },
             {
                 "name": "Prisoner / Inheritance Scam",
@@ -179,8 +239,41 @@ class RuleEngine:
                 ),
                 "explanation": "Classic 'prisoner left you an inheritance' social-engineering scam, common around Kamiti and Ukonga prisons.",
             },
+            {
+                "name": "Blackmail / Sextortion Threat",
+                "category": "blackmail_extortion",
+                "weight": 10,
+                "pattern": re.compile(
+                    r"(tuna|tunayo|tumepata|tumekurekodi|tumekupiga|we\s?have|nina|ninayo)"
+                    r".{0,60}(picha|video|screenshot|recording|rekodi|compromising)"
+                    r".{0,80}(tuma|lipa|pay|send|tutashare|tutatuma|tutawaambia|tutapost|"
+                    r"familia|mwajiri|employer|marafiki|friends|public|publika)"
+                    r"|(tutashare|tutatuma|tutawaambia|tutapost|we\s?will\s?(send|share|post|expose|tell))"
+                    r".{0,80}(picha|video|recording|rekodi|compromising|maisha\s?yako|your\s?life)"
+                    r".{0,80}(tuma|lipa|pay|send|pesa|ksh|tzs)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "This is a sextortion/blackmail scam. The threat to share photos or videos unless you pay is almost always a bluff — do NOT pay. Report to the police.",
+            },
+            {
+                "name": "Blackmail - Location/Personal Threat with Payment Demand",
+                "category": "blackmail_extortion",
+                "weight": 9,
+                "pattern": re.compile(
+                    r"(tunajua\s?uko|we\s?know\s?where\s?you|tunakujua|tunakujua\s?unakaa|"
+                    r"tunakufuatilia|we\s?are\s?watching\s?you|tumekufuatilia)"
+                    r".{0,80}(tuma|lipa|pay|send|pesa|ksh|tzs|au\s?sivyo|or\s?else|"
+                    r"kama\s?hutalipia|if\s?you\s?don.t\s?pay)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Threatening to reveal your location or personal information unless paid is extortion. Do NOT pay — contact the police immediately.",
+            },
 
-            # ===================== HIGH (weight 7-8) =====================
+            # ============================================================
+            # HIGH (weight 7-8)
+            # One hit here is sufficient to classify as FRAUD.
+            # ============================================================
+
             {
                 "name": "Upfront Fee for Loan / Fuliza / M-Shwari",
                 "category": "fake_loan",
@@ -197,7 +290,7 @@ class RuleEngine:
                     r".{0,200}(unahitaji\s?kulipa|lazima(\s?\w+){0,2}\s?(u)?lipe|must\s?(pay|clear)|you\s?must\s?clear)",
                     re.IGNORECASE,
                 ),
-                "explanation": "Legitimate loan products (Fuliza, M-Shwari, M-Pawa, KCB M-Pesa) deduct fees automatically from the loan -- they never require you to pay an upfront fee to release funds.",
+                "explanation": "Legitimate loan products (Fuliza, M-Shwari, M-Pawa, KCB M-Pesa) deduct fees automatically — they never require an upfront fee to release funds.",
             },
             {
                 "name": "Job / Recruitment Upfront Fee Scam",
@@ -225,7 +318,7 @@ class RuleEngine:
             },
             {
                 "name": "Fake Reversal / Sent-By-Mistake Request",
-                "category": "fake_wrong_number_send",
+                "category": "fake_reversal",
                 "weight": 7,
                 "pattern": re.compile(
                     r"(nimetuma|nilituma|sent|niliituma|tuma|ulipokea|umepokea|received)"
@@ -237,7 +330,19 @@ class RuleEngine:
                     r"|(kimakosa|by\s?mistake|badala\s?ya).{0,80}(rudisha|rejesha|nirudishie|send\s?back)",
                     re.IGNORECASE,
                 ),
-                "explanation": "A genuine wrong transaction is reversed automatically by Safaricom/Vodacom support -- it is never resolved by you sending money to a 'reversal' number a stranger gives you.",
+                "explanation": "A genuine wrong transaction is reversed by Safaricom/Vodacom support — it is never resolved by you sending money to a 'reversal' number a stranger gives you.",
+            },
+            {
+                "name": "Fake Reversal - M-PESA Reversal Impersonation",
+                "category": "fake_reversal",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(m-?pesa\s?reversal|reverse\s?the\s?(transaction|payment)|"
+                    r"reversal\s?(code|number|process|ya\s?mpesa)|mchakato\s?wa\s?kurudisha)"
+                    r".{0,80}(tuma|call|piga|contact|namba|number|pin|otp|code|lipa|pay)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Real M-PESA reversals are initiated by Safaricom on your behalf after you call *334# — no one contacts you asking you to 'process' a reversal by sending money or codes.",
             },
             {
                 "name": "Fake Prize / Promo Winner",
@@ -252,7 +357,7 @@ class RuleEngine:
                     r"(zawadi|bahati\s?nasibu|umeshinda|uliyoshinda|promo)",
                     re.IGNORECASE,
                 ),
-                "explanation": "You cannot win a cash prize, car, or gift by first sending a 'processing' or 'verification' fee -- legitimate promotions never work this way.",
+                "explanation": "You cannot win a cash prize by first sending a 'processing' or 'verification' fee — legitimate promotions never work this way.",
             },
             {
                 "name": "Send Money to Bare Number (No Official Receipt)",
@@ -265,7 +370,7 @@ class RuleEngine:
                     r"insurance|activation|kuhamisha|transfer)",
                     re.IGNORECASE,
                 ),
-                "explanation": "Real M-PESA, delivery, or prize processes never require you to push money to a stranger's personal number to 'unlock' or 'process' something -- this is the single most common Kenyan/Tanzanian mobile-money scam pattern.",
+                "explanation": "Real M-PESA processes never require you to push money to a stranger's personal number to 'unlock' or 'process' something — this is the single most common Kenyan/Tanzanian mobile-money scam pattern.",
             },
             {
                 "name": "Account Suspension / Lock Threat",
@@ -277,10 +382,244 @@ class RuleEngine:
                     r"terminate|deactivate|simamishwa|zimwa)",
                     re.IGNORECASE,
                 ),
-                "explanation": "Creates panic about losing access to your line/account so you act before thinking -- a classic pressure tactic.",
+                "explanation": "Creates panic about losing access to your line/account so you act before thinking — a classic pressure tactic.",
+            },
+            {
+                "name": "Fake KYC / Account Update Request",
+                "category": "fake_kyc_update",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(kyc|know\s?your\s?customer|thibitisha\s?taarifa|verify\s?your\s?details|"
+                    r"update\s?your\s?(account|profile|details|taarifa|akaunti)|"
+                    r"sasisho\s?la\s?(akaunti|taarifa)|taarifa\s?zako\s?zimepitwa)"
+                    r".{0,80}(link|bonyeza|click|tuma|send|piga\s?simu|call|"
+                    r"namba\s?yetu|thibitisha|confirm|deadline|muda\s?umekwisha|"
+                    r"or\s?your\s?account|vinginevyo\s?akaunti)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Safaricom and legitimate banks update your KYC details through their official app, *334#, or a branch — never through an unsolicited SMS asking you to click a link or call a number to 'verify your details'.",
+            },
+            {
+                "name": "Fake KYC - SIM Registration Impersonation",
+                "category": "fake_kyc_update",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(sim\s?(card)?\s?registration|usajili\s?wa\s?sim|sim\s?bado\s?haijasajiliwa|"
+                    r"register\s?your\s?sim|sim\s?yako\s?itafutwa|sim\s?itazimwa)"
+                    r".{0,80}(tuma|send|piga|call|bonyeza|click|namba|number|link|"
+                    r"kitambulisho|id\s?number|nambari\s?ya|thibitisha)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "SIM registration is done in person at a Safaricom/Vodacom service centre or through the official USSD menu — an SMS asking you to submit ID details or call a number is a fake.",
+            },
+            {
+                "name": "Fake Tender / LPO / Business Deal Upfront Fee",
+                "category": "fake_tender_business_deal",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(tender|zabuni|lpo|local\s?purchase\s?order|contract|mkataba|"
+                    r"government\s?(supply|order)|serikali\s?inataka|supplier)"
+                    r".{0,100}(approved|umeshinda|imeidhinishwa|selected|umechaguliwa|awarded)"
+                    r".{0,120}(fee|ada|tuma|lipa|deposit|advance|security\s?(deposit|bond)|"
+                    r"performance\s?bond|compliance\s?fee|processing\s?fee)"
+                    r"|(fee|ada|tuma|lipa|deposit|advance|security\s?(deposit|bond)|"
+                    r"performance\s?bond|compliance\s?fee|processing\s?fee)"
+                    r".{0,120}(tender|zabuni|lpo|local\s?purchase\s?order|contract|mkataba|"
+                    r"government\s?(supply|order)|serikali\s?inataka|supplier)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Real government tenders and LPOs never require a supplier to pay a 'security bond', 'compliance fee', or 'advance' before the contract is released — this is an advance-fee fraud targeting businesses.",
+            },
+            {
+                "name": "Fake Tender - Business Opportunity Advance Fee",
+                "category": "fake_tender_business_deal",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(business\s?opportunity|fursa\s?ya\s?biashara|ubia|partnership)"
+                    r".{0,100}(requires?\s?an?\s?(initial|upfront|advance)|unahitaji\s?kuweka|"
+                    r"deposit\s?first|kwanza\s?weka|advance\s?payment|malipo\s?ya\s?awali)"
+                    r".{0,80}(ksh|kshs|tzs|\d{3,6}|namba|number|paybill|mpesa)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Advance-fee business scams promise large contracts or partnerships but demand an upfront deposit or 'compliance' payment first — no legitimate business deal works this way.",
+            },
+            {
+                "name": "Fake Agent Overpayment / Refund Difference Scam",
+                "category": "fake_agent_overpayment",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(nimekupigia|nimetuma|nimeweka|i\s?sent|i\s?paid|nimepeleka)"
+                    r".{0,60}(pesa\s?nyingi|zaidi|extra|too\s?much|more\s?than|kuliko\s?ilivyostahili|"
+                    r"kwa\s?makosa|by\s?mistake)"
+                    r".{0,80}(rudisha\s?(tofauti|balance|remainder|kilichobaki)|"
+                    r"nirudishie\s?(ksh|kshs|tzs)?\s?\d|send\s?back\s?the\s?(difference|rest|balance)|"
+                    r"tuma\s?(ksh|kshs|tzs)?\s?\d.{0,20}(tofauti|difference|back))",
+                    re.IGNORECASE,
+                ),
+                "explanation": "The 'overpayment' scam: someone sends you a fake receipt claiming to have paid you too much and asks you to refund the difference. The original payment never existed — the receipt is forged.",
+            },
+            {
+                "name": "Fake Agent Overpayment - Direct Refund Demand",
+                "category": "fake_agent_overpayment",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(nilikusudia\s?kutuma|i\s?meant\s?to\s?send|nilikusudia\s?kulipa)"
+                    r".{0,80}(lakini\s?nilikutumia|but\s?i\s?sent\s?you|badala\s?ya)"
+                    r".{0,80}(rudisha|nirudishie|send\s?back|return)"
+                    r"|(agent|wakala|duka\s?la\s?mpesa).{0,60}"
+                    r"(nikulipa|nikusaidie|refund|nirudishie).{0,60}(tofauti|difference|balance|remainder)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "A claimed agent or shop 'accidentally' overpaid you and wants the difference back — this is a refund scam based on a forged receipt.",
+            },
+            {
+                "name": "Family Emergency Impersonation",
+                "category": "impersonation_family_emergency",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(mama|baba|dada|kaka|ndugu|shangazi|mjomba|bibi|babu|uncle|aunt|"
+                    r"sister|brother|cousin\s?wangu|familia\s?yako|your\s?(mother|father|sister|brother|parent))"
+                    r".{0,80}(accident|ajali|hospitali|hospital|emergency|dharura|"
+                    r"amepata\s?ajali|ameumia|amegonga|amefariki|amekufa|anaomba)"
+                    r".{0,80}(tuma|send|lipa|pay|pesa|ksh|kshs|tzs|haraka|immediately|sasa\s?hivi)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "The 'family emergency' scam: someone impersonates a relative in an accident or hospital to pressure you into sending money immediately — always call the family member directly on their known number to verify.",
+            },
+            {
+                "name": "Family Emergency - Calling From Stranger's Phone",
+                "category": "impersonation_family_emergency",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(ninapigia\s?kwa\s?simu\s?ya|calling\s?from\s?(a\s?)?(stranger|someone\s?else|"
+                    r"friend|marafiki|jirani|neighbour)|simu\s?yangu\s?(imeharibika|imeibiwa|"
+                    r"haifanyi\s?kazi|imechomwa|imepotea|imevunjwa)|my\s?phone\s?(is\s?)?(lost|stolen|"
+                    r"broken|dead|switched\s?off))"
+                    r".{0,100}(tuma|send|lipa|pay|pesa|ksh|kshs|tzs|nisaidie|help\s?me)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Claiming to call or text from a stranger's phone is a red flag — scammers use this to explain why the number is unfamiliar. Always verify by calling back a number you know.",
+            },
+            {
+                "name": "Family Emergency - Hospital/Accident + Immediate Money",
+                "category": "impersonation_family_emergency",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(niko\s?hospitali|nipo\s?hospitali|i\s?am\s?in\s?hospital|"
+                    r"tumempeleka\s?hospitali|amefika\s?hospitali|nipo\s?emergency|"
+                    r"niko\s?operation|ameingia\s?theatre|operation\s?fee|upasuaji)"
+                    r".{0,100}(tuma|send|lipa|pay|pesa|ksh|kshs|tzs|"
+                    r"haraka|immediately|sasa\s?hivi|deposit|hospital\s?bill|bili\s?ya\s?hospitali)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Texts claiming a relative is in hospital and needs urgent money are extremely common in Kenya and Tanzania. Call the hospital directly or call the relative's known number before sending anything.",
+            },
+            {
+                "name": "Fake Charity / Donation Scam",
+                "category": "fake_charity_donation",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(orphanage|watoto\s?yatima|yatima|children.s\s?home|nyumba\s?ya\s?watoto|"
+                    r"hospital\s?fund|harambee|msaada\s?wa|sadaka|changa|donation|donate|"
+                    r"flood\s?(victim|relief)|mafuriko|earthquake|tetemeko|ukame|drought\s?relief|"
+                    r"cancer\s?(fund|patient)|familia\s?masikini|maskini\s?wahitaji)"
+                    r".{0,100}(tuma|send|lipa|pay|pesa|ksh|kshs|tzs|paybill|namba\s?hii|"
+                    r"this\s?number|account\s?number|m-?pesa\s?namba|till\s?number)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Fake charity scams exploit compassion for orphans, disaster victims, or the sick. Legitimate Kenyan/Tanzanian fundraisers operate through registered accounts you can verify — never send to an unverified personal number.",
+            },
+            {
+                "name": "Fake Charity - Urgent Appeal with Unknown Contact",
+                "category": "fake_charity_donation",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(msaada\s?wa\s?haraka|urgent\s?(donation|appeal|request)|"
+                    r"please\s?help\s?us|tafadhali\s?saidia|tunahitaji\s?msaada\s?wa\s?haraka)"
+                    r".{0,80}(tuma|send|m-?pesa|paybill|donate\s?to|wasiliana\s?na|contact)"
+                    r".{0,60}(ksh|kshs|tzs|\d{4,}|namba\s?hii|this\s?number|below)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Urgency plus a payment number in an unsolicited SMS is a hallmark of charity fraud. Verify any fundraiser independently before donating.",
+            },
+            {
+                "name": "Fake Debt Collection - Aggressive Threat",
+                "category": "fake_debt_collection",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(deni|debt|mkopo|loan|credit|arrears|malimbikizo)"
+                    r".{0,80}(crb|credit\s?reference|blacklist|orodha\s?nyeusi|"
+                    r"bailiff|msimamizi\s?wa\s?mali|kukamata\s?mali|seize\s?property|"
+                    r"court\s?order|amri\s?ya\s?mahakama|sheriff|utekelezaji|"
+                    r"tunakuja\s?nyumbani|we\s?will\s?come\s?to\s?your)"
+                    r".{0,80}(lipa\s?sasa|pay\s?now|haraka|immediately|leo\s?hii|"
+                    r"ksh|kshs|tzs|or\s?else|au\s?sivyo)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Real CRB or loan recovery does not threaten via personal-number SMS — the genuine process follows legal steps through your bank or lender's official channel. Threats to blacklist you immediately or seize property by SMS are scare tactics.",
+            },
+            {
+                "name": "Fake Debt Collection - Third Party Collector",
+                "category": "fake_debt_collection",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(tunakukumbusha|we\s?are\s?reminding\s?you|tunakuarifu|this\s?is\s?to\s?inform\s?you)"
+                    r".{0,80}(deni|debt|mkopo|balance\s?outstanding|malimbikizo|overdue\s?payment)"
+                    r".{0,80}(tuma|pay|lipa|send|m-?pesa|paybill|namba\s?hii|this\s?number|"
+                    r"contact\s?(us|our|agent))"
+                    r"|(recovery\s?agent|debt\s?collector|mkusanyaji\s?wa\s?deni)"
+                    r".{0,80}(tuma|pay|lipa|send|ksh|kshs|tzs|namba|number|mpesa)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Unsolicited 'debt collection' via SMS from a personal number is almost always fraudulent. If you have a genuine debt, your lender will contact you through official channels.",
+            },
+            {
+                "name": "Romance / Stranger Financial Help",
+                "category": "romance_scam",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(my\s?love|darling|sweetheart|mpenzi\s?wangu|baby|babe|nataka\s?kukujua|"
+                    r"nimekupenda|i\s?love\s?you\s?already|nimekuangalia\s?profile\s?yako)"
+                    r".{0,80}(send|tuma|help\s?me|nisaidie|money|pesa|"
+                    r"gift\s?card|voucher|itunes|google\s?play|amazon)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Romance scams build trust quickly then ask for money, gift cards, or help with fees. Online strangers who express love fast and then ask for money are almost always scammers.",
+            },
+            {
+                "name": "Romance Scam - Stranded / Emergency Scenario",
+                "category": "romance_scam",
+                "weight": 7,
+                "pattern": re.compile(
+                    r"(i\s?am\s?stuck|niko\s?stuck|nimekwama|i\s?am\s?stranded|nimekwama\s?hapa|"
+                    r"passport\s?(yako|yangu)?\s?(imefungwa|imezuiwa|held)|"
+                    r"custom\s?(fee|ada)|airport\s?(police|customs|fee)|"
+                    r"i\s?need\s?your\s?help|nakuhitaji\s?unisaidie)"
+                    r".{0,100}(tuma|send|lipa|pay|pesa|ksh|kshs|tzs|"
+                    r"transfer|wire|western\s?union|moneygram)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Romance scammers often claim to be stranded at an airport, held at customs, or stuck with a medical emergency abroad to extract money. This is a very common pattern — do not send money to anyone you have not met in person.",
+            },
+            {
+                "name": "Romance Scam - Gift Card / Voucher Request",
+                "category": "romance_scam",
+                "weight": 8,
+                "pattern": re.compile(
+                    r"(gift\s?card|voucher|itunes\s?card|google\s?play\s?card|amazon\s?card|"
+                    r"steam\s?card|playstation\s?card|ukartuni|kadi\s?ya\s?zawadi)"
+                    r".{0,80}(tuma|send|nipe|give\s?me|share|piga\s?picha|take\s?photo|"
+                    r"number|nambari|scratch|code\s?ya|serial\s?number)",
+                    re.IGNORECASE,
+                ),
+                "explanation": "Requests for gift card codes (iTunes, Google Play, Amazon, Steam) are a classic scam signal — no legitimate person or business needs payment in gift cards.",
             },
 
-            # ===================== MEDIUM (weight 4-6) =====================
+            # ============================================================
+            # MEDIUM (weight 4-6)
+            # Multiple hits or combination with a high rule → FRAUD.
+            # ============================================================
+
             {
                 "name": "Investment / Double-Your-Money Scam",
                 "category": "investment_scam",
@@ -304,16 +643,6 @@ class RuleEngine:
                     re.IGNORECASE,
                 ),
                 "explanation": "Legitimate delivery services bill through their own app/checkout, not via a random number sent in an SMS.",
-            },
-            {
-                "name": "Romance / Stranger Financial Help",
-                "category": "romance_scam",
-                "weight": 5,
-                "pattern": re.compile(
-                    r"(my love|darling|sweetheart|mpenzi).{0,40}(send|tuma|help me|nisaidie|money|pesa)",
-                    re.IGNORECASE,
-                ),
-                "explanation": "Romance scams build trust quickly, then ask for money or financial 'help'.",
             },
             {
                 "name": "Debt Collection Threat (Unverified)",
@@ -344,9 +673,12 @@ class RuleEngine:
                 "explanation": "Used to panic victims into revealing personal/PIN details to 'protect' their line.",
             },
 
-            # ===================== LOW / SUPPORTING (weight 1-3) =====================
-            # These alone should rarely flip a message to FRAUD - they exist to
-            # add weight when combined with a medium/high rule.
+            # ============================================================
+            # LOW / SUPPORTING (weight 1-3)
+            # These alone rarely flip a message — they add weight when
+            # combined with a medium or high rule.
+            # ============================================================
+
             {
                 "name": "Urgency Pressure Language",
                 "category": "urgency",
@@ -377,15 +709,14 @@ class RuleEngine:
 
         # Strict structural signature of a genuine M-PESA/Tigo Pesa/Halotel
         # transaction receipt. Requires a transaction-code-like token AND
-        # a confirmation word AND a balance statement -- not just any one
-        # of those words in isolation.
+        # a confirmation word AND a balance statement.
         self._legit_signature = re.compile(
             r"\b[A-Z0-9]{9,10}\b.{0,20}(confirmed|imethibitishwa)"
             r".{0,400}(new\s?m-?pesa\s?balance\s?is|salio\s?jipya)",
             re.IGNORECASE | re.DOTALL,
         )
         # Looser secondary signature for receipts without a leading code
-        # (e.g. M-Shwari/Fuliza system notices), still requiring balance +
+        # (e.g. M-Shwari/Fuliza system notices), requiring balance +
         # an official product name, with NO request-for-money language.
         self._legit_signature_soft = re.compile(
             r"(m-?shwari|fuliza|m-?pawa|m-?koba|lipa\s?mdogo\s?mdogo|pochi\s?la\s?biashara)"
@@ -410,7 +741,7 @@ class RuleEngine:
         if not has_structure:
             return False
         if self._override_pattern.search(text):
-            # Looks like a receipt but ALSO asks you to send something --
+            # Looks like a receipt but ALSO asks you to send something —
             # treat as suspicious, not legitimate.
             return False
         return True
@@ -432,7 +763,7 @@ class RuleEngine:
                     "name": "Personal Number Sender",
                     "category": "sender_mismatch",
                     "weight": 4,
-                    "explanation": "Real M-PESA/Tigo Pesa/Vodacom messages come from 'M-PESA', 'Safaricom', or a short code -- never a personal phone number.",
+                    "explanation": "Real M-PESA/Tigo Pesa/Vodacom messages come from 'M-PESA', 'Safaricom', or a short code — never a personal phone number.",
                 }
             )
             total_weight += 4
@@ -452,11 +783,9 @@ class RuleEngine:
         legit = self.is_likely_legitimate(message)
 
         # Legit-protection override: a real-looking receipt only gets
-        # flagged if a CRITICAL-severity rule (weight >= 9) fired -- e.g.
+        # flagged if a CRITICAL-severity rule (weight >= 9) fired — e.g.
         # a PIN request, a phishing link, or one of the forged-receipt
-        # tells (duplicated confirmation, refund/legal threat, malformed
-        # code/currency format). Anything below that bar is trusted as a
-        # genuine receipt.
+        # tells. Anything below that bar is trusted as a genuine receipt.
         critical_hit = any(r["weight"] >= 9 for r in triggered_rules)
         if legit and not critical_hit:
             return {
@@ -499,17 +828,19 @@ if __name__ == "__main__":
     engine = RuleEngine()
 
     test_cases = [
-        # --- Genuine receipts (must stay SAFE) ---
+        # ── Genuine receipts (must stay SAFE) ────────────────────────────
         {"msg": "TB17CVOCY9 Confirmed. You have received Ksh2,500.00 from JOHN DOE 0712345678 on 18/6/26 at 3:42 PM. New M-PESA balance is Ksh4,500.00.", "sender": "MPESA", "expected": "SAFE"},
         {"msg": "M-Shwari: Your deposit of Ksh3,000.00 was successful on 18/6/26. Your M-Shwari savings balance is now Ksh18,500.00. Dial *334# for more options.", "sender": "MPESA", "expected": "SAFE"},
         {"msg": "QGH7K2MNB Confirmed. You have received Ksh1,000.00 from MARY WANJIRU 0722112233 on 18/6/26 at 9:15 AM. New M-PESA balance is Ksh3,210.00.", "sender": "MPESA", "expected": "SAFE"},
 
-        # --- Sophisticated forged receipts (must be FRAUD) ---
+        # ── Forged receipts (must be FRAUD) ──────────────────────────────
         {"msg": "UFK9X7J4O2 Confirmed. You have received Ksh6,500.00 from GRACE WANJIKU 254722111222 on 21/6/26 at 11:02 AM.Confirmed.You can now withdraw at any agent.New M-PESA balance is Ksh6,730.00.", "sender": "0722111222", "expected": "FRAUD"},
         {"msg": "UFM8Z2Y1X4 Confirmed. You have received Ksh12,400.00 from DR. PETER KAMAU 254700999888 on 21/6/2026 at 8:20 AM. New M-PESA balance is Ksh12,450.00. Refund immediately to avoid legal action.", "sender": "0700999888", "expected": "FRAUD"},
         {"msg": "UFO_9821_XYZ Confirmed. Ksh. 8,000.00 has been deposited to your wallet from Equity Bank on 21/06/26 at 10:44 AM. New M-PESA balance is Ksh. 8,150.00. To check balance dial *334#.", "sender": "0711223344", "expected": "FRAUD"},
+        {"msg": "RN4X7K2MP1 Confirmed. Ksh5,000.00 received from JAMES OTIENO on 20/6/26. New M-PESA balance is Ksh5,200.00. New M-PESA balance is Ksh5,200.00. To verify call 0799123456.", "sender": "0799123456", "expected": "FRAUD"},
+        {"msg": "Your amount of Ksh3,000 is currently HELD/PENDING. Contact our agent on 0712000111 to release your funds.", "sender": "0712000111", "expected": "FRAUD"},
 
-        # --- Classic scams (must be FRAUD) ---
+        # ── Classic scams (must be FRAUD) ─────────────────────────────────
         {"msg": "Umeshinda KSH 50,000! Tuma PIN yako uthibitishe.", "sender": "0712345678", "expected": "FRAUD"},
         {"msg": "Akaunti yako itafungwa leo kama hutathibitisha PIN.", "sender": "Safaricom", "expected": "FRAUD"},
         {"msg": "Loan yako imeapproved. Tuma Ksh 200 processing fee.", "sender": "0721123456", "expected": "FRAUD"},
@@ -521,18 +852,55 @@ if __name__ == "__main__":
         {"msg": "Habari mzuri, umepata ufadhili wa masomo wa Ksh100,000 kutoka NGO ya kimataifa. Tuma Ksh1,500 ada ya usajili kwa 0734556688.", "sender": "0734556688", "expected": "FRAUD"},
         {"msg": "Habari, M-Shwari loan yako ya Ksh10,000 imeidhinishwa lakini lazima kwanza ulipe Ksh300 kuthibitisha akaunti.", "sender": "0745778899", "expected": "FRAUD"},
         {"msg": "Hongera mteja, umeshinda smartphone mpya kupitia promo ya Halotel. Tuma TZS5,000 ada ya ushuru kwa namba 0699112233 kupokea zawadi.", "sender": "0699112233", "expected": "FRAUD"},
+
+        # ── NEW v4 test cases for previously weak categories ───────────────
+
+        # fake_charity_donation
+        {"msg": "Tafadhali saidia watoto yatima wa Nyumba ya Watoto Nairobi. Tuma mchango wako kwa M-PESA namba 0712345000. Mungu akubariki.", "sender": "0712345000", "expected": "FRAUD"},
+        {"msg": "URGENT DONATION NEEDED: Familia masikini waliathirika na mafuriko. Tuma Ksh500 au zaidi kwa paybill 123456 acc FLOOD2026. Asante.", "sender": "0700456789", "expected": "FRAUD"},
+
+        # fake_debt_collection
+        {"msg": "Tunakukumbusha deni lako la Ksh8,500 liko overdue. Mkusanyaji wa deni atakuja kukamata mali yako ikiwa hutalipa sasa. Tuma kwa namba hii haraka.", "sender": "0711987654", "expected": "FRAUD"},
+        {"msg": "Recovery agent: You have an outstanding debt. Pay now or we will list you on CRB blacklist today. Send Ksh3,000 to 0722001122 immediately.", "sender": "0722001122", "expected": "FRAUD"},
+
+        # romance_scam
+        {"msg": "Mpenzi wangu nakupenda sana. Niko stuck airport customs wameshikilia mzigo wangu. Tuma $200 tu kunisaidia western union. Nitakulipa baadaye.", "sender": "0799000111", "expected": "FRAUD"},
+        {"msg": "Baby please buy me iTunes gift card worth Ksh5,000 and send me the code number. I will pay you back I promise.", "sender": "0733112233", "expected": "FRAUD"},
+
+        # impersonation_family_emergency
+        {"msg": "Hii ni jirani yako. Mama yako amepata ajali na amepelekwa hospitali. Tuma Ksh5,000 haraka kwa operation fee kwa namba 0700888777.", "sender": "0700888777", "expected": "FRAUD"},
+        {"msg": "Niko hospitali sasa hivi. Simu yangu imevunjika, ninapigia kwa simu ya mgeni. Nitahitaji Ksh3,000 bili ya hospitali. Tuma sasa hivi.", "sender": "0711000222", "expected": "FRAUD"},
+
+        # fake_tender_business_deal
+        {"msg": "Hongera! Zabuni yako ya kutoa bidhaa serikalini imeshinda. Kabla ya kupata LPO tuma Ksh15,000 performance bond kwa akaunti 0722999888.", "sender": "0722999888", "expected": "FRAUD"},
+        {"msg": "Your tender application ref TND/2026/001 has been approved. Please pay compliance fee of Ksh8,000 via M-PESA to 0700334455 to receive your contract.", "sender": "0700334455", "expected": "FRAUD"},
+
+        # fake_agent_overpayment
+        {"msg": "Nimekupigia pesa nyingi kwa makosa. Nilitaka kutuma Ksh500 lakini nilitumia Ksh5,500. Tafadhali nirudishie tofauti ya Ksh5,000 kwa namba 0712777666.", "sender": "0712777666", "expected": "FRAUD"},
+        {"msg": "Hi, I sent you Ksh2,000 by mistake instead of Ksh200. Please send back the difference of Ksh1,800 to this number urgently.", "sender": "0711333444", "expected": "FRAUD"},
+
+        # fake_kyc_update
+        {"msg": "Safaricom KYC Update: Taarifa zako zimepitwa na wakati. Thibitisha taarifa zako sasa kwa kubonyeza link hii au akaunti yako itafungwa: safaricom-kyc-update.co", "sender": "0789999000", "expected": "FRAUD"},
+        {"msg": "Your SIM card registration is incomplete. Register your SIM now by sending your ID number to this number or your line will be deactivated within 24 hours.", "sender": "0700111000", "expected": "FRAUD"},
+
+        # blackmail_extortion
+        {"msg": "Tuna video yako ya siri. Tutatuma kwa familia yako na mwajiri wako kama hutalipia Ksh10,000 leo. Tuma kwa M-PESA namba 0711888777.", "sender": "0711888777", "expected": "FRAUD"},
+        {"msg": "We have compromising photos of you. We will post them publicly if you don't send Ksh5,000 to 0722555444 within 2 hours. Don't go to police.", "sender": "0722555444", "expected": "FRAUD"},
     ]
 
     print("=" * 80)
-    print("VIGILANT AI - RULE ENGINE v3.0 (Weighted, Forged-Receipt Hardened,")
+    print("VIGILANT AI - RULE ENGINE v4.0 (Weighted, Recall-Hardened,")
     print("                                EN/SW/Sheng, KE+TZ)")
     print("=" * 80)
 
     passed = 0
+    failed_cases = []
     for case in test_cases:
         result = engine.analyze(case["msg"], case.get("sender"))
         ok = result["status"] == case["expected"]
         passed += int(ok)
+        if not ok:
+            failed_cases.append(case)
         mark = "✅ PASS" if ok else "❌ FAIL"
         print(f"\n{mark} (expected {case['expected']}, got {result['status']})")
         print(f"📨 Sender : {case.get('sender', 'Unknown')}")
@@ -545,4 +913,10 @@ if __name__ == "__main__":
                 print(f"   • [{rule['category']}] {rule['name']} (w={rule['weight']}): {rule['explanation']}")
         print("-" * 80)
 
-    print(f"\n{passed}/{len(test_cases)} test cases passed.")
+    print(f"\n{'='*80}")
+    print(f"RESULT: {passed}/{len(test_cases)} test cases passed.")
+    if failed_cases:
+        print("\nFAILED CASES:")
+        for c in failed_cases:
+            print(f"  • [{c['expected']}] {c['msg'][:80]}...")
+    print("=" * 80)

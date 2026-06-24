@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Habari, M-Shwari yako ina deni la zamani la Ksh4,500 ambalo halijalipwa. Lipa sasa kwa namba 0712334455 kabla ya kupelekwa CRB.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Your Tala loan account has an outstanding balance of Ksh6,200. Pay now to 0745998822 to avoid being listed with CRB this week.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda kuna deni la zamani la Ksh3,800 kwenye Branch app yako, lipa kwa namba 0701887744 leo kabla CRB ikuandike",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari kutoka Zenka: Akaunti yako ina deni lisilolipwa la Ksh5,500. Lipa kwa namba 0789556699 ndani ya masaa 24 kuepuka CRB.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"This is a final reminder from our debt collection unit. Your unpaid loan balance of Ksh7,800 must be cleared by 0712445599 today.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"mse hii ni CRB department, deni lako la Ksh2,900 limechelewa, lipa kwa namba 0734667722 leo kabla yaongezeka penalty",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Habari mteja, mkopo wako wa Okoa Jahazi una deni la Ksh3,200 lisilolipwa. Lipa kwa namba 0701223399 leo kabla hatua kuchukuliwa.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"URGENT: Your KCB M-Pesa loan default of Ksh9,500 will be reported to credit bureau unless paid to 0745889922 within 6 hours.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda hii ni debt collector wa Fuliza, deni lako la Ksh4,100 lazima ulipie kwa namba 0712998877 leo bila kuchelewa",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari: Mkopo wako kupitia Hustler Fund haukutimizwa, deni la Ksh2,650 limesalia. Lipa kwa namba 0789221144 sasa.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Notice from our recovery department: Your overdue loan of Ksh6,750 must be settled today via 0701556633 to avoid legal action.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"niaje buda, M-Koba imekuripoti deni la Ksh3,450 lisilolipwa, lipa kwa namba 0745112277 leo kabla kesi kuanza",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Habari mteja, kuna deni la Ksh5,900 kwenye akaunti yako ya Timiza ambalo halijalipwa kwa miezi miwili. Lipa kwa 0712889933.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Final demand letter: Your Branch app loan of Ksh8,300 is overdue. Settle it today by sending to 0734556688 to avoid court action.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda kuna outstanding balance ya Ksh4,650 kwenye loan yako ya Zenka, lipa kwa namba 0701776655 leo bila kuchelewa",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari kutoka M-Pawa: Mkopo wako wa TZS150,000 una deni lisilolipwa. Lipa TZS9,000 kwa namba 0676998811 leo.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Your debt of Ksh7,100 with our microfinance partner remains unpaid. Settle it immediately via 0789112255 to avoid asset seizure.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"mzee hii ni CRB warning, deni lako la zamani la Ksh3,950 lazima ulipie kwa namba 0712334477 leo before listing",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Habari mteja, mkopo wako wa Tala una salio lisilolipwa la Ksh4,800. Lipa kwa namba 0701998822 leo kabla kuwekwa CRB.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Our agency has been instructed to collect your unpaid Ksh10,200 loan balance. Pay now to 0745221199 to avoid legal proceedings.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda kuna debt ya Hustler Fund Ksh2,750 ambayo bado halipwi, lipa kwa namba 0734998866 leo kabla penalty iongezeke",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari: Mkopo wako wa Okoa Jahazi unaonyesha deni la Ksh3,600 lisilolipwa kwa muda mrefu. Lipa kwa namba 0712667744.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Reminder: Your overdue Saccos loan balance of Ksh6,400 must be paid today to 0789556677 or your guarantor will be contacted.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"niaje msee, kuna outstanding loan ya Ksh5,250 kwenye Branch app yako, lipa kwa namba 0701445588 leo bila kuchelewa",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Habari mteja, kuna deni la Ksh4,300 kwenye akaunti yako ya M-Shwari ambalo halijalipwa kwa wiki tatu. Lipa kwa 0745889911.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Notice: Your loan account with Fuliza shows a balance of Ksh8,900 overdue. Pay it today via 0712998855 to avoid CRB listing.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda kuna deni la zamani kwenye Timiza ya Ksh3,150, lipa kwa namba 0734556699 leo kabla wakuripoti CRB",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari kutoka KCB M-Pesa: Mkopo wako una deni la Ksh7,500 lisilolipwa. Lipa kwa namba 0701887766 leo kuepuka kesi.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Your loan with our partner Tala has defaulted with a balance of Ksh5,650. Settle it now via 0745112288 to avoid blacklisting.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"mse kuna debt collection notice kwa M-Koba loan yako, Ksh4,950 inahitajika kulipwa kwa namba 0712445566 leo",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Habari mteja, mkopo wako wa Zenka una deni la Ksh6,100 ambalo halijalipwa. Lipa kwa namba 0789221166 leo kabla CRB.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Final notice: Your unpaid Hustler Fund balance of Ksh3,400 will be escalated to legal action unless paid to 0701556644 today.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda kuna deni la Branch app ambalo limechelewa Ksh2,850, lipa kwa namba 0745667799 leo kabla yaongezeka",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari: Loan yako ya Okoa Jahazi ina deni la Ksh5,400 lisilolipwa kwa miezi miwili. Lipa kwa namba 0712889944 leo.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Your debt recovery case for Ksh9,800 is now active. Settle the balance today via 0701998833 to avoid further consequences.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"niaje buda, hii ni CRB collection agency, deni lako la Ksh4,050 lazima ulipie kwa namba 0734221188 leo bila kuchelewa",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Habari mteja, mkopo wako wa Timiza una deni la Ksh6,950 ambalo limechelewa kwa muda mrefu. Lipa kwa namba 0745998822.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Notice: Your loan account balance of Ksh7,250 is overdue and at risk of legal escalation. Pay now to 0712556677 to settle.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda kuna outstanding debt ya Ksh3,700 kwenye Fuliza yako, lipa kwa namba 0701445599 leo kabla penalty kuongezeka",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari kutoka Zenka: Mkopo wako una deni la Ksh5,150 ambalo halijalipwa kwa wiki nne. Lipa kwa namba 0789112277 leo.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Your microloan default of Ksh8,600 has been flagged for collections. Pay it immediately to 0745889933 to avoid further action.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"niaje msee, kuna deni la M-Pawa TZS80,000 ambalo halijalipwa, lipa TZS6,500 kwa namba 0653998877 leo",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Habari, kuna deni la zamani kwenye akaunti yako ya Hustler Fund Ksh4,450 ambalo halijalipwa. Lipa kwa namba 0701776644.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Final demand: Your Saccos loan default of Ksh6,800 risks legal seizure of property unless settled via 0734667733 today.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"buda kuna debt notice kwenye Tala app yako Ksh3,300, lipa kwa namba 0745221177 leo kabla wakuripoti CRB",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23
+"Tahadhari: Mkopo wako wa Branch una deni la Ksh5,800 lisilolipwa kwa zaidi ya mwezi mmoja. Lipa kwa namba 0712334466.",fraud,sw,fake_debt_collection,batch15_ai,2026-06-23
+"Your loan recovery notice shows an unpaid balance of Ksh7,950. Settle this immediately via 0701998811 to avoid CRB blacklisting.",fraud,en,fake_debt_collection,batch15_ai,2026-06-23
+"mzee kuna deni la zamani kwenye M-Shwari yako Ksh4,150, lipa kwa namba 0789556633 leo kabla penalty kuongezeka",fraud,sheng,fake_debt_collection,batch15_ai,2026-06-23

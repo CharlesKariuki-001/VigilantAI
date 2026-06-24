@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"Mama, hii ni namba yangu mpya, simu yangu imeibiwa. Naomba unitumie Ksh3,500 kwa namba hii 0712334455 niwesee kununua nyingine.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Hi Mum, this is my new number, my phone got stolen. Please send Ksh4,200 to 0745998822 so I can get a replacement today.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"mama hii ni mtoto wako, nimeibiwa simu yangu na pesa zote, tuma Ksh2,800 kwa namba 0701887744 niwesee kufika nyumbani",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Baba, namba yangu ya kawaida iko down kwa shida ya mtandao. Naomba unitumie Ksh5,000 kwa namba hii 0789556699 leo.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dad, this is my new number since I lost my phone in town. Please urgently send Ksh4,800 to 0712445599 for transport home.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"bro hii ni namba yangu mpya, ile ya kawaida imeharibika, tuma Ksh3,200 kwa namba 0734667722 nisaidie kidogo leo",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dada, nimekuwa kwenye accident kidogo, nimekuwa hospitalini. Naomba unitumie Ksh6,500 kwa namba hii 0701223399 leo haraka.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Sis, I'm in a small accident and at the hospital now. Please send Ksh5,500 to 0745889922 urgently to help with treatment.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"mama nimekamatwa na polisi kwa kosa dogo, naomba unitumie Ksh4,000 kwa namba 0712998877 ili waniachie haraka",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mjomba, nimepoteza wallet yangu njiani na ID card iko ndani. Naomba unitumie Ksh3,800 kwa namba hii 0789221144 leo.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Uncle, I lost my wallet with my ID inside while traveling. Please send Ksh3,600 to 0701556633 to help me sort this out.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"bro nimekamatwa traffic police kwa makosa madogo, naomba Ksh2,500 fine kwa namba 0745112277 ndio nimepiteni haraka",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mama, simu yangu imeharibika ghafla na nina shida ya kuwasiliana. Naomba unitumie Ksh4,500 kwa namba hii 0712889933 leo.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mum, my phone is broken and I'm using a friend's number. Please send Ksh3,900 to 0734556688 to help with repairs today.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"baba nimepoteza fare ya kurudi nyumbani kwa sababu nimepokwa pesa, tuma Ksh2,900 kwa namba 0701776655 leo tafadhali",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dada, nina shida kubwa kuhusu school fees ya leo, walimu wanataka deadline leo. Naomba Ksh7,500 kwa namba hii 0745667711.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Sis, school fees deadline is today and I'm being sent home. Please send Ksh6,800 to 0789112255 to help me stay in school.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"mzee hii ni namba yangu mpya, ya zamani imepotea, tuma Ksh3,300 kwa namba 0712334477 nisaidie kufika kazini leo",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mama, nimepatikana kwenye tatizo dogo la nauli, sina pesa kabisa hapa nilipo. Naomba unitumie Ksh2,700 kwa namba 0701998822.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dad, I'm stranded here with no fare to get home. Please send Ksh3,400 to 0745221199 as soon as you can, urgent please.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"bro nimeibiwa pesa yangu njiani, naomba Ksh3,000 ya transport kwa namba 0734998866 leo ndio nirudi nyumbani salama",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mjomba, gari nilikuwa nimepanda limeharibika njiani na nina shida ya kufika. Naomba Ksh4,100 kwa namba hii 0712667744.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Uncle, the vehicle I was traveling in broke down and I need transport money. Please send Ksh3,700 to 0789556677 urgently.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"mama nimekamatwa kwenye road block kwa kosa la documents, naomba Ksh3,950 kwa namba 0701445588 ndio waniachie",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Baba, mtoto wangu yu mgonjwa ghafla na ananeed dawa sasa hivi hospitalini. Naomba unitumie Ksh5,800 kwa namba 0745889911.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dad, my child is suddenly sick and needs medicine urgently from the hospital. Please send Ksh5,200 to 0712998855 now.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"bro hii ni namba ya kuborrowed simu, ile yangu imeibiwa na pesa zote, tuma Ksh4,300 kwa namba 0734556699 leo",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dada, nimekuwa na shida kubwa ya kufunga rent kwa nyumba leo, mwenye nyumba ananitishia. Naomba Ksh6,200 kwa namba 0701887766.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Sis, my landlord is threatening to evict me today unless I pay rent. Please send Ksh5,900 to 0745112288 urgently to help.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"mzee nimepatikana na tatizo dogo la mafuta gari limekwama njiani, naomba Ksh3,150 kwa namba 0712445566 leo tafadhali",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mama, nimepoteza simu yangu njiani sasa hivi naongea na namba ya jirani. Naomba unitumie Ksh3,650 kwa namba 0789221166.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mum, I lost my phone just now and I'm using a neighbor's line to reach you. Please send Ksh3,500 to 0701556644 today.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"baba nimepatikana na deni dogo ambalo lazima nilipie leo kazini, naomba Ksh4,750 kwa namba 0745667799 leo tafadhali",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dada, kuna emergency ya kazi yangu, nahitaji kulipia kifaa kidogo leo. Naomba unitumie Ksh4,400 kwa namba hii 0712889944.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Sis, there's a small work emergency and I need to pay for equipment today. Please send Ksh4,150 to 0701998833 urgently.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"bro nimepatikana na kosa la kuchelewa kulipa bill ya umeme, naomba Ksh2,950 kwa namba 0734221188 leo bila kuchelewa",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mjomba, nimekuwa na tatizo dogo la kulipia mafuta ya gari njiani. Naomba unitumie Ksh3,250 kwa namba hii 0745998822.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Uncle, I'm stuck with a small car fuel emergency on the road. Please send Ksh3,050 to 0712556677 to help me out today.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"mama nimepatikana na shida ya kulipia data bundle ya kazi leo, naomba Ksh1,800 kwa namba 0701445599 leo tafadhali",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Baba, naomba msaada wa haraka, nimepatikana na kosa dogo la kulipia bill ya hospitali. Tuma Ksh5,300 kwa namba 0789112277.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dad, I have a small hospital bill I need to settle urgently. Please send Ksh4,950 to 0745889933 as soon as possible today.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"bro nimepatikana na shida ndogo ya kulipia ticket ya bus kurudi nyumbani, naomba Ksh2,650 kwa namba 0712998811 leo.",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Dada, naomba msaada wa haraka kidogo, nimepatikana na deni dogo la duka. Tuma Ksh3,400 kwa namba hii 0701776644 leo.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Sis, I have a small shop debt I urgently need to clear today. Please send Ksh3,200 to 0734667733 as soon as you can.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"mzee naomba msaada wa Ksh2,400 kwa sababu nimepatikana na deni dogo la usafiri leo, namba 0745221177 tafadhali.",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mama, naomba unitumie Ksh4,650 haraka kwa sababu nimepatikana na tatizo dogo la kuchelewa malipo ya nyumba. Namba 0712334466.",fraud,sw,impersonation_family_emergency,batch24_ai,2026-06-23
+"Mum, please send Ksh4,350 urgently as I have a small overdue house payment issue to settle today. Send to 0701998811.",fraud,en,impersonation_family_emergency,batch24_ai,2026-06-23
+"baba naomba msaada wa Ksh3,750 kwa sababu nimepatikana na shida ya kulipia bill ya simu leo, namba 0789556633 tafadhali.",fraud,sheng,impersonation_family_emergency,batch24_ai,2026-06-23
