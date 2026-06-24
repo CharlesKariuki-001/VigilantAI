@@ -1,9 +1,8 @@
-"""
+﻿"""
 Vigilant AI — Month 3
 src/predict.py
 
-Combines Rule Engine + ML Model + SHAP Explainability for real-time prediction.
-Exports both HybridDetector (class) and predict_with_explanation (function).
+Hybrid Predictor: Rule Engine + XGBoost + Clean SHAP Explanations
 """
 
 import os
@@ -17,219 +16,252 @@ _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 if _THIS_DIR not in sys.path:
     sys.path.insert(0, _THIS_DIR)
 
-try:
-    from src.feature_engineering import FeatureBuilder
-    from src.rule_engine import RuleEngine
-except ModuleNotFoundError:
-    from feature_engineering import FeatureBuilder
-    from rule_engine import RuleEngine
+from feature_engineering import FeatureBuilder
+from rule_engine import RuleEngine
 
 MODELS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models")
 
-model           = joblib.load(os.path.join(MODELS_DIR, "vigilant_model.pkl"))
+model = joblib.load(os.path.join(MODELS_DIR, "vigilant_model.pkl"))
 feature_builder = joblib.load(os.path.join(MODELS_DIR, "feature_builder.pkl"))
-rule_engine     = RuleEngine()
-_explainer      = shap.TreeExplainer(model)
+
+rule_engine = RuleEngine()
+_explainer = shap.TreeExplainer(model)
 
 
-# ------------------------------------------------------------------
-# Helpers
-# ------------------------------------------------------------------
+def _is_noise_feature(name: str) -> bool:
+    """
+    Returns True if this feature name should be hidden from SHAP explanations.
+    The model can still USE these features internally — we just don't show them
+    to the user because they are not human-readable or meaningful as explanations.
+    """
+    name = name.strip()
 
-def _confidence_from_probability(proba: float) -> str:
-    if proba >= 0.85 or proba <= 0.15:
-        return "HIGH"
-    if proba >= 0.65 or proba <= 0.35:
-        return "MEDIUM"
-    return "LOW"
-
-
-def _extract_single_row_shap(shap_values, row_index: int = 0):
-    """Normalize TreeExplainer output across shap/xgboost versions."""
-    if isinstance(shap_values, list):
-        return np.asarray(shap_values[-1])[row_index]
-    shap_array = np.asarray(shap_values)
-    if shap_array.ndim == 3:
-        return shap_array[row_index, :, -1]
-    return shap_array[row_index]
-
-
-_READABLE = {
-    "digit_ratio":   "Many numbers",
-    "punct_density": "Heavy punctuation",
-    "msg_length":    "Long message",
-    "exclaim_count": "Exclamation marks",
-    "url_count":     "Contains URL",
-    "caps_ratio":    "Lots of capitals",
-    "word_count":    "Word count",
-}
-
-_BLOCKLIST_PREFIXES = ("acc ", "acc_", "00", "26")
-_BLOCKLIST_EXACT    = {"acc", "na", "ya", "wa", "za", "la", "ka"}
-
-
-def _is_training_artifact(name: str) -> bool:
-    if any(name.startswith(p) for p in _BLOCKLIST_PREFIXES):
+    # Very short — not meaningful
+    if len(name) < 3:
         return True
-    for token in name.split():
-        if re.search(r'[a-zA-Z]', token) and re.search(r'\d', token):
-            return True
+
+    # Phone number pattern — TF-IDF bigrams containing Kenyan phone numbers
+    # (e.g. "0701223399 leo", "0712345678 to") these are memorised training
+    # artifacts, not generalizable fraud signals
+    if re.search(r"\b0[17]\d{8}\b", name):
+        return True
+
+    # Pure digits or starts with a long digit sequence
+    if re.match(r"^\d+", name) and len(re.match(r"^\d+", name).group()) >= 4:
+        return True
+
+    # Character n-gram noise — single characters, punctuation fragments
+    if re.match(r"^[^a-zA-Z\u0600-\u06FF]+$", name):
+        return True
+
+    # Transaction code fragments (e.g. "TB17C", "RK23X") — memorised codes
+    if re.match(r"^[A-Z]{1,3}\d{2,}[A-Z0-9]*$", name):
+        return True
+
     return False
 
 
-def _clean_feature_name(name: str):
-    """Return a human-readable label, or None if the feature is noise."""
-    if name.startswith("char::"):
-        return None
+def _clean_feature_name(raw_name: str) -> str | None:
+    """
+    Converts a raw internal feature name into a human-readable explanation.
+    Returns None if the feature should be hidden entirely.
+    """
+    name = raw_name
+
+    # Strip internal prefixes
     for prefix in ("word::", "char::", "rule::", "tfidf::"):
-        name = name.replace(prefix, "")
+        if name.startswith(prefix):
+            name = name[len(prefix):]
+
     name = name.strip()
-    if not name:
+
+    # Apply noise filter AFTER stripping prefix
+    if _is_noise_feature(name):
         return None
-    first_token = name.split()[0]
-    if first_token[0].isdigit():
+
+    # Also filter the raw (pre-strip) name in case prefix removal exposed noise
+    if _is_noise_feature(raw_name):
         return None
-    if len(name) <= 2:
-        return None
-    if name in _BLOCKLIST_EXACT:
-        return None
-    if _is_training_artifact(name):
-        return None
-    if name in _READABLE:
-        return _READABLE[name]
+
+    # Human-readable mappings for structural features
+    structural_mappings = {
+        "digit_ratio":    "High proportion of numbers in message",
+        "punct_density":  "Heavy punctuation use",
+        "msg_length":     "Message length",
+        "exclaim_count":  "Uses exclamation marks",
+        "has_phone":      "Contains a phone number",
+        "has_link":       "Contains a link or URL",
+        "has_amount":     "Mentions a money amount",
+    }
+    if name in structural_mappings:
+        return structural_mappings[name]
+
     if name.startswith("has_"):
-        return "Contains " + name[4:].replace("_", " ").title()
+        return "Contains " + name[4:].replace("_", " ")
+
     return name
 
 
-def _keep(clean_name) -> bool:
-    if clean_name is None:
-        return False
-    return len(clean_name.strip()) >= 3
-
-
-def _build_top_features(X) -> list:
-    """Run SHAP and return cleaned top features list."""
-    raw_shap = _explainer.shap_values(X)
-    row_shap = _extract_single_row_shap(raw_shap, row_index=0)
-    feature_names = feature_builder.get_feature_names()
-    impacts = sorted(zip(feature_names, row_shap), key=lambda p: abs(p[1]), reverse=True)
-
-    top_features = []
-    for name, value in impacts:
-        if len(top_features) >= 8:
-            break
-        if abs(value) < 0.01:
-            continue
-        clean = _clean_feature_name(name)
-        if not _keep(clean):
-            continue
-        top_features.append({
-            "feature":   clean,
-            "impact":    round(float(value), 4),
-            "direction": "toward fraud" if value > 0 else "toward safe",
-        })
-    return top_features
-
-
-# ------------------------------------------------------------------
-# Function interface (used internally and by legacy callers)
-# ------------------------------------------------------------------
-
-def predict_with_explanation(message: str, sender: str = None) -> dict:
-    cleaned = (message or "").strip()
-
-    rule_result = rule_engine.analyze(cleaned, sender)
-
-    X     = feature_builder.transform([cleaned])
-    proba = float(model.predict_proba(X)[0][1])
-    prediction = "FRAUD" if proba >= 0.5 else "SAFE"
-
-    top_features = _build_top_features(X)
-
-    return {
-        "status":                  prediction,
-        "fraud_probability":       round(proba * 100, 1),
-        "confidence":              _confidence_from_probability(proba),
-        "rule_engine_score":       rule_result["score"],
-        "combined_recommendation": rule_result["recommendation"],
-        "top_shap_features":       top_features,
-        "triggered_rules":         rule_result.get("triggered_rules", []),
-    }
-
-
-# ------------------------------------------------------------------
-# Class interface — what app.py imports as HybridDetector
-# ------------------------------------------------------------------
-
 class HybridDetector:
-    """
-    Wraps predict_with_explanation in a class so app.py can do:
-        from src.predict import HybridDetector
-        detector = HybridDetector()
-        result = detector.predict(message, sender)
-    """
+
+    MIN_CONTENT_LENGTH = 6  # messages shorter than this skip ML entirely
 
     def predict(self, message: str, sender: str = None) -> dict:
         cleaned = (message or "").strip()
 
+        # ---- Rule Engine (always runs) ----
         rule_result = rule_engine.analyze(cleaned, sender)
+        triggered_rules = rule_result.get("triggered_rules", [])
+        rule_status = rule_result["status"]
 
-        X     = feature_builder.transform([cleaned])
-        proba = float(model.predict_proba(X)[0][1])
-        ml_status = "FRAUD" if proba >= 0.5 else "SAFE"
+        # ---- Guard: skip ML on trivial / near-empty input ----
+        has_letters = any(c.isalpha() for c in cleaned)
+        if len(cleaned) < self.MIN_CONTENT_LENGTH or not has_letters:
+            return {
+                "status": rule_status,
+                "confidence": "LOW",
+                "decided_by": "rule_engine_only_insufficient_text",
+                "rule_engine": {
+                    "status": rule_status,
+                    "score": rule_result.get("score", 0),
+                    "triggered_rules": triggered_rules,
+                },
+                "ml_model": {
+                    # Store as 0-1 float throughout — app.py formats as %
+                    "fraud_probability": None,
+                    "threshold_used": 0.5,
+                    "explanation_text": "Message too short for ML evaluation — rule engine only.",
+                    "top_factors": [],
+                },
+                "recommendation": rule_result["recommendation"],
+            }
 
-        top_features = _build_top_features(X)
+        # ---- ML prediction ----
+        X = feature_builder.transform([cleaned])
 
-        # Final status: if rule engine fires a critical hit, trust it;
-        # otherwise use the ML prediction.
-        critical_rule_hit = any(
-            r["weight"] >= 9 for r in rule_result.get("triggered_rules", [])
+        # fraud_probability is a plain float: 0.0 = definitely safe, 1.0 = definitely fraud
+        # Do NOT multiply by 100 here — let app.py format it for display
+        fraud_probability = float(model.predict_proba(X)[0][1])
+        ml_status = "FRAUD" if fraud_probability >= 0.5 else "SAFE"
+
+        # ---- SHAP explanation ----
+        raw_shap = _explainer.shap_values(X)
+        if isinstance(raw_shap, list):
+            shap_row = np.asarray(raw_shap[1][0]).flatten()   # fraud class
+        else:
+            shap_row = np.asarray(raw_shap[0]).flatten()
+
+        feature_names = feature_builder.get_feature_names()
+        impacts = sorted(zip(feature_names, shap_row), key=lambda x: abs(x[1]), reverse=True)
+
+        # Build clean top-factor list — skip noise until we have enough readable ones
+        top_factors = []
+        for raw_name, value in impacts:
+            if len(top_factors) >= 5:
+                break
+            clean_name = _clean_feature_name(raw_name)
+            if clean_name is None:
+                continue
+            top_factors.append({
+                "feature": clean_name,
+                "impact": round(float(value), 4),
+                "direction": "toward fraud" if value > 0 else "toward safe",
+            })
+
+        # ---- SHAP explanation text (plain language) ----
+        fraud_factors = [f for f in top_factors if f["direction"] == "toward fraud"]
+        if fraud_factors:
+            labels = ["Top reason", "Secondary", "Also"]
+            parts = [f"This message scored {fraud_probability:.0%} fraud probability."]
+            for i, factor in enumerate(fraud_factors[:3]):
+                label = labels[i] if i < len(labels) else "Also"
+                parts.append(f"{label}: {factor['feature']}.")
+            explanation_text = " ".join(parts)
+        else:
+            explanation_text = (
+                f"This message scored {fraud_probability:.0%} fraud probability. "
+                "No single dominant fraud signal found."
+            )
+
+        # ---- Final hybrid decision ----
+        # Rules take priority when a critical-weight rule fires (weight >= 9)
+        # otherwise trust the ML model's verdict
+        critical_rule_fired = any(
+            r.get("weight", 0) >= 9 for r in triggered_rules
         )
-        final_status = "FRAUD" if (ml_status == "FRAUD" or critical_rule_hit) else "SAFE"
+
+        if critical_rule_fired or (rule_status == "FRAUD" and ml_status == "FRAUD"):
+            final_status = "FRAUD"
+            decided_by = "hybrid"
+        elif rule_status == "FRAUD":
+            final_status = "FRAUD"
+            decided_by = "rule_engine"
+        elif ml_status == "FRAUD":
+            final_status = "FRAUD"
+            decided_by = "ml_model"
+        else:
+            final_status = "SAFE"
+            decided_by = "hybrid"
+
+        # Confidence based on ML probability distance from 0.5
+        if fraud_probability >= 0.8 or fraud_probability <= 0.2:
+            confidence = "HIGH"
+        elif fraud_probability >= 0.65 or fraud_probability <= 0.35:
+            confidence = "MEDIUM"
+        else:
+            confidence = "LOW"
 
         return {
-            "status":     final_status,
-            "confidence": _confidence_from_probability(proba),
-            "decided_by": "hybrid",
+            "status": final_status,
+            "confidence": confidence,
+            "decided_by": decided_by,
             "rule_engine": {
-                "status":          rule_result["status"],
-                "score":           rule_result["score"],
-                "triggered_rules": rule_result.get("triggered_rules", []),
+                "status": rule_status,
+                "score": rule_result.get("score", 0),
+                "triggered_rules": triggered_rules,
             },
             "ml_model": {
-                "fraud_probability": round(proba * 100, 1),
-                "threshold_used":    0.5,
-                "explanation_text":  "See SHAP factors below",
-                "top_factors":       top_features,
+                # Always stored as 0.0–1.0 float here.
+                # In app.py display it as: f"{result['ml_model']['fraud_probability']:.0%}"
+                # That will show "87%" not "8700%"
+                "fraud_probability": round(fraud_probability, 4),
+                "threshold_used": 0.5,
+                "explanation_text": explanation_text,
+                "top_factors": top_factors,
             },
             "recommendation": rule_result["recommendation"],
         }
 
 
-# ------------------------------------------------------------------
-# Quick smoke test
-# ------------------------------------------------------------------
-
+# ---- Quick sanity check when running directly ----
 if __name__ == "__main__":
-    print("Testing HybridDetector + predict_with_explanation...\n")
-    tests = [
-        "Umeshinda KSH 50,000! Tuma PIN yako uthibitishe.",
-        "TB17CVOCY9 Confirmed. You have received Ksh2,500 from JOHN DOE.",
-        "Nimetuma pesa kwa makosa, tafadhali rudisha kwa hii namba.",
-        "Akaunti yako itafungwa leo kama hutathibitisha PIN.",
-    ]
-
     detector = HybridDetector()
 
-    for msg in tests:
-        # Test class interface
-        res = detector.predict(msg)
-        print(f"[HybridDetector] {msg[:60]}")
-        print(f"  Status: {res['status']} ({res['confidence']}) — decided_by: {res['decided_by']}")
-        print(f"  ML fraud probability: {res['ml_model']['fraud_probability']}%")
-        print("  Top SHAP factors:")
-        for f in res["ml_model"]["top_factors"][:3]:
-            arrow = "↑ fraud" if f["impact"] > 0 else "↓ safe"
-            print(f"    • {f['feature']} ({arrow}, {f['impact']:.3f})")
-        print("-" * 70)
+    tests = [
+        ("Umeshinda KSH 50,000! Tuma PIN yako uthibitishe.", "FRAUD"),
+        ("TB17CVOCY9 Confirmed. You have received Ksh2,500 from JOHN DOE.", "SAFE"),
+        ("Nipigie nikuambie tutaonana wapi leo jioni.", "SAFE"),
+        ("KRA: Una refund ya Ksh 12,400. Jisajili na ID yako kupokea.", "FRAUD"),
+        ("", "SAFE"),
+    ]
+
+    print("=" * 60)
+    print("predict.py sanity check")
+    print("=" * 60)
+    all_pass = True
+    for msg, expected in tests:
+        result = detector.predict(msg)
+        prob = result["ml_model"]["fraud_probability"]
+        prob_str = f"{prob:.0%}" if prob is not None else "N/A (guarded)"
+        status = result["status"]
+        passed = status == expected
+        all_pass = all_pass and passed
+        tick = "✅" if passed else "❌"
+        print(f"{tick} [{status:5s} expected={expected}] prob={prob_str:6} | {msg[:60]}")
+        if result["ml_model"]["top_factors"]:
+            for f in result["ml_model"]["top_factors"][:2]:
+                print(f"     • {f['feature']} ({f['direction']})")
+
+    print()
+    print("ALL PASSED" if all_pass else "SOME FAILED — check above")
+    print("=" * 60)
