@@ -1,0 +1,49 @@
+message_text,label,language,fraud_category,source,date_collected
+"KPLC PREPAID: Token 1234-5678-9012-3456-7890 for Ksh500.00 purchased on 23/6/26 at 9:10 AM. Units: 38.5 kWh. Meter No: 88213456.",legit,en,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 2345-6789-0123-4567-8901 for Ksh1,000.00 purchased on 23/6/26 at 11:25 AM. Units: 77.2 kWh. Meter No: 99021345.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 3456-7890-1234-5678-9012 for Tsh10,000.00 purchased on 23/6/26 at 13:40. Units: 65.4 kWh. Meter No: 887234.",legit,en,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 4567-8901-2345-6789-0123 for Ksh300.00 purchased on 23/6/26 at 8:50 AM. Units: 23.1 kWh. Meter No: 119283.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 5678-9012-3456-7890-1234 for Tsh5,000.00 purchased on 23/6/26 at 10:15. Units: 32.7 kWh. Meter No: 332091.",legit,en,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 6789-0123-4567-8901-2345 for Ksh2,000.00 purchased on 23/6/26 at 14:05 PM. Units: 154.8 kWh. Meter No: 776123.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 7890-1234-5678-9012-3456 kwa Ksh700.00 imenunuliwa tarehe 23/6/26 saa 9:30. Units: 53.9 kWh. Meter No: 663218.",legit,sw,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 8901-2345-6789-0123-4567 for Tsh20,000.00 purchased on 23/6/26 at 15:50. Units: 131.0 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 9012-3456-7890-1234-5678 for Ksh150.00 purchased on 23/6/26 at 7:45 AM. Units: 11.5 kWh. Meter No: 887765.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya TANESCO: 0123-4567-8901-2345-6789 kwa Tsh8,000.00 imenunuliwa tarehe 23/6/26 saa 12:20. Units: 52.3 kWh. Meter No: 220198.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 1357-2468-9135-7924-6813 for Ksh1,500.00 purchased on 23/6/26 at 16:35 PM. Units: 115.6 kWh. Meter No: 110982.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 2468-1357-8024-6913-5702 for Tsh15,000.00 purchased on 23/6/26 at 9:00. Units: 98.2 kWh. Meter No: 778120.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 3579-2468-1357-9024-6813 kwa Ksh400.00 imenunuliwa tarehe 23/6/26 saa 11:10. Units: 30.8 kWh. Meter No: 990281.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 4680-3579-2468-0135-7924 for Ksh800.00 purchased on 23/6/26 at 13:25 PM. Units: 61.6 kWh. Meter No: 332190.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 5791-4680-3579-1246-8035 for Tsh12,000.00 purchased on 23/6/26 at 10:45. Units: 78.5 kWh. Meter No: 991023.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 6802-5791-4680-2357-9146 kwa Ksh250.00 imenunuliwa tarehe 23/6/26 saa 15:15. Units: 19.2 kWh. Meter No: 112098.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 7913-6802-5791-3468-0257 for Ksh3,000.00 purchased on 23/6/26 at 8:25 AM. Units: 231.2 kWh. Meter No: 778012.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 8024-7913-6802-4579-1368 for Tsh25,000.00 purchased on 23/6/26 at 14:50. Units: 163.7 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 9135-8024-7913-5680-2479 kwa Ksh600.00 imenunuliwa tarehe 23/6/26 saa 9:55. Units: 46.2 kWh. Meter No: 119283.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 0246-9135-8024-6791-3580 for Ksh1,200.00 purchased on 23/6/26 at 12:40 PM. Units: 92.4 kWh. Meter No: 776123.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 1357-0246-9135-7802-4691 for Tsh18,000.00 purchased on 23/6/26 at 16:05. Units: 117.8 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 2468-1357-0246-8913-5702 kwa Ksh350.00 imenunuliwa tarehe 23/6/26 saa 8:15. Units: 26.9 kWh. Meter No: 110987.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 3579-2468-1357-9024-6813 for Ksh900.00 purchased on 23/6/26 at 10:55 AM. Units: 69.3 kWh. Meter No: 663281.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 4680-3579-2468-0135-7924 for Tsh9,500.00 purchased on 23/6/26 at 13:30. Units: 62.1 kWh. Meter No: 991023.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 5791-4680-3579-1246-8035 kwa Ksh200.00 imenunuliwa tarehe 23/6/26 saa 15:40. Units: 15.4 kWh. Meter No: 112098.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 6802-5791-4680-2357-9146 for Ksh2,500.00 purchased on 23/6/26 at 9:20 AM. Units: 192.7 kWh. Meter No: 778012.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 7913-6802-5791-3468-0257 for Tsh30,000.00 purchased on 23/6/26 at 17:10. Units: 196.5 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 8024-7913-6802-4579-1368 kwa Ksh450.00 imenunuliwa tarehe 23/6/26 saa 11:50. Units: 34.6 kWh. Meter No: 119283.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 9135-8024-7913-5680-2479 for Ksh1,800.00 purchased on 23/6/26 at 14:15 PM. Units: 138.7 kWh. Meter No: 776123.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 0246-9135-8024-6791-3580 for Tsh7,000.00 purchased on 23/6/26 at 10:05. Units: 45.7 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 1357-0246-9135-7802-4691 kwa Ksh550.00 imenunuliwa tarehe 23/6/26 saa 16:20. Units: 42.3 kWh. Meter No: 110987.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 2468-1357-0246-8913-5702 for Ksh700.00 purchased on 23/6/26 at 8:35 AM. Units: 53.8 kWh. Meter No: 663281.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 3579-2468-1357-9024-6813 for Tsh14,000.00 purchased on 23/6/26 at 12:55. Units: 91.5 kWh. Meter No: 991023.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 4680-3579-2468-0135-7924 kwa Ksh1,000.00 imenunuliwa tarehe 23/6/26 saa 15:30. Units: 77.0 kWh. Meter No: 112098.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 5791-4680-3579-1246-8035 for Ksh320.00 purchased on 23/6/26 at 9:45 AM. Units: 24.6 kWh. Meter No: 778012.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 6802-5791-4680-2357-9146 for Tsh22,000.00 purchased on 23/6/26 at 16:40. Units: 143.9 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 7913-6802-5791-3468-0257 kwa Ksh650.00 imenunuliwa tarehe 23/6/26 saa 11:15. Units: 50.0 kWh. Meter No: 119283.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 8024-7913-6802-4579-1368 for Ksh1,300.00 purchased on 23/6/26 at 13:50 PM. Units: 100.0 kWh. Meter No: 776123.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 9135-8024-7913-5680-2479 for Tsh6,000.00 purchased on 23/6/26 at 9:25. Units: 39.2 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 0246-9135-8024-6791-3580 kwa Ksh400.00 imenunuliwa tarehe 23/6/26 saa 14:30. Units: 30.8 kWh. Meter No: 110987.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 1357-0246-9135-7802-4691 for Ksh2,200.00 purchased on 23/6/26 at 10:40 AM. Units: 169.5 kWh. Meter No: 663281.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 2468-1357-0246-8913-5702 for Tsh16,000.00 purchased on 23/6/26 at 15:05. Units: 104.6 kWh. Meter No: 991023.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 3579-2468-1357-9024-6813 kwa Ksh250.00 imenunuliwa tarehe 23/6/26 saa 8:55. Units: 19.2 kWh. Meter No: 112098.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 4680-3579-2468-0135-7924 for Ksh950.00 purchased on 23/6/26 at 12:10 PM. Units: 73.1 kWh. Meter No: 778012.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 5791-4680-3579-1246-8035 for Tsh11,000.00 purchased on 23/6/26 at 16:55. Units: 71.9 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
+"Token ya KPLC: 6802-5791-4680-2357-9146 kwa Ksh1,600.00 imenunuliwa tarehe 23/6/26 saa 9:35. Units: 123.1 kWh. Meter No: 119283.",legit,sw,n/a,legit_batch12,2026-06-23
+"KPLC PREPAID: Token 7913-6802-5791-3468-0257 for Ksh380.00 purchased on 23/6/26 at 11:00 AM. Units: 29.2 kWh. Meter No: 776123.",legit,en,n/a,legit_batch12,2026-06-23
+"TANESCO LUKU: Token 8024-7913-6802-4579-1368 for Tsh19,000.00 purchased on 23/6/26 at 14:45. Units: 124.2 kWh. Meter No: 220981.",legit,en,n/a,legit_batch12,2026-06-23
