@@ -29,9 +29,9 @@
 | Phase | Focus | Status |
 |-------|-------|--------|
 | **1** | Rule Engine + Streamlit | ✅ Complete |
-| **2** | ML Classifier + SHAP | 🟡 In Progress |
+| **2** | ML Classifier + SHAP | 🟡 complete |
 | **3** | AI Investigation Agents | 🔴 Planned |
-| **4** | FastAPI Backend + API | 🔴 Planned |
+| **4** | FastAPI Backend + API |🟡  In Progress |
 
 ---
 
