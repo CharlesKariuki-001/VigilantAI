@@ -14,7 +14,10 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, confusion_matrix, classification_report
+from sklearn.metrics import (
+    precision_score, recall_score, f1_score,
+    accuracy_score, confusion_matrix, classification_report
+)
 from imblearn.over_sampling import SMOTE
 import xgboost as xgb
 
@@ -38,13 +41,12 @@ def main():
 
     df = pd.read_csv(DATASET_PATH).dropna(subset=["message_text", "label"])
     df = df[df["label"].isin(["fraud", "legit"])]
-    
+
     print(f"✅ Loaded {len(df)} messages ({df['label'].value_counts().to_dict()})")
 
-       # Prepare data
+    # Prepare data
     X_text = np.array(df["message_text"].astype(str).tolist())
     y = np.array((df["label"] == "fraud").astype(int).tolist())
-
 
     # Split
     X_train_text, X_test_text, y_train, y_test = train_test_split(
@@ -59,7 +61,7 @@ def main():
 
     print(f"Feature matrix shape: {X_train.shape}")
 
-    # Handle imbalance
+    # Handle imbalance with SMOTE
     smote = SMOTE(random_state=42)
     X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
 
@@ -78,13 +80,18 @@ def main():
 
     # Evaluate
     y_pred = model.predict(X_test)
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     print("MODEL PERFORMANCE")
-    print("="*60)
+    print("=" * 60)
     print(classification_report(y_test, y_pred, target_names=["Legit", "Fraud"], zero_division=0))
     print("Confusion Matrix:")
-    print(confusion_matrix(y_test, y_pred))
+    cm = confusion_matrix(y_test, y_pred)
+    print(cm)
+
+    # Calculate false positive rate from confusion matrix
+    tn, fp, fn, tp = cm.ravel()
+    false_positive_rate = fp / (fp + tn) if (fp + tn) > 0 else 0.0
 
     # Save model and feature builder
     joblib.dump(model, os.path.join(MODELS_DIR, "vigilant_model.pkl"))
@@ -92,6 +99,31 @@ def main():
 
     print(f"\n✅ Model saved to models/vigilant_model.pkl")
     print(f"✅ Feature builder saved to models/feature_builder.pkl")
+
+    # Save metadata for model card
+    metadata = {
+        "trained_at": datetime.now().isoformat(timespec="seconds"),
+        "dataset_size": len(df),
+        "fraud_count": int(y.sum()),
+        "legit_count": int(len(y) - y.sum()),
+        "feature_count": X_train.shape[1],
+        "model_type": "XGBClassifier",
+        "smote_applied": True,
+        "scale_pos_weight": round(len(y_train_bal) / sum(y_train_bal), 4),
+        "metrics": {
+            "precision": float(precision_score(y_test, y_pred, zero_division=0)),
+            "recall": float(recall_score(y_test, y_pred, zero_division=0)),
+            "f1": float(f1_score(y_test, y_pred, zero_division=0)),
+            "accuracy": float(accuracy_score(y_test, y_pred)),
+            "false_positive_rate": float(false_positive_rate),
+        }
+    }
+
+    metadata_path = os.path.join(MODELS_DIR, "model_metadata.json")
+    with open(metadata_path, "w", encoding="utf-8") as f:
+        json.dump(metadata, f, indent=2)
+
+    print(f"✅ model_metadata.json saved — run generate_model_card.py next.")
 
 
 if __name__ == "__main__":

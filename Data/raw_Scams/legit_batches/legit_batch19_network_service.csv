@@ -1,0 +1,44 @@
+message_text,label,language,fraud_category,source,date_collected
+"Safaricom: Your data bundle balance is 1.2GB. It will expire on 30/6/26. Dial *544# to top up or check more options.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, salio lako la data ni 850MB. Litaisha tarehe 30/6/26. Piga *544# kuongeza data au kuangalia chaguo zaidi.",legit,sw,n/a,legit_batch19,2026-06-23
+"Safaricom: Your tariff plan has been updated to the new Bonyeza plan. Enjoy lower call rates starting today. Dial *234# for details.",legit,en,n/a,legit_batch19,2026-06-23
+"Vodacom: Salio lako la dakika za maongezi ni dakika 45. Zitaisha tarehe 30/6/26. Piga *150*00# kuongeza zaidi.",legit,sw,n/a,legit_batch19,2026-06-23
+"Safaricom: Your monthly bundle subscription has renewed successfully. You now have 2GB data and 200 minutes. Valid until 23/7/26.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, kifurushi chako cha kila mwezi kimehuishwa kikamilifu. Una 1.5GB data na dakika 150. Kinafanya kazi mpaka 23/7/26.",legit,sw,n/a,legit_batch19,2026-06-23
+"Airtel: Your network has been upgraded to 4G in your area. Enjoy faster browsing speeds. Dial *222# for available bundles.",legit,en,n/a,legit_batch19,2026-06-23
+"Safaricom: Your SMS bundle balance is 50 messages. It will expire on 25/6/26. Dial *544# to purchase more SMS bundles.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari mteja, salio lako la SMS ni jumbe 30. Litaisha tarehe 25/6/26. Piga *544# kununua jumbe zaidi.",legit,sw,n/a,legit_batch19,2026-06-23
+"Telkom: Your network coverage has been expanded in your region. Check available data bundles by dialing *544# for new offers.",legit,en,n/a,legit_batch19,2026-06-23
+"Vodacom: Mtandao wako umeboreshwa kwa kasi ya 4G katika eneo lako. Furahia kasi mpya ya intaneti. Piga *150*00# kwa chaguo.",legit,sw,n/a,legit_batch19,2026-06-23
+"Safaricom: Your line has been successfully migrated to the new prepaid tariff. Enjoy improved rates on calls and SMS starting now.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, namba yako imehamishwa kwa mfumo mpya wa malipo kabla. Furahia viwango bora vya simu na SMS kuanzia sasa.",legit,sw,n/a,legit_batch19,2026-06-23
+"Safaricom: Your data bundle of 5GB purchased today has been activated. It is valid for 30 days from 23/6/26.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari mteja, kifurushi chako cha 3GB kilichonunuliwa leo kimeanzishwa. Kinafanya kazi kwa siku 30 kuanzia 23/6/26.",legit,sw,n/a,legit_batch19,2026-06-23
+"Airtel: Your roaming services have been activated for your upcoming travel. Dial *222# for international roaming rates and bundles.",legit,en,n/a,legit_batch19,2026-06-23
+"Vodacom: Huduma zako za kuzunguka nje ya nchi zimeanzishwa. Piga *150*00# kuangalia viwango vya kuzunguka kimataifa.",legit,sw,n/a,legit_batch19,2026-06-23
+"Safaricom: Your line will undergo scheduled maintenance tonight between 1AM and 3AM. Service may be briefly interrupted. We apologize for the inconvenience.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, mtandao utafanyiwa matengenezo ya kawaida leo usiku kati ya saa 7 na saa 9 usiku. Huduma inaweza kukatika kwa muda mfupi.",legit,sw,n/a,legit_batch19,2026-06-23
+"Telkom: Your monthly bundle has been renewed automatically. You now have 1GB data valid until 23/7/26. Dial *160# for more.",legit,en,n/a,legit_batch19,2026-06-23
+"Safaricom: Your number has been successfully ported from another network. Welcome to Safaricom! Dial *544# to check your bundles.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, namba yako imehamishwa kikamilifu kutoka mtandao mwingine. Karibu Safaricom! Piga *544# kuangalia vifurushi vyako.",legit,sw,n/a,legit_batch19,2026-06-23
+"Vodacom: Your call balance has been topped up with Tsh2,000 worth of airtime from your weekly bonus. Dial *150*00# for details.",legit,en,n/a,legit_batch19,2026-06-23
+"Airtel: Your data bundle of 2GB has expired. Dial *222# to purchase a new bundle and continue browsing without interruption.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari mteja, kifurushi chako cha 1GB kimeisha muda wake. Piga *222# kununua kifurushi kipya na uendelee kutumia intaneti.",legit,sw,n/a,legit_batch19,2026-06-23
+"Safaricom: Your eSIM activation was successful. You can now use your new digital SIM on your device. Dial *234# for help.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, uanzishaji wa eSIM yako umefanikiwa. Sasa unaweza kutumia SIM yako mpya ya kidijitali kwenye kifaa chako. Piga *234# kwa msaada.",legit,sw,n/a,legit_batch19,2026-06-23
+"Telkom: Your network has experienced brief downtime in your area due to maintenance. Services have now been fully restored.",legit,en,n/a,legit_batch19,2026-06-23
+"Safaricom: Your call minutes bundle balance is 60 minutes. It will expire on 28/6/26. Dial *544# to top up more minutes.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari mteja, salio lako la dakika za simu ni dakika 40. Zitaisha tarehe 28/6/26. Piga *544# kuongeza dakika zaidi.",legit,sw,n/a,legit_batch19,2026-06-23
+"Vodacom: Your SIM card registration details have been successfully updated as per the new regulatory requirements. Thank you for complying.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, taarifa zako za usajili wa SIM zimesasishwa kikamilifu kulingana na mahitaji mapya ya kisheria. Asante kwa kushirikiana.",legit,sw,n/a,legit_batch19,2026-06-23
+"Safaricom: Your monthly bill for postpaid services has been generated. Total amount due is Ksh3,500.00 by 5/7/26. Dial *544# for details.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari mteja, bili yako ya mwezi ya huduma ya postpaid imetayarishwa. Kiasi cha kulipa ni Ksh2,800.00 kabla ya 5/7/26.",legit,sw,n/a,legit_batch19,2026-06-23
+"Airtel: Your network has been upgraded with new towers in your area for better connectivity. Enjoy improved call quality starting today.",legit,en,n/a,legit_batch19,2026-06-23
+"Telkom: Your line has successfully been reactivated after the temporary suspension. You can now use all services as normal.",legit,en,n/a,legit_batch19,2026-06-23
+"Safaricom: Your daily data bundle of 100MB has been activated and is valid until midnight today. Dial *544# for more bundles.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari, kifurushi chako cha data cha siku cha 100MB kimeanzishwa na kinafanya kazi mpaka usiku wa manane leo.",legit,sw,n/a,legit_batch19,2026-06-23
+"Vodacom: Your network coverage map has been updated to include new areas. Check service availability by dialing *150*00#.",legit,en,n/a,legit_batch19,2026-06-23
+"Safaricom: Your contract renewal for the postpaid plan has been successfully processed. Your new billing cycle starts on 1/7/26.",legit,en,n/a,legit_batch19,2026-06-23
+"Habari mteja, uhuishaji wa mkataba wako wa postpaid umekamilika kikamilifu. Kipindi chako kipya cha malipo kinaanza tarehe 1/7/26.",legit,sw,n/a,legit_batch19,2026-06-23
+"Telkom: Your weekend data bonus of 500MB has been credited to your account. Valid until midnight Sunday. Dial *160# for details.",legit,en,n/a,legit_batch19,2026-06-23
+"Airtel: Your number has been successfully whitelisted for international calling services. Dial *222# to check rates and packages.",legit,en,n/a,legit_batch19,2026-06-23
